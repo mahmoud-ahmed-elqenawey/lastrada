@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-label="Moonlit cinematic production scene">
+  <defs>
+    <radialGradient id="sky" cx="70%" cy="28%" r="72%">
+      <stop offset="0" stop-color="#163a4b"/>
+      <stop offset="0.34" stop-color="#091316"/>
+      <stop offset="0.72" stop-color="#030404"/>
+      <stop offset="1" stop-color="#000"/>
+    </radialGradient>
+    <radialGradient id="moon" cx="44%" cy="38%" r="62%">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0.55" stop-color="#eefbff"/>
+      <stop offset="0.78" stop-color="#bdefff"/>
+      <stop offset="1" stop-color="#6ec8e6"/>
+    </radialGradient>
+    <linearGradient id="haze" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#30a9dc" stop-opacity="0"/>
+      <stop offset="0.45" stop-color="#30a9dc" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#f9a72b" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2f4197" stop-opacity="0.2"/>
+      <stop offset="0.46" stop-color="#050505"/>
+      <stop offset="1" stop-color="#ef4639" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="36"/>
+    </filter>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence baseFrequency="0.72" numOctaves="2" seed="11" type="fractalNoise"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.1"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <circle cx="1358" cy="260" r="310" fill="#30a9dc" opacity="0.13" filter="url(#soft)"/>
+  <circle cx="1358" cy="260" r="128" fill="url(#moon)"/>
+  <circle cx="1316" cy="224" r="10" fill="#9bc5d3" opacity="0.38"/>
+  <circle cx="1402" cy="292" r="18" fill="#93becc" opacity="0.24"/>
+  <circle cx="1390" cy="198" r="6" fill="#88b7c9" opacity="0.32"/>
+
+  <path d="M1056 392C1216 478 1364 646 1538 914" fill="none" stroke="url(#haze)" stroke-width="170" stroke-linecap="round" filter="url(#soft)"/>
+  <path d="M0 744C236 702 411 790 662 754C890 722 1044 672 1279 728C1513 784 1692 720 1920 686V1080H0Z" fill="url(#floor)"/>
+  <path d="M0 818C310 766 505 856 782 816C1044 779 1215 732 1465 786C1635 823 1782 805 1920 756V1080H0Z" fill="#010101" opacity="0.94"/>
+
+  <g opacity="0.95">
+    <path d="M1222 702c0-62 38-112 86-112s86 50 86 112v198h-172V702Z" fill="#010202"/>
+    <circle cx="1308" cy="548" r="44" fill="#010202"/>
+    <path d="M1212 704c-86 28-148 88-186 178l-28 66h444l-34-82c-37-90-107-146-196-162Z" fill="#010202"/>
+    <path d="M1104 734h-210v-22h210v22Z" fill="#010202"/>
+    <path d="M936 711l-44 211h-28l45-211h27Z" fill="#010202"/>
+    <path d="M1104 711l50 211h-29l-48-211h27Z" fill="#010202"/>
+    <circle cx="877" cy="705" r="24" fill="#010202"/>
+  </g>
+
+  <path d="M0 0h1920v1080H0z" fill="#000" opacity="0.2"/>
+  <rect width="1920" height="1080" filter="url(#grain)" opacity="0.34"/>
+  <path d="M0 0h1920v1080H0z" fill="none" stroke="#fff" stroke-opacity="0.035"/>
+</svg>
