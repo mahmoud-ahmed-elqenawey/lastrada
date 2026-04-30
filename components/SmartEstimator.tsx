@@ -4,6 +4,15 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Calculator, CheckCircle2, Zap } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useLaStradaContent, type EstimatorOption } from "@/lib/la-strada-i18n";
+import {
+  cardReveal,
+  chipReveal,
+  headingReveal,
+  iconReveal,
+  itemReveal,
+  revealMotion,
+  staggerContainer,
+} from "@/lib/motion-presets";
 
 type EstimatorKey = "projectType" | "complexity" | "timeline" | "teamSize";
 type Selections = Record<EstimatorKey, string>;
@@ -38,7 +47,7 @@ function fieldOptions(options: Record<EstimatorKey, EstimatorOption[]>, key: Est
 }
 
 export function SmartEstimator() {
-  const { content, language } = useLaStradaContent();
+  const { content, direction, language } = useLaStradaContent();
   const { aiDemo } = content;
   const shouldReduceMotion = useReducedMotion();
   const [showEstimate, setShowEstimate] = useState(false);
@@ -84,43 +93,49 @@ export function SmartEstimator() {
 
       <div className="relative z-10 mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
         <motion.div
-          initial={shouldReduceMotion ? false : { opacity: 1, y: 32 }}
-          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-14% 0px" }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          {...revealMotion(shouldReduceMotion, staggerContainer(0.04, 0.08))}
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-[var(--brand-purple)]">
+          <motion.div
+            className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-[var(--brand-purple)]"
+            variants={chipReveal()}
+          >
             <Zap aria-hidden="true" size={16} />
             {aiDemo.badge}
-          </div>
-          <h2 className="mt-8 max-w-4xl text-balance text-5xl font-black leading-[0.9] tracking-normal sm:text-7xl">
+          </motion.div>
+          <motion.h2
+            className="mt-8 max-w-4xl text-balance text-5xl font-black leading-[0.9] tracking-normal sm:text-7xl"
+            variants={headingReveal(direction)}
+          >
             {aiDemo.title} <span className="text-[var(--brand-purple)]">{aiDemo.titleHighlight}</span>
-          </h2>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-white/64 sm:text-xl sm:leading-9">
+          </motion.h2>
+          <motion.p
+            className="mt-7 max-w-2xl text-lg leading-8 text-white/64 sm:text-xl sm:leading-9"
+            variants={itemReveal(0.08, 20)}
+          >
             {aiDemo.subtitle}
-          </p>
+          </motion.p>
 
-          <div className="mt-10 space-y-4">
+          <motion.div className="mt-10 space-y-4" variants={staggerContainer(0.12, 0.045)}>
             {aiDemo.features.map((feature) => (
-              <div key={feature} className="flex items-center gap-3 text-white/68">
+              <motion.div key={feature} className="flex items-center gap-3 text-white/68" variants={itemReveal()}>
                 <CheckCircle2 aria-hidden="true" size={20} className="text-[var(--brand-green)]" />
                 <span className="text-base font-bold">{feature}</span>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
           className="rounded-[8px] border border-white/12 bg-white/[0.035] p-5 shadow-2xl shadow-black/30 sm:p-8"
-          initial={shouldReduceMotion ? false : { opacity: 1, y: 32 }}
-          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-14% 0px" }}
-          transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+          {...revealMotion(shouldReduceMotion, cardReveal(0.1, 36))}
         >
           <div className="mb-8 flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 text-[var(--brand-cyan)]">
+            <motion.span
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 text-[var(--brand-cyan)]"
+              variants={iconReveal(0.08)}
+            >
               <Calculator aria-hidden="true" size={22} />
-            </span>
+            </motion.span>
             <h3 className="text-2xl font-black text-white sm:text-3xl">{aiDemo.calculatorTitle}</h3>
           </div>
 
@@ -135,7 +150,7 @@ export function SmartEstimator() {
                     const isActive = selections[field] === option.value;
 
                     return (
-                      <button
+                      <motion.button
                         key={option.value}
                         type="button"
                         className={`min-h-12 rounded-[8px] border px-3 text-start text-sm font-black transition ${
@@ -148,9 +163,10 @@ export function SmartEstimator() {
                           setShowEstimate(false);
                           setIsCalculating(false);
                         }}
+                        whileTap={shouldReduceMotion ? undefined : { scale: 0.96 }}
                       >
                         {option.label}
-                      </button>
+                      </motion.button>
                     );
                   })}
                 </div>

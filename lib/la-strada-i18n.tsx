@@ -302,10 +302,11 @@ const whatsappHref = "https://wa.me/962700000000";
 
 const en: LaStradaContent = {
   meta: {
-    title: "LASTRADA AGENCY FOR CREATIVE SOLUTION",
-    description: "LASTRADA AGENCY FOR CREATIVE SOLUTION",
+    title: "LA STRADA | Marketing & Creative Solutions Agency",
+    description:
+      "LA STRADA is a creative marketing agency specializing in photography, content production, motion graphics, editing, graphic design, social media, web, and digital marketing.",
     keywords:
-      "LASTRADA AGENCY FOR CREATIVE SOLUTION, marketing, branding, digital strategy, premium advertising, high-end agency",
+      "LA STRADA, LASTRADA Agency, creative agency, marketing agency, content production, photography, motion graphics, video editing, graphic design, social media management, web design, digital marketing",
   },
   brand: staticBrand,
   media: staticMedia,
@@ -821,9 +822,11 @@ const en: LaStradaContent = {
 
 const ar: LaStradaContent = {
   meta: {
-    title: "لاسترادا - وكالة الحلول الإبداعية",
-    description: "وكالة لاسترادا للحلول الإبداعية - شريكك في التسويق والعلامة التجارية والاستراتيجية الرقمية",
-    keywords: "لاسترادا, وكالة إبداعية, تسويق, علامة تجارية, استراتيجية رقمية, إعلانات",
+    title: "لاسترادا | وكالة التسويق والحلول الإبداعية",
+    description:
+      "لاسترادا للحلول التسويقية والإبداعية تقدم خدمات التصوير، صناعة المحتوى، الموشن جرافيك، المونتاج، التصميم، إدارة السوشيال ميديا، تصميم المواقع، والتسويق الإلكتروني.",
+    keywords:
+      "لاسترادا, وكالة إبداعية, شركة تسويق, صناعة محتوى, تصوير, موشن جرافيك, مونتاج, تصميم جرافيك, إدارة سوشيال ميديا, تصميم مواقع, تسويق إلكتروني",
   },
   brand: staticBrand,
   media: staticMedia,

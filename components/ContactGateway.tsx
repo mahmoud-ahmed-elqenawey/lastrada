@@ -5,6 +5,14 @@ import { useState } from "react";
 import { ArrowUpRight, CheckCircle2, Clock3, ExternalLink, Mail, MapPin, Send } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useLaStradaContent } from "@/lib/la-strada-i18n";
+import {
+  cardReveal,
+  headingReveal,
+  itemReveal,
+  lineReveal,
+  revealMotion,
+  staggerContainer,
+} from "@/lib/motion-presets";
 
 export function ContactGateway() {
   const { content, direction } = useLaStradaContent();
@@ -28,22 +36,25 @@ export function ContactGateway() {
 
       <motion.div
         className="relative z-10 mx-auto max-w-7xl"
-        initial={shouldReduceMotion ? false : { opacity: 1, y: 34 }}
-        whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-16% 0px" }}
-        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        {...revealMotion(shouldReduceMotion, staggerContainer(0.04, 0.08))}
       >
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <div>
-            <div className="h-px w-28 bg-white/38" />
-            <h2 className="mt-8 max-w-4xl text-balance text-5xl font-black leading-[0.9] tracking-normal sm:text-7xl lg:text-8xl">
+            <motion.div className="h-px w-28 bg-white/38" variants={lineReveal(direction)} />
+            <motion.h2
+              className="mt-8 max-w-4xl text-balance text-5xl font-black leading-[0.9] tracking-normal sm:text-7xl lg:text-8xl"
+              variants={headingReveal(direction)}
+            >
               {contactSection.title}{" "}
               <span className="text-[var(--brand-red)]">{contactSection.titleHighlight}</span>
-            </h2>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-white/66 sm:text-xl sm:leading-9">
+            </motion.h2>
+            <motion.p
+              className="mt-7 max-w-2xl text-lg leading-8 text-white/66 sm:text-xl sm:leading-9"
+              variants={itemReveal(0.08, 20)}
+            >
               {contactSection.body}
-            </p>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            </motion.p>
+            <motion.div className="mt-10 flex flex-col gap-4 sm:flex-row" variants={itemReveal(0.12, 18)}>
               <a className="cinema-button cinema-button-primary" href={contactSection.emailHref}>
                 {contactSection.ctaLabel}
                 <Send aria-hidden="true" size={18} />
@@ -59,10 +70,10 @@ export function ContactGateway() {
                   <ExternalLink aria-hidden="true" size={18} />
                 </a>
               ) : null}
-            </div>
+            </motion.div>
           </div>
 
-          <div className="border-y border-white/12">
+          <motion.div className="border-y border-white/12" variants={cardReveal(0.1, 28)}>
             <p className="border-b border-white/12 py-5 text-sm font-black uppercase tracking-[0.18em] text-white/38">
               {contactSection.getInTouch}
             </p>
@@ -124,11 +135,11 @@ export function ContactGateway() {
                 </span>
               </div>
             ) : null}
-          </div>
+          </motion.div>
         </div>
 
         <div className="mt-16 grid gap-8 lg:grid-cols-[0.78fr_1.22fr]">
-          <div className="border-y border-white/12 py-7">
+          <motion.div className="border-y border-white/12 py-7" variants={cardReveal(0.14, 28)}>
             <p className="mb-5 text-sm font-black uppercase tracking-[0.18em] text-white/38">
               {contactSection.globalPresence}
             </p>
@@ -168,11 +179,12 @@ export function ContactGateway() {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <form
+          <motion.form
             className="rounded-[8px] border border-white/12 bg-white/[0.035] p-5 sm:p-8"
             onSubmit={handleSubmit}
+            variants={cardReveal(0.18, 32)}
           >
             <h3 className="mb-7 text-3xl font-black leading-none text-white sm:text-4xl">
               {contactSection.startProject}
@@ -286,12 +298,16 @@ export function ContactGateway() {
             </div>
 
             {showNotice && contactSection.form.localNotice ? (
-              <p className="mt-5 flex items-center gap-2 rounded-[8px] border border-[rgba(57,181,74,0.34)] bg-[rgba(57,181,74,0.1)] px-4 py-3 text-sm font-bold text-white/76">
+              <motion.p
+                className="mt-5 flex items-center gap-2 rounded-[8px] border border-[rgba(57,181,74,0.34)] bg-[rgba(57,181,74,0.1)] px-4 py-3 text-sm font-bold text-white/76"
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
+                animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+              >
                 <CheckCircle2 aria-hidden="true" size={18} className="text-[var(--brand-green)]" />
                 {contactSection.form.localNotice}
-              </p>
+              </motion.p>
             ) : null}
-          </form>
+          </motion.form>
         </div>
       </motion.div>
     </section>

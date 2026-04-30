@@ -10,23 +10,32 @@ import { SmartEstimator } from "@/components/SmartEstimator";
 import { SolutionPillars } from "@/components/SolutionPillars";
 import { TestimonialsReel } from "@/components/TestimonialsReel";
 import { LanguageProvider } from "@/lib/la-strada-i18n";
+import { jsonLd } from "@/lib/seo";
 
 export default function Home() {
   return (
-    <LanguageProvider>
-      <main id="top" className="relative isolate min-h-screen overflow-x-hidden bg-[#050505] text-white">
-        <ScrollProgressChrome />
-        <InteractionChrome />
-        <CinematicHero />
-        <SolutionPillars />
-        <PortfolioShowcase />
-        <AgencyStory />
-        <TestimonialsReel />
-        <SmartEstimator />
-        <PricingSequence />
-        <ContactGateway />
-        <SiteFooter />
-      </main>
-    </LanguageProvider>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <LanguageProvider>
+        <main id="top" className="relative isolate min-h-screen overflow-x-hidden bg-[#050505] text-white">
+          <ScrollProgressChrome />
+          <InteractionChrome />
+          <CinematicHero />
+          <SolutionPillars />
+          <PortfolioShowcase />
+          <AgencyStory />
+          <TestimonialsReel />
+          <SmartEstimator />
+          <PricingSequence />
+          <ContactGateway />
+          <SiteFooter />
+        </main>
+      </LanguageProvider>
+    </>
   );
 }

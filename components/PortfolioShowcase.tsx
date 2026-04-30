@@ -5,6 +5,16 @@ import { useMemo, useState } from "react";
 import { ArrowUpRight, Layers3, Play } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useLaStradaContent, type PortfolioProject } from "@/lib/la-strada-i18n";
+import {
+  cardReveal,
+  chipReveal,
+  headingReveal,
+  iconReveal,
+  itemReveal,
+  itemViewport,
+  revealMotion,
+  staggerContainer,
+} from "@/lib/motion-presets";
 
 function accentStyle(accent: PortfolioProject["accent"]): CSSProperties {
   return { "--accent": `var(--brand-${accent})` } as CSSProperties;
@@ -35,32 +45,41 @@ export function PortfolioShowcase() {
       <div className="relative z-10 mx-auto max-w-7xl">
         <motion.div
           className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end"
-          initial={shouldReduceMotion ? false : { opacity: 1, y: 30 }}
-          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-14% 0px" }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          {...revealMotion(shouldReduceMotion, staggerContainer(0.04, 0.08))}
         >
           <div>
-            <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-white/14 bg-white/[0.03] text-[var(--brand-purple)]">
+            <motion.div
+              className="mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-white/14 bg-white/[0.03] text-[var(--brand-purple)]"
+              variants={iconReveal()}
+            >
               <Layers3 aria-hidden="true" size={24} />
-            </div>
-            <h2 className="max-w-4xl text-balance text-5xl font-black leading-[0.9] tracking-normal sm:text-7xl lg:text-8xl">
+            </motion.div>
+            <motion.h2
+              className="max-w-4xl text-balance text-5xl font-black leading-[0.9] tracking-normal sm:text-7xl lg:text-8xl"
+              variants={headingReveal(direction)}
+            >
               {portfolio.title}{" "}
               <span className="text-[var(--brand-yellow)]">{portfolio.titleHighlight}</span>
-            </h2>
+            </motion.h2>
           </div>
 
-          <p className="max-w-2xl text-lg leading-8 text-white/64 sm:text-xl sm:leading-9">
+          <motion.p
+            className="max-w-2xl text-lg leading-8 text-white/64 sm:text-xl sm:leading-9"
+            variants={itemReveal(0.08, 20)}
+          >
             {portfolio.subtitle}
-          </p>
+          </motion.p>
         </motion.div>
 
-        <div className="mt-12 flex flex-wrap gap-2 border-y border-white/12 py-5">
+        <motion.div
+          className="mt-12 flex flex-wrap gap-2 border-y border-white/12 py-5"
+          {...revealMotion(shouldReduceMotion, staggerContainer(0.04, 0.035), itemViewport)}
+        >
           {portfolio.filters.map((filter) => {
             const isActive = filter.key === activeFilter;
 
             return (
-              <button
+              <motion.button
                 key={filter.key}
                 type="button"
                 aria-pressed={isActive}
@@ -70,12 +89,14 @@ export function PortfolioShowcase() {
                     : "border-white/12 text-white/56 hover:border-white/34 hover:text-white"
                 }`}
                 onClick={() => setActiveFilter(filter.key)}
+                variants={chipReveal()}
+                whileTap={shouldReduceMotion ? undefined : { scale: 0.96 }}
               >
                 {filter.label}
-              </button>
+              </motion.button>
             );
           })}
-        </div>
+        </motion.div>
 
         <div className="border-b border-white/12">
           {filteredProjects.map((project, index) => (
@@ -83,12 +104,14 @@ export function PortfolioShowcase() {
               key={`${project.title}-${activeFilter}`}
               className="group grid gap-6 border-t border-white/12 py-8 md:grid-cols-[7rem_1fr_0.55fr] md:items-center lg:py-10"
               style={accentStyle(project.accent)}
-              initial={shouldReduceMotion ? false : { opacity: 1, y: 24 }}
-              whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-12% 0px" }}
-              transition={{ duration: 0.55, delay: index * 0.035, ease: [0.22, 1, 0.36, 1] }}
+              layout
+              {...revealMotion(shouldReduceMotion, cardReveal(index * 0.045, 28), itemViewport)}
+              whileHover={shouldReduceMotion ? undefined : { x: direction === "rtl" ? -6 : 6 }}
             >
-              <div className="relative h-24 w-full overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.03] md:h-28">
+              <motion.div
+                className="relative h-24 w-full overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.03] md:h-28"
+                variants={iconReveal(0.06)}
+              >
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_22%,var(--accent),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.12),transparent_48%)] opacity-55" />
                 <div className="absolute inset-x-3 bottom-3 h-px bg-[linear-gradient(90deg,transparent,var(--accent),transparent)]" />
                 <span className="absolute start-3 top-3 font-mono text-xs text-white/44">
@@ -97,7 +120,7 @@ export function PortfolioShowcase() {
                 <span className="absolute bottom-3 end-3 flex h-8 w-8 items-center justify-center rounded-full border border-white/16 text-[var(--accent)]">
                   <Play aria-hidden="true" size={14} fill="currentColor" />
                 </span>
-              </div>
+              </motion.div>
 
               <div>
                 <div className="flex flex-wrap items-center gap-3 text-xs font-black uppercase tracking-[0.16em]">

@@ -5,6 +5,16 @@ import { useState } from "react";
 import { Check, Crown, Rocket, Sparkles } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useLaStradaContent, type PricingPlan } from "@/lib/la-strada-i18n";
+import {
+  cardReveal,
+  headingReveal,
+  iconReveal,
+  itemReveal,
+  itemViewport,
+  revealMotion,
+  sectionReveal,
+  staggerContainer,
+} from "@/lib/motion-presets";
 
 type Billing = "monthly" | "yearly";
 
@@ -21,7 +31,7 @@ function formatPrice(price: string, billing: Billing) {
 }
 
 export function PricingSequence() {
-  const { content } = useLaStradaContent();
+  const { content, direction } = useLaStradaContent();
   const { pricing, contactSection } = content;
   const shouldReduceMotion = useReducedMotion();
   const [billing, setBilling] = useState<Billing>("monthly");
@@ -38,25 +48,34 @@ export function PricingSequence() {
       <div className="relative z-10 mx-auto max-w-7xl">
         <motion.div
           className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end"
-          initial={shouldReduceMotion ? false : { opacity: 1, y: 30 }}
-          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-14% 0px" }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          {...revealMotion(shouldReduceMotion, staggerContainer(0.04, 0.08))}
         >
           <div>
-            <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-white/14 bg-white/[0.03] text-[var(--brand-yellow)]">
+            <motion.div
+              className="mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-white/14 bg-white/[0.03] text-[var(--brand-yellow)]"
+              variants={iconReveal()}
+            >
               <Crown aria-hidden="true" size={24} />
-            </div>
-            <h2 className="max-w-4xl text-balance text-5xl font-black leading-[0.9] tracking-normal sm:text-7xl lg:text-8xl">
+            </motion.div>
+            <motion.h2
+              className="max-w-4xl text-balance text-5xl font-black leading-[0.9] tracking-normal sm:text-7xl lg:text-8xl"
+              variants={headingReveal(direction)}
+            >
               {pricing.title} <span className="text-[var(--brand-green)]">{pricing.titleHighlight}</span>
-            </h2>
+            </motion.h2>
           </div>
 
           <div>
-            <p className="max-w-2xl text-lg leading-8 text-white/64 sm:text-xl sm:leading-9">
+            <motion.p
+              className="max-w-2xl text-lg leading-8 text-white/64 sm:text-xl sm:leading-9"
+              variants={itemReveal(0.08, 20)}
+            >
               {pricing.subtitle}
-            </p>
-            <div className="mt-7 inline-flex rounded-full border border-white/12 bg-white/[0.03] p-1">
+            </motion.p>
+            <motion.div
+              className="mt-7 inline-flex rounded-full border border-white/12 bg-white/[0.03] p-1"
+              variants={itemReveal(0.12, 16)}
+            >
               {(["monthly", "yearly"] as Billing[]).map((option) => (
                 <button
                   key={option}
@@ -75,7 +94,7 @@ export function PricingSequence() {
                   ) : null}
                 </button>
               ))}
-            </div>
+            </motion.div>
           </div>
         </motion.div>
 
@@ -87,10 +106,8 @@ export function PricingSequence() {
                 plan.featured ? "border-[color:var(--accent)] bg-white/[0.055]" : "border-white/12 bg-white/[0.025]"
               }`}
               style={accentStyle(plan.accent)}
-              initial={shouldReduceMotion ? false : { opacity: 1, y: 28 }}
-              whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-12% 0px" }}
-              transition={{ duration: 0.58, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+              {...revealMotion(shouldReduceMotion, cardReveal(index * 0.06, 34), itemViewport)}
+              whileHover={shouldReduceMotion ? undefined : { y: -6 }}
             >
               <div className="mb-7 flex items-start justify-between gap-5">
                 <div>
@@ -131,10 +148,7 @@ export function PricingSequence() {
 
         <motion.div
           className="mt-10 grid gap-7 border-y border-white/12 py-10 md:grid-cols-[1fr_auto] md:items-center"
-          initial={shouldReduceMotion ? false : { opacity: 1, y: 26 }}
-          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-12% 0px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          {...revealMotion(shouldReduceMotion, sectionReveal(0), itemViewport)}
         >
           <div>
             <h3 className="text-3xl font-black text-white sm:text-4xl">{pricing.customTitle}</h3>

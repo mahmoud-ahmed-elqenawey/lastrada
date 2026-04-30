@@ -5,6 +5,16 @@ import { ArrowUpRight, ChevronDown, Globe2, MessageCircle, PhoneCall } from "luc
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useRef, useState } from "react";
 import { useLaStradaContent } from "@/lib/la-strada-i18n";
+import {
+  chipReveal,
+  entranceMotion,
+  heroTitleReveal,
+  itemReveal,
+  lineReveal,
+  motionEase,
+  sideReveal,
+  staggerContainer,
+} from "@/lib/motion-presets";
 
 export function CinematicHero() {
   const { content, direction, toggleLanguage } = useLaStradaContent();
@@ -48,7 +58,10 @@ export function CinematicHero() {
       <div className="film-grain absolute inset-0 opacity-20" aria-hidden="true" />
 
       <div className="relative z-10 flex min-h-[calc(100svh-2.5rem)] w-full flex-col">
-        <header className="hero-header">
+        <motion.header
+          className="hero-header"
+          {...entranceMotion(shouldReduceMotion, itemReveal(0.02, 12))}
+        >
           <a href="#top" className="focus-ring inline-flex shrink-0" aria-label="LA STRADA home">
             <Image
               src={brand.logo}
@@ -93,46 +106,52 @@ export function CinematicHero() {
               <ArrowUpRight aria-hidden="true" className={direction === "rtl" ? "-scale-x-100" : ""} size={18} />
             </a>
           </div>
-        </header>
+        </motion.header>
 
         <motion.div
           className="hero-composition"
           style={{ y: contentY, opacity: contentOpacity }}
+          {...entranceMotion(shouldReduceMotion, staggerContainer(0.1, 0.09))}
         >
-          <div className="hero-copy">
-            <h1 className="hero-title text-balance">
+          <motion.div className="hero-copy" variants={staggerContainer(0.08, 0.08)}>
+            <motion.h1 className="hero-title text-balance" variants={heroTitleReveal()}>
               {hero.brandName}
-            </h1>
-            <p className="hero-tagline">
+            </motion.h1>
+            <motion.p className="hero-tagline" variants={itemReveal(0.02, 24)}>
               {hero.tagline}
-            </p>
-            <p className="hero-subtitle">
+            </motion.p>
+            <motion.p className="hero-subtitle" variants={itemReveal(0.04, 18)}>
               {hero.agencyLabel} / {hero.subtitle}
-            </p>
-            <div className="hero-cta-row">
-              <a className="cinema-button cinema-button-primary" href={hero.ctaHref}>
+            </motion.p>
+            <motion.div className="hero-cta-row" variants={staggerContainer(0.04, 0.06)}>
+              <motion.a className="cinema-button cinema-button-primary" href={hero.ctaHref} variants={chipReveal()}>
                 {hero.ctaLabel}
                 <ArrowUpRight aria-hidden="true" className={direction === "rtl" ? "-scale-x-100" : ""} size={19} />
-              </a>
-              <a className="cinema-button cinema-button-muted" href="#portfolio">
+              </motion.a>
+              <motion.a className="cinema-button cinema-button-muted" href="#portfolio" variants={chipReveal()}>
                 {hero.secondaryLabel}
                 <ArrowUpRight aria-hidden="true" className={direction === "rtl" ? "-scale-x-100" : ""} size={18} />
-              </a>
-            </div>
-          </div>
+              </motion.a>
+            </motion.div>
+          </motion.div>
 
-          <aside className="hero-side-panel" aria-label={servicesIntro.subtitle}>
-            <span className="hero-panel-line" />
-            <p>{servicesIntro.subtitle}</p>
-            <div className="hero-service-rail">
+          <motion.aside className="hero-side-panel" aria-label={servicesIntro.subtitle} variants={sideReveal(direction, 0.18)}>
+            <motion.span className="hero-panel-line" variants={lineReveal(direction, 0.08)} />
+            <motion.p variants={itemReveal(0.12, 18)}>{servicesIntro.subtitle}</motion.p>
+            <motion.div className="hero-service-rail" variants={staggerContainer(0.16, 0.045)}>
               {featuredServices.map((service) => (
-                <span key={service.shortTitle}>{service.shortTitle}</span>
+                <motion.span key={service.shortTitle} variants={chipReveal()}>
+                  {service.shortTitle}
+                </motion.span>
               ))}
-            </div>
-          </aside>
+            </motion.div>
+          </motion.aside>
         </motion.div>
 
-        <div className="hero-bottom">
+        <motion.div
+          className="hero-bottom"
+          {...entranceMotion(shouldReduceMotion, itemReveal(0.55, 14))}
+        >
           <a
             href="#services"
             className="group flex w-fit items-center gap-3 text-sm font-semibold text-white/64 transition hover:text-white"
@@ -146,7 +165,7 @@ export function CinematicHero() {
             <span className="h-px w-16 bg-white/24" />
             {hero.scrollHint}
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {showVideo ? (
@@ -154,6 +173,9 @@ export function CinematicHero() {
           aria-hidden="true"
           className="hero-video absolute inset-0 h-full w-full object-cover"
           style={{ scale: mediaScale }}
+          initial={shouldReduceMotion ? false : { opacity: 0 }}
+          animate={shouldReduceMotion ? undefined : { opacity: 0.78 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 1.2, ease: motionEase }}
           autoPlay
           muted
           loop

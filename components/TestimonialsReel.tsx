@@ -5,6 +5,15 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useLaStradaContent, type Testimonial } from "@/lib/la-strada-i18n";
+import {
+  chipReveal,
+  headingReveal,
+  iconReveal,
+  itemReveal,
+  revealMotion,
+  staggerContainer,
+  testimonialSwap,
+} from "@/lib/motion-presets";
 
 function accentStyle(accent: Testimonial["accent"]): CSSProperties {
   return { "--accent": `var(--brand-${accent})` } as CSSProperties;
@@ -34,21 +43,24 @@ export function TestimonialsReel() {
         <div className="grid gap-12 lg:grid-cols-[0.55fr_1.45fr]">
           <motion.div
             className="lg:sticky lg:top-24 lg:h-fit"
-            initial={shouldReduceMotion ? false : { opacity: 1, y: 30 }}
-            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-14% 0px" }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            {...revealMotion(shouldReduceMotion, staggerContainer(0.04, 0.08))}
           >
-            <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-white/14 bg-white/[0.03] text-[var(--brand-yellow)]">
+            <motion.div
+              className="mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-white/14 bg-white/[0.03] text-[var(--brand-yellow)]"
+              variants={iconReveal()}
+            >
               <Quote aria-hidden="true" size={24} />
-            </div>
-            <h2 className="max-w-xl text-balance text-5xl font-black leading-[0.94] tracking-normal sm:text-6xl">
+            </motion.div>
+            <motion.h2
+              className="max-w-xl text-balance text-5xl font-black leading-[0.94] tracking-normal sm:text-6xl"
+              variants={headingReveal(direction)}
+            >
               {testimonials.title}{" "}
               <span className="text-[var(--brand-cyan)]">{testimonials.titleHighlight}</span>
-            </h2>
-            <p className="mt-6 max-w-md text-lg leading-8 text-white/62">
+            </motion.h2>
+            <motion.p className="mt-6 max-w-md text-lg leading-8 text-white/62" variants={itemReveal(0.08, 18)}>
               {testimonials.subtitle}
-            </p>
+            </motion.p>
           </motion.div>
 
           <div className="border-y border-white/12">
@@ -56,15 +68,21 @@ export function TestimonialsReel() {
               key={activeItem.content}
               className="py-10"
               style={accentStyle(activeItem.accent)}
-              initial={shouldReduceMotion ? false : { opacity: 1, y: 22 }}
-              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+              initial={shouldReduceMotion ? false : "hidden"}
+              animate={shouldReduceMotion ? undefined : "show"}
+              variants={testimonialSwap}
             >
-              <div className="mb-8 flex gap-1 text-[var(--brand-yellow)]" aria-label="Five star rating">
+              <motion.div
+                className="mb-8 flex gap-1 text-[var(--brand-yellow)]"
+                aria-label="Five star rating"
+                variants={staggerContainer(0.06, 0.035)}
+              >
                 {Array.from({ length: 5 }).map((_, index) => (
-                  <Star key={index} aria-hidden="true" size={20} fill="currentColor" />
+                  <motion.span key={index} variants={chipReveal()}>
+                    <Star aria-hidden="true" size={20} fill="currentColor" />
+                  </motion.span>
                 ))}
-              </div>
+              </motion.div>
 
               <blockquote className="max-w-5xl text-balance text-3xl font-black leading-tight text-white sm:text-5xl">
                 &quot;{activeItem.content}&quot;
@@ -117,18 +135,23 @@ export function TestimonialsReel() {
               <p className="mb-5 text-sm font-black uppercase tracking-[0.18em] text-white/38">
                 {testimonials.trustedByTitle}
               </p>
-              <div className="flex flex-wrap gap-2">
+              <motion.div
+                className="flex flex-wrap gap-2"
+                {...revealMotion(shouldReduceMotion, staggerContainer(0.02, 0.035))}
+              >
                 {testimonials.items.map((item) => (
-                  <button
+                  <motion.button
                     key={item.author}
                     type="button"
                     className="rounded-full border border-white/12 px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-white/56 transition hover:border-white/32 hover:text-white"
                     onClick={() => setActiveIndex(testimonials.items.indexOf(item))}
+                    variants={chipReveal()}
+                    whileTap={shouldReduceMotion ? undefined : { scale: 0.96 }}
                   >
                     {item.company}
-                  </button>
+                  </motion.button>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

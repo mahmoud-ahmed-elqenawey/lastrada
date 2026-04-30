@@ -4,6 +4,16 @@ import type { CSSProperties } from "react";
 import { Compass, Sparkles, UserRound } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useLaStradaContent, type AgencyStat, type AgencyValue, type TeamMember } from "@/lib/la-strada-i18n";
+import {
+  cardReveal,
+  headingReveal,
+  iconReveal,
+  itemReveal,
+  itemViewport,
+  revealMotion,
+  sectionReveal,
+  staggerContainer,
+} from "@/lib/motion-presets";
 
 function statStyle(accent: AgencyStat["accent"]): CSSProperties {
   return { "--accent": `var(--brand-${accent})` } as CSSProperties;
@@ -18,7 +28,7 @@ function memberStyle(accent: TeamMember["accent"]): CSSProperties {
 }
 
 export function AgencyStory() {
-  const { content } = useLaStradaContent();
+  const { content, direction } = useLaStradaContent();
   const { agencyStory, team } = content;
   const shouldReduceMotion = useReducedMotion();
 
@@ -32,34 +42,35 @@ export function AgencyStory() {
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
           <motion.div
-            initial={shouldReduceMotion ? false : { opacity: 1, y: 34 }}
-            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-16% 0px" }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            {...revealMotion(shouldReduceMotion, staggerContainer(0.04, 0.08))}
           >
-            <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-white/14 bg-white/[0.03]">
+            <motion.div
+              className="mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-white/14 bg-white/[0.03]"
+              variants={iconReveal()}
+            >
               <Sparkles aria-hidden="true" className="text-[var(--brand-yellow)]" size={24} />
-            </div>
-            <h2 className="max-w-4xl text-balance text-5xl font-black leading-[0.9] tracking-normal sm:text-7xl lg:text-8xl">
+            </motion.div>
+            <motion.h2
+              className="max-w-4xl text-balance text-5xl font-black leading-[0.9] tracking-normal sm:text-7xl lg:text-8xl"
+              variants={headingReveal(direction)}
+            >
               {agencyStory.title}
-            </h2>
-            <p className="mt-8 max-w-3xl text-xl leading-9 text-white/66">
+            </motion.h2>
+            <motion.p className="mt-8 max-w-3xl text-xl leading-9 text-white/66" variants={itemReveal(0.08, 22)}>
               {agencyStory.body}
-            </p>
+            </motion.p>
           </motion.div>
 
           <motion.div
             className="grid grid-cols-2 border-y border-white/12"
-            initial={shouldReduceMotion ? false : { opacity: 1, y: 28 }}
-            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-16% 0px" }}
-            transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+            {...revealMotion(shouldReduceMotion, staggerContainer(0.08, 0.055))}
           >
             {agencyStory.stats.map((stat, index) => (
-              <div
+              <motion.div
                 key={stat.label}
                 className="border-t border-white/12 p-5 first:border-t-0 odd:border-e odd:border-white/12 sm:p-7 [&:nth-child(2)]:border-t-0"
                 style={statStyle(stat.accent)}
+                variants={cardReveal(index * 0.04, 20)}
               >
                 <p className="text-4xl font-black leading-none text-[var(--accent)] sm:text-5xl">
                   {stat.value}
@@ -68,7 +79,7 @@ export function AgencyStory() {
                   {stat.label}
                 </p>
                 <span className="sr-only">Stat number {index + 1}</span>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -92,10 +103,7 @@ export function AgencyStory() {
                 key={value.title}
                 className="grid gap-5 border-t border-white/12 py-7 first:border-t-0 sm:grid-cols-[5rem_0.5fr_1fr] sm:items-start"
                 style={valueStyle(value.accent)}
-                initial={shouldReduceMotion ? false : { opacity: 1, y: 24 }}
-                whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-12% 0px" }}
-                transition={{ duration: 0.55, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
+                {...revealMotion(shouldReduceMotion, cardReveal(index * 0.045, 26), itemViewport)}
               >
                 <span className="font-mono text-sm text-[var(--accent)]">
                   {String(index + 1).padStart(2, "0")}
@@ -132,10 +140,7 @@ export function AgencyStory() {
                 key={member.name}
                 className="grid gap-5 border-t border-white/12 py-8 first:border-t-0 sm:grid-cols-[5rem_0.62fr_1fr] sm:items-start"
                 style={memberStyle(member.accent)}
-                initial={shouldReduceMotion ? false : { opacity: 1, y: 26 }}
-                whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-12% 0px" }}
-                transition={{ duration: 0.55, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                {...revealMotion(shouldReduceMotion, cardReveal(index * 0.055, 28), itemViewport)}
               >
                 <span className="font-mono text-sm text-[var(--accent)]">
                   {String(index + 1).padStart(2, "0")}
@@ -158,10 +163,7 @@ export function AgencyStory() {
 
         <motion.div
           className="mt-20 grid gap-10 border-y border-white/12 py-12 lg:grid-cols-[0.34fr_1fr] lg:items-end lg:py-16"
-          initial={shouldReduceMotion ? false : { opacity: 1, y: 28 }}
-          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-14% 0px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          {...revealMotion(shouldReduceMotion, sectionReveal(0), itemViewport)}
         >
           <div>
             <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/14 bg-white/[0.03] text-[var(--brand-yellow)]">
