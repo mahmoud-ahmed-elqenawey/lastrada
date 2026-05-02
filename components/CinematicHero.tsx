@@ -33,7 +33,6 @@ export function CinematicHero() {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.9], [1, 0.16]);
 
   const showVideo = Boolean(videoSrc) && !videoFailed && !shouldReduceMotion;
-  const featuredServices = content.solutionPillars;
 
   useEffect(() => {
     if (shouldReduceMotion) {
@@ -185,16 +184,6 @@ export function CinematicHero() {
             </motion.div>
           </motion.div>
 
-          <motion.aside className="hero-side-panel" aria-label={servicesIntro.title} variants={itemReveal(0.18, 24)}>
-            <span className="hero-panel-line" />
-            <motion.div className="hero-service-rail" variants={staggerContainer(0.16, 0.045)}>
-              {featuredServices.map((service) => (
-                <motion.span key={service.title} variants={chipReveal()}>
-                  {service.title}
-                </motion.span>
-              ))}
-            </motion.div>
-          </motion.aside>
         </motion.div>
 
         <motion.div

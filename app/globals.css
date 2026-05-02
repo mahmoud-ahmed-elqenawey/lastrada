@@ -331,7 +331,7 @@ button:focus-visible {
   display: grid;
   flex: 1;
   gap: clamp(2rem, 5vw, 5rem);
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+  grid-template-columns: minmax(0, 1fr);
   padding-block: clamp(4rem, 10vw, 8rem);
 }
 
@@ -381,37 +381,6 @@ button:focus-visible {
   flex-wrap: wrap;
   gap: 0.9rem;
   margin-top: clamp(2rem, 4vw, 3rem);
-}
-
-.hero-side-panel {
-  border-inline-start: 1px solid rgba(255, 255, 255, 0.16);
-  color: rgba(248, 248, 244, 0.64);
-  font-size: 0.94rem;
-  line-height: 1.8;
-  padding-inline-start: 1.5rem;
-}
-
-.hero-panel-line {
-  background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0));
-  display: block;
-  height: 1px;
-  margin-bottom: 1.45rem;
-  width: 6rem;
-}
-
-.hero-service-rail {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1.6rem;
-}
-
-.hero-service-rail span {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-  color: rgba(248, 248, 244, 0.56);
-  font-size: 0.76rem;
-  font-weight: 850;
-  padding-block: 0.2rem;
 }
 
 .hero-bottom {
@@ -563,10 +532,6 @@ button:focus-visible {
 
   .hero-tagline {
     max-width: 34rem;
-  }
-
-  .hero-side-panel {
-    display: none;
   }
 
   .hero-bottom {

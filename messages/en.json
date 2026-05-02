@@ -1,0 +1,703 @@
+{
+  "content": {
+    "meta": {
+      "title": "LASTRADA AGENCY FOR CREATIVE SOLUTION",
+      "description": "LASTRADA AGENCY FOR CREATIVE SOLUTION",
+      "keywords": "LASTRADA AGENCY FOR CREATIVE SOLUTION, marketing, branding, digital strategy, premium advertising, high-end agency"
+    },
+    "brand": {
+      "name": "LA STRADA",
+      "logo": "/brand/lastrada-logo-web.png"
+    },
+    "media": {
+      "heroVideo": "/media/hero-reel-desktop.mp4",
+      "heroVideoMobile": "/media/hero-reel-mobile.mp4",
+      "heroPoster": "/media/hero-poster.jpg"
+    },
+    "sourceSite": {
+      "url": "https://www.lastrada.agency/",
+      "email": "info@lastrada.agency",
+      "facebook": "https://www.facebook.com/lastrada.marketing",
+      "phone": {
+        "display": "+962 7X XXX XXXX",
+        "href": "tel:+962700000000",
+        "whatsappLabel": "WhatsApp",
+        "whatsappHref": "https://wa.me/962700000000",
+        "callLabel": "Call"
+      },
+      "office": {
+        "country": "Jordan",
+        "address": "Irbid - Down Town - K . Talal .St"
+      }
+    },
+    "hero": {
+      "brandName": "LASTRADA",
+      "agencyLabel": "AGENCY",
+      "subtitle": "FOR CREATIVE SOLUTION",
+      "tagline": "not just a creative agency",
+      "ctaLabel": "Start Your Project",
+      "ctaHref": "mailto:info@lastrada.agency?subject=New%20project%20with%20LA%20STRADA",
+      "secondaryLabel": "Explore the reel",
+      "scrollHint": "The reel begins below",
+      "sideNote": "A moving identity system for photography, content, motion, web, social, and marketing.",
+      "languageLabel": "AR"
+    },
+    "servicesIntro": {
+      "title": "Beyond",
+      "titleHighlight": "Creation",
+      "subtitle": "We don’t just create ,we build brands that stand out and perform."
+    },
+    "services": [
+      {
+        "title": "Photography",
+        "shortTitle": "Photo",
+        "description": "Professional photography that captures your brand essence and creates compelling visual narratives.",
+        "accent": "cyan",
+        "icon": "camera"
+      },
+      {
+        "title": "Content Production",
+        "shortTitle": "Content",
+        "description": "Concepts, scripts, shoots, and social-native production built to move across every channel.",
+        "accent": "blue",
+        "icon": "film"
+      },
+      {
+        "title": "Motion Graphics",
+        "shortTitle": "Motion",
+        "description": "Animated identity, explainers, launch films, and kinetic systems that make ideas feel alive.",
+        "accent": "purple",
+        "icon": "sparkles"
+      },
+      {
+        "title": "Editing",
+        "shortTitle": "Edit",
+        "description": "Sharp pacing, sound-led cuts, campaign reels, and visual rhythm for stories that land fast.",
+        "accent": "red",
+        "icon": "scissors"
+      },
+      {
+        "title": "Graphic Design",
+        "shortTitle": "Design",
+        "description": "Campaign design, brand assets, visual systems, and digital layouts with a premium finish.",
+        "accent": "yellow",
+        "icon": "pen"
+      },
+      {
+        "title": "Social Media",
+        "shortTitle": "Social",
+        "description": "Smart campaigns, content planning, account management, and community presence that turn engagement into results.",
+        "accent": "green",
+        "icon": "share"
+      },
+      {
+        "title": "Web",
+        "shortTitle": "Web",
+        "description": "Expressive websites, interfaces, landing pages, and digital experiences engineered for conversion.",
+        "accent": "cyan",
+        "icon": "code"
+      },
+      {
+        "title": "Digital Marketing",
+        "shortTitle": "Marketing",
+        "description": "Paid campaigns, launch strategy, content funnels, and performance thinking for measurable growth.",
+        "accent": "red",
+        "icon": "megaphone"
+      }
+    ],
+    "reelChapters": [
+      {
+        "frame": "Frame 01",
+        "title": "Direct the first look.",
+        "service": "Photography + Content Production",
+        "body": "Every campaign starts with a visual signal: the frame, the pace, the story, and the reason to stop scrolling.",
+        "accent": "cyan"
+      },
+      {
+        "frame": "Frame 02",
+        "title": "Make the message move.",
+        "service": "Motion Graphics + Editing",
+        "body": "Animated systems, sharp cuts, and rhythm-led reels turn brand ideas into moments people can feel instantly.",
+        "accent": "purple"
+      },
+      {
+        "frame": "Frame 03",
+        "title": "Shape every touchpoint.",
+        "service": "Graphic Design + Social Media",
+        "body": "Design and publishing work together so the brand looks coherent, active, and unmistakably present.",
+        "accent": "yellow"
+      },
+      {
+        "frame": "Frame 04",
+        "title": "Build the digital stage.",
+        "service": "Web Design + Development",
+        "body": "Web experiences become the place where cinematic brand energy turns into action, trust, and conversion.",
+        "accent": "green"
+      },
+      {
+        "frame": "Frame 05",
+        "title": "Launch with momentum.",
+        "service": "Digital Marketing",
+        "body": "Strategy, content, and media performance align into a launch engine that keeps the story moving.",
+        "accent": "red"
+      }
+    ],
+    "solutionPillarsIntro": {
+      "title": "Beyond Creation",
+      "body": "We don’t just create ,we build brands that stand out and perform."
+    },
+    "solutionPillars": [
+      {
+        "title": "Brand Identity",
+        "description": "Strategic visual identities that elevate your brand value and secure its market position.",
+        "features": [
+          "Logo Design",
+          "Brand Guidelines",
+          "Visual Identity",
+          "Brand Strategy"
+        ],
+        "accent": "blue",
+        "icon": "fingerprint",
+        "image": "/lastrada-services/Brand-Identity.jpg.jpeg"
+      },
+      {
+        "title": "Social Media Marketing",
+        "description": "Smart campaigns that turn engagement into results.",
+        "features": [
+          "Content Strategy",
+          "Community Management",
+          "Paid Advertising",
+          "Analytics & Reporting"
+        ],
+        "accent": "green",
+        "icon": "share",
+        "image": "/lastrada-services/Social-Media-Marketing.jpg.jpeg"
+      },
+      {
+        "title": "Video Production",
+        "description": "Cinematic video content that tells your story, captivates viewers, and delivers measurable business results.",
+        "features": [
+          "Commercial Videos",
+          "Podcast Videos",
+          "Real Estate",
+          "Event Coverage"
+        ],
+        "accent": "red",
+        "icon": "video",
+        "image": "/lastrada-services/Media-&-Production.jpg.jpeg"
+      },
+      {
+        "title": "Photography",
+        "description": "Professional photography that captures your brand essence and creates compelling visual narratives.",
+        "features": [
+          "Product Photography",
+          "Corporate Portraits",
+          "Food Photography",
+          "Commercial Shoots"
+        ],
+        "accent": "cyan",
+        "icon": "camera",
+        "image": "/lastrada-services/Media-&-Production.jpg.jpeg"
+      },
+      {
+        "title": "Digital Strategy",
+        "description": "Comprehensive digital strategies that align with your business goals and maximize your online presence.",
+        "features": [
+          "Market Research",
+          "Competitor Analysis",
+          "Growth Hacking",
+          "Performance Marketing"
+        ],
+        "accent": "purple",
+        "icon": "target",
+        "image": "/lastrada-services/Digital-Strategy.jpg.jpeg"
+      }
+    ],
+    "agencyStory": {
+      "title": "About",
+      "titleHighlight": "Our Story",
+      "body": "We are a collective of creative minds, strategic thinkers, and technology enthusiasts united by a shared vision: to create extraordinary brand experiences that leave lasting impressions and drive meaningful results.",
+      "valuesTitle": "Our Core Values",
+      "valuesBody": "",
+      "visionTitle": "Our Vision",
+      "vision": "At Lastrada, we guide our clients to achieve their marketing and sales goals through a creative path we strategically design for them.",
+      "stats": [
+        {
+          "value": "500+",
+          "label": "Projects Completed",
+          "accent": "cyan"
+        },
+        {
+          "value": "150+",
+          "label": "Happy Clients",
+          "accent": "green"
+        },
+        {
+          "value": "25+",
+          "label": "Awards Won",
+          "accent": "yellow"
+        },
+        {
+          "value": "12+",
+          "label": "Years Experience",
+          "accent": "red"
+        }
+      ],
+      "values": [
+        {
+          "title": "Innovation",
+          "description": "We push boundaries and embrace cutting-edge technologies to deliver groundbreaking creative solutions.",
+          "accent": "cyan"
+        },
+        {
+          "title": "Passion",
+          "description": "Our team is driven by genuine passion for creative excellence and client success.",
+          "accent": "red"
+        },
+        {
+          "title": "Results",
+          "description": "Every project is designed with measurable outcomes and business impact in mind.",
+          "accent": "green"
+        },
+        {
+          "title": "Global Vision",
+          "description": "We think globally while acting locally, creating campaigns that resonate across cultures.",
+          "accent": "purple"
+        }
+      ]
+    },
+    "team": {
+      "title": "Meet Our",
+      "titleHighlight": "Team",
+      "subtitle": "",
+      "members": [
+        {
+          "name": "Abdulrahman Al-Dabea",
+          "role": "CEO | Creative Leader | Visual Storyteller",
+          "bio": "With over 12 years of experience in the creative and media industry, I lead dynamic teams to craft impactful visual and marketing solutions. Passionate about photography and visual storytelling, I bring ideas to life that engage and inspire audiences.",
+          "accent": "cyan",
+          "image": "/lastrada-team-optimized/abdulrahman.jpg"
+        },
+        {
+          "name": "Al-Mounther Sobh",
+          "role": "Executive Manager | Advertising Campaign Specialist",
+          "bio": "With over 12 years of extensive experience in managing advertising campaigns, I lead projects that deliver measurable impact and creative results.",
+          "accent": "yellow",
+          "image": "/lastrada-team-optimized/mounther.jpg"
+        },
+        {
+          "name": "Nada Mahmoud",
+          "role": "Art Director | Social Media Department",
+          "bio": "Over 8 years of experience in social media design and creative content development, with deep knowledge of the latest trends, design strategies, AI tools, and market insights to deliver impactful visual content.",
+          "accent": "purple",
+          "image": "/lastrada-team-optimized/nada.jpg"
+        },
+        {
+          "name": "Marah",
+          "role": "",
+          "bio": "",
+          "accent": "red",
+          "image": "/lastrada-team-optimized/marah.jpg"
+        },
+        {
+          "name": "Malak",
+          "role": "",
+          "bio": "",
+          "accent": "green",
+          "image": "/lastrada-team-optimized/malak.jpg"
+        },
+        {
+          "name": "Ammar",
+          "role": "",
+          "bio": "",
+          "accent": "blue",
+          "image": "/lastrada-team-optimized/ammar.jpg"
+        },
+        {
+          "name": "Mohannad",
+          "role": "",
+          "bio": "",
+          "accent": "yellow",
+          "image": "/lastrada-team-optimized/mohannad.jpg"
+        },
+        {
+          "name": "Mansour",
+          "role": "",
+          "bio": "",
+          "accent": "cyan",
+          "image": "/lastrada-team-optimized/mansour.jpg"
+        }
+      ]
+    },
+    "portfolio": {
+      "title": "Our",
+      "titleHighlight": "Creative Journey",
+      "subtitle": "Discover how we turn visions into reality. Browse our latest work and see the impact of creativity on brand growth",
+      "filters": [
+        {
+          "key": "all",
+          "label": "All Work"
+        },
+        {
+          "key": "branding",
+          "label": "Branding"
+        },
+        {
+          "key": "video",
+          "label": "Video"
+        },
+        {
+          "key": "social",
+          "label": "Social Media"
+        },
+        {
+          "key": "motion",
+          "label": "Motion Graphics"
+        },
+        {
+          "key": "website",
+          "label": "Website"
+        }
+      ],
+      "projects": [
+        {
+          "title": "Luxury Real Estate",
+          "category": "branding",
+          "client": "Premium Properties",
+          "description": "Complete brand identity and marketing campaign for luxury real estate developer",
+          "type": "Brand Identity",
+          "accent": "purple"
+        },
+        {
+          "title": "Tech Startup Launch",
+          "category": "video",
+          "client": "InnovateTech",
+          "description": "Product launch video and social media campaign for AI startup",
+          "type": "Video Production",
+          "accent": "cyan"
+        },
+        {
+          "title": "Fashion Brand Revival",
+          "category": "social",
+          "client": "Elite Fashion",
+          "description": "Social media strategy and content creation for fashion brand relaunch",
+          "type": "Social Media",
+          "accent": "red"
+        },
+        {
+          "title": "Corporate Identity System",
+          "category": "branding",
+          "client": "GlobalCorp",
+          "description": "Complete visual identity system for multinational corporation",
+          "type": "Brand Identity",
+          "accent": "blue"
+        },
+        {
+          "title": "Product Launch Campaign",
+          "category": "motion",
+          "client": "TechGiant",
+          "description": "Motion graphics and animation for product launch event",
+          "type": "Motion Graphics",
+          "accent": "yellow"
+        },
+        {
+          "title": "Hospitality Brand Experience",
+          "category": "photography",
+          "client": "Luxury Hotels",
+          "description": "Photography and brand experience design for luxury hotel chain",
+          "type": "Photography",
+          "accent": "green"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "Client",
+      "titleHighlight": "Success Stories",
+      "subtitle": "Don't just take our word for it. Here's what our clients say about working with us.",
+      "trustedByTitle": "Trusted by Industry Leaders",
+      "items": [
+        {
+          "content": "Working with this agency transformed our brand completely. Their creative vision and strategic approach delivered results beyond our expectations.",
+          "author": "David Miller",
+          "role": "CEO, TechInnovate",
+          "company": "Fortune 500 Technology Company",
+          "accent": "cyan"
+        },
+        {
+          "content": "The team's attention to detail and innovative approach helped us establish a strong market presence. Exceptional work quality and professional service.",
+          "author": "Sarah Chen",
+          "role": "Marketing Director, LuxuryHomes",
+          "company": "Premium Real Estate Developer",
+          "accent": "purple"
+        },
+        {
+          "content": "From concept to execution, they delivered a comprehensive brand strategy that elevated our market position and drove significant growth.",
+          "author": "Michael Rodriguez",
+          "role": "Founder, EliteFinance",
+          "company": "Financial Services Startup",
+          "accent": "yellow"
+        }
+      ]
+    },
+    "aiDemo": {
+      "badge": "Smart Estimation",
+      "title": "Get Instant",
+      "titleHighlight": "Project Cost Estimates",
+      "subtitle": "Our intelligent system leverages data from hundreds of past projects to provide fast and reliable cost estimates tailored to your needs.",
+      "features": [
+        "Instant cost estimation",
+        "Based on 500+ projects",
+        "Powered by AI insights"
+      ],
+      "calculatorTitle": "Project Cost Calculator",
+      "labels": {
+        "projectType": "projectType",
+        "complexity": "complexity",
+        "timeline": "timeline",
+        "teamSize": "teamSize"
+      },
+      "options": {
+        "projectType": [
+          {
+            "value": "web-app",
+            "label": "Web App"
+          },
+          {
+            "value": "mobile-app",
+            "label": "Mobile App"
+          },
+          {
+            "value": "ai-solution",
+            "label": "AI Solution"
+          },
+          {
+            "value": "custom-software",
+            "label": "Custom Software"
+          }
+        ],
+        "complexity": [
+          {
+            "value": "simple",
+            "label": "Simple"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "complex",
+            "label": "Complex"
+          }
+        ],
+        "timeline": [
+          {
+            "value": "urgent",
+            "label": "Urgent"
+          },
+          {
+            "value": "normal",
+            "label": "Normal"
+          },
+          {
+            "value": "flexible",
+            "label": "Flexible"
+          }
+        ],
+        "teamSize": [
+          {
+            "value": "small",
+            "label": "1-3 Devs"
+          },
+          {
+            "value": "medium",
+            "label": "4-6 Devs"
+          },
+          {
+            "value": "large",
+            "label": "7+ Devs"
+          }
+        ]
+      },
+      "calculateButton": "Calculate Cost",
+      "calculating": "Calculating...",
+      "estimatedCost": "Estimated Cost",
+      "currency": "EGP",
+      "disclaimer": "*Actual cost may vary depending on specific requirements"
+    },
+    "pricing": {
+      "title": "Choose Your",
+      "titleHighlight": "Plan",
+      "subtitle": "Flexible pricing options designed to grow with your business and deliver exceptional value.",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "save": "Save 17%",
+      "perMonth": "month",
+      "perYear": "year",
+      "getStarted": "Get Started",
+      "customTitle": "Need a Custom Solution?",
+      "customSubtitle": "We create tailored packages for enterprise clients with specific requirements and larger scale projects.",
+      "contactSales": "Contact Sales Team",
+      "plans": [
+        {
+          "name": "Starter",
+          "description": "Perfect for startups and small businesses looking to establish their brand presence.",
+          "price": "",
+          "accent": "cyan",
+          "features": [
+            "Brand Identity Package",
+            "Social Media Strategy",
+            "Basic Website Design",
+            "Content Creation (10 posts/month)",
+            "Monthly Performance Reports",
+            "Email Support"
+          ]
+        },
+        {
+          "name": "Professional",
+          "description": "Comprehensive solution for growing businesses ready to scale their marketing efforts.",
+          "price": "",
+          "accent": "purple",
+          "featured": true,
+          "features": [
+            "Everything in Starter",
+            "Video Production (2 videos/month)",
+            "Advanced Analytics & Reporting",
+            "Paid Advertising Management",
+            "Content Creation (25 posts/month)",
+            "Dedicated Account Manager",
+            "Priority Support"
+          ]
+        },
+        {
+          "name": "Enterprise",
+          "description": "Complete marketing ecosystem for established companies seeking market dominance.",
+          "price": "",
+          "accent": "red",
+          "features": [
+            "Everything in Professional",
+            "Custom Strategy Development",
+            "Unlimited Content Creation",
+            "Advanced Motion Graphics",
+            "Multi-platform Campaigns",
+            "Executive Team Access",
+            "24/7 Premium Support"
+          ]
+        }
+      ]
+    },
+    "contactSection": {
+      "title": "Let's Create Something",
+      "titleHighlight": "Amazing",
+      "body": "Ready to transform your brand? Get in touch and let's discuss how we can bring your vision to life.",
+      "ctaLabel": "Start Your Project",
+      "getInTouch": "Get In Touch",
+      "emailLabel": "Email Us",
+      "visitLabel": "Visit Us",
+      "businessHoursLabel": "Business Hours",
+      "businessHours": "9:00 – 6:00",
+      "globalPresence": "Global Presence",
+      "startProject": "Start Your Project",
+      "socialLabel": "",
+      "services": [
+        "Marketing",
+        "Web & App",
+        "Branding",
+        "Production",
+        "Events Planning"
+      ],
+      "budgets": [
+        "$10k - $25k",
+        "$25k - $50k",
+        "$50k - $100k",
+        "$100k - $250k",
+        "$250k+"
+      ],
+      "offices": [
+        {
+          "country": "Jordan",
+          "address": "Irbid - Down Town - K . Talal .St"
+        }
+      ],
+      "form": {
+        "name": "Name *",
+        "email": "Email *",
+        "company": "Company",
+        "service": "Service *",
+        "budgetRange": "Budget Range",
+        "projectDetails": "Project Details *",
+        "selectService": "Select a service",
+        "selectBudget": "Select budget range",
+        "namePlaceholder": "Your full name",
+        "emailPlaceholder": "your@email.com",
+        "companyPlaceholder": "Your company name",
+        "detailsPlaceholder": "Tell us about your project goals, timeline, and any specific requirements...",
+        "sendMessage": "Send Message",
+        "localNotice": ""
+      },
+      "emailHref": "mailto:info@lastrada.agency?subject=New%20project%20with%20LA%20STRADA",
+      "facebookHref": "https://www.facebook.com/lastrada.marketing"
+    },
+    "finalCta": {
+      "title": "Let your next campaign feel impossible to ignore.",
+      "body": "From strategy and identity to production, social, web, and performance, the final output should feel authored from the first frame to the last click.",
+      "ctaLabel": "Start a project",
+      "ctaHref": "mailto:info@lastrada.agency?subject=New%20project%20with%20LA%20STRADA"
+    },
+    "footer": {
+      "brandName": "LASTRADA",
+      "brandDescription": "We are a premier creative agency dedicated to crafting extraordinary brand experiences that captivate audiences and drive measurable results for forward-thinking companies.",
+      "stayUpdated": "Stay Updated",
+      "newsletterSubtitle": "Get the latest insights, trends, and exclusive content delivered to your inbox.",
+      "emailPlaceholder": "Enter your email",
+      "madeWith": "Made with",
+      "creditLabel": "Geeks Code",
+      "copyright": "© 2024 www.lastrada.agency. All rights reserved.",
+      "categoryTitles": {
+        "services": "Services",
+        "company": "Company",
+        "resources": "Resources",
+        "industries": "Industries"
+      },
+      "links": {
+        "services": [
+          "Brand Identity",
+          "Social Media Marketing",
+          "Video Production",
+          "Motion Graphics",
+          "Photography",
+          "Digital Strategy"
+        ],
+        "company": [
+          "About Us",
+          "Our Team",
+          "Careers",
+          "News & Updates",
+          "Case Studies",
+          "Contact"
+        ],
+        "resources": [
+          "Blog",
+          "Design Resources",
+          "Industry Reports",
+          "Client Portal",
+          "Support Center",
+          "Privacy Policy"
+        ],
+        "industries": [
+          "Technology",
+          "Real Estate",
+          "Luxury Brands",
+          "Healthcare",
+          "Financial Services",
+          "E-commerce"
+        ]
+      },
+      "legal": {
+        "privacyPolicy": "Privacy Policy",
+        "termsOfService": "Terms of Service",
+        "cookiePolicy": "Cookie Policy",
+        "gdprCompliance": "GDPR Compliance"
+      }
+    }
+  }
+}

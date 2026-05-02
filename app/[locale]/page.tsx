@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { CinematicHero } from "@/components/CinematicHero";
 import { ScrollProgressChrome } from "@/components/ScrollProgressChrome";
@@ -46,6 +47,8 @@ export default async function Home({ params }: LocalePageProps) {
   if (!isLocale(localeParam)) {
     notFound();
   }
+
+  setRequestLocale(localeParam);
 
   return (
     <>

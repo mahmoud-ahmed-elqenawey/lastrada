@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { brand, sourceSite } from "@/lib/la-strada-content";
+import { brand, getLaStradaContent, sourceSite } from "@/lib/la-strada-content";
 import { defaultLocale, getLocalePath, type Locale } from "@/lib/locales";
 
 export const siteUrl = "https://www.lastrada.agency";
@@ -23,11 +23,28 @@ type LocalizedSeo = {
   services: SeoService[];
 };
 
+function getKeywords(keywords: string) {
+  return keywords
+    .split(",")
+    .map((keyword) => keyword.trim())
+    .filter(Boolean);
+}
+
+function getSeoServices(locale: Locale): SeoService[] {
+  return getLaStradaContent(locale).solutionPillars.map((service) => ({
+    name: service.title,
+    description: service.description,
+  }));
+}
+
+const arContent = getLaStradaContent("ar");
+const enContent = getLaStradaContent("en");
+
 const localizedSeo: Record<Locale, LocalizedSeo> = {
   ar: {
-    title: "لاسترادا - وكالة الحلول الإبداعية",
-    description: "وكالة لاسترادا للحلول الإبداعية - شريكك في التسويق والعلامة التجارية والاستراتيجية الرقمية",
-    keywords: ["لاسترادا", "وكالة إبداعية", "تسويق", "علامة تجارية", "استراتيجية رقمية", "إعلانات"],
+    title: arContent.meta.title,
+    description: arContent.meta.description,
+    keywords: getKeywords(arContent.meta.keywords),
     ogLocale: "ar_JO",
     alternateLocale: "en_US",
     imageTitle: "لاسترادا",
@@ -35,40 +52,12 @@ const localizedSeo: Record<Locale, LocalizedSeo> = {
     imageDescription: "شريكك في التسويق والعلامة التجارية والاستراتيجية الرقمية",
     imageAlt: "لاسترادا وكالة الحلول الإبداعية",
     servicesLabel: "خدمات لاسترادا",
-    services: [
-      {
-        name: "الهوية البصرية",
-        description: "هوية بصرية استراتيجية ترفع قيمة علامتك وتثبت مكانتها في السوق.",
-      },
-      {
-        name: "التسويق عبر وسائل التواصل",
-        description: "حملات ذكية تبني جمهورك وتحوّل التفاعل إلى نتائج.",
-      },
-      {
-        name: "الإنتاج المرئي",
-        description: "محتوى مرئي احترافي يروي قصتك، يأسر المشاهدين، ويحقق نتائج أعمال قابلة للقياس.",
-      },
-      {
-        name: "التصوير الاحترافي",
-        description: "تصوير احترافي يجسد جوهر علامتك التجارية ويخلق روايات بصرية آسرة.",
-      },
-      {
-        name: "الاستراتيجية الرقمية",
-        description: "استراتيجيات رقمية شاملة تتوافق مع أهدافك التجارية وتعظم تواجدك الرقمي.",
-      },
-    ],
+    services: getSeoServices("ar"),
   },
   en: {
-    title: "LASTRADA AGENCY FOR CREATIVE SOLUTION",
-    description: "LASTRADA AGENCY FOR CREATIVE SOLUTION",
-    keywords: [
-      "LASTRADA AGENCY FOR CREATIVE SOLUTION",
-      "marketing",
-      "branding",
-      "digital strategy",
-      "premium advertising",
-      "high-end agency",
-    ],
+    title: enContent.meta.title,
+    description: enContent.meta.description,
+    keywords: getKeywords(enContent.meta.keywords),
     ogLocale: "en_US",
     alternateLocale: "ar_JO",
     imageTitle: "LA STRADA",
@@ -76,29 +65,7 @@ const localizedSeo: Record<Locale, LocalizedSeo> = {
     imageDescription: "Marketing, branding, digital strategy, premium advertising, and high-end creative direction.",
     imageAlt: "LA STRADA creative solutions agency",
     servicesLabel: "LA STRADA services",
-    services: [
-      {
-        name: "Brand Identity",
-        description: "Strategic visual identities that elevate your brand value and secure its market position.",
-      },
-      {
-        name: "Social Media Marketing",
-        description: "Smart campaigns that turn engagement into results.",
-      },
-      {
-        name: "Video Production",
-        description:
-          "Cinematic video content that tells your story, captivates viewers, and delivers measurable business results.",
-      },
-      {
-        name: "Photography",
-        description: "Professional photography that captures your brand essence and creates compelling visual narratives.",
-      },
-      {
-        name: "Digital Strategy",
-        description: "Comprehensive digital strategies that align with your business goals and maximize your online presence.",
-      },
-    ],
+    services: getSeoServices("en"),
   },
 };
 

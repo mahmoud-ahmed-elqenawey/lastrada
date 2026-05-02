@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, IBM_Plex_Sans_Arabic, Noto_Kufi_Arabic } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { defaultLocale, getDirection, isLocale, locales, type Locale } from "@/lib/locales";
 import { getLocalizedMetadata } from "@/lib/seo";
@@ -50,6 +52,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   }
 
   const locale: Locale = localeParam;
+  setRequestLocale(locale);
+  const messages = await getMessages();
 
   return (
     <html
@@ -58,7 +62,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       suppressHydrationWarning
       className={`${geistSans.variable} ${arabicBody.variable} ${arabicDisplay.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <NextIntlClientProvider locale={locale} messages={messages} timeZone="Africa/Amman">
+          {children}
+        </NextIntlClientProvider>
+      </body>
     </html>
   );
 }
