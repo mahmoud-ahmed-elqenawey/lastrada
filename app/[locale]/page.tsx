@@ -1,18 +1,38 @@
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
-import { AgencyStory } from "@/components/AgencyStory";
 import { CinematicHero } from "@/components/CinematicHero";
-import { ContactGateway } from "@/components/ContactGateway";
-import { InteractionChrome } from "@/components/InteractionChrome";
-import { PortfolioShowcase } from "@/components/PortfolioShowcase";
-import { PricingSequence } from "@/components/PricingSequence";
 import { ScrollProgressChrome } from "@/components/ScrollProgressChrome";
-import { SiteFooter } from "@/components/SiteFooter";
-import { SmartEstimator } from "@/components/SmartEstimator";
-import { SolutionPillars } from "@/components/SolutionPillars";
-import { TestimonialsReel } from "@/components/TestimonialsReel";
 import { LanguageProvider } from "@/lib/la-strada-i18n";
 import { isLocale } from "@/lib/locales";
 import { getJsonLd } from "@/lib/seo";
+
+const InteractionChrome = dynamic(() =>
+  import("@/components/InteractionChrome").then((module) => module.InteractionChrome),
+);
+const SolutionPillars = dynamic(() =>
+  import("@/components/SolutionPillars").then((module) => module.SolutionPillars),
+);
+const PortfolioShowcase = dynamic(() =>
+  import("@/components/PortfolioShowcase").then((module) => module.PortfolioShowcase),
+);
+const AgencyStory = dynamic(() =>
+  import("@/components/AgencyStory").then((module) => module.AgencyStory),
+);
+const TestimonialsReel = dynamic(() =>
+  import("@/components/TestimonialsReel").then((module) => module.TestimonialsReel),
+);
+const SmartEstimator = dynamic(() =>
+  import("@/components/SmartEstimator").then((module) => module.SmartEstimator),
+);
+const PricingSequence = dynamic(() =>
+  import("@/components/PricingSequence").then((module) => module.PricingSequence),
+);
+const ContactGateway = dynamic(() =>
+  import("@/components/ContactGateway").then((module) => module.ContactGateway),
+);
+const SiteFooter = dynamic(() =>
+  import("@/components/SiteFooter").then((module) => module.SiteFooter),
+);
 
 type LocalePageProps = {
   params: Promise<{

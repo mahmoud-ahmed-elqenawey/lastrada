@@ -106,6 +106,7 @@ export type LaStradaContent = {
   };
   media: {
     heroVideo: string;
+    heroVideoMobile: string;
     heroPoster: string;
   };
   sourceSite: {
@@ -295,12 +296,13 @@ export type LaStradaContent = {
 
 const staticBrand = {
   name: "LA STRADA",
-  logo: "/brand/lastrada-logo.png",
+  logo: "/brand/lastrada-logo-web.png",
 };
 
 const staticMedia = {
-  heroVideo: "/media/hero-moon-reel.mp4",
-  heroPoster: "/media/hero-moon-poster.svg",
+  heroVideo: "/media/hero-reel-desktop.mp4",
+  heroVideoMobile: "/media/hero-reel-mobile.mp4",
+  heroPoster: "/media/hero-poster.jpg",
 };
 
 const email = "info@lastrada.agency";

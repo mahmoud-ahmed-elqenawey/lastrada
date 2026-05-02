@@ -134,7 +134,7 @@ export function SolutionPillars() {
                           sizes="(min-width: 1280px) 18rem, (min-width: 768px) 70vw, 92vw"
                           className="object-cover opacity-80 saturate-[1.04] transition duration-700 group-hover:scale-105 group-hover:opacity-95"
                         />
-                        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.48)),radial-gradient(circle_at_18%_18%,var(--accent),transparent_46%)] opacity-35 mix-blend-screen" />
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.48)),radial-gradient(circle_at_18%_18%,var(--accent),transparent_46%)] opacity-30" />
                         <div className="absolute inset-x-4 bottom-4 h-px bg-[linear-gradient(90deg,transparent,var(--accent),transparent)] opacity-70" />
                       </motion.div>
                     ) : null}

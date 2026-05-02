@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUp } from "lucide-react";
 import {
   motion,
@@ -20,6 +20,7 @@ export function ScrollProgressChrome() {
   const shouldReduceMotion = useReducedMotion() === true;
   const { scrollY, scrollYProgress } = useScroll();
   const [pastHero, setPastHero] = useState(false);
+  const pastHeroRef = useRef(false);
 
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: shouldReduceMotion ? 1000 : 150,
@@ -35,8 +36,19 @@ export function ScrollProgressChrome() {
   );
 
   useEffect(() => {
+    const syncPastHero = (latest: number) => {
+      const nextPastHero = latest > window.innerHeight * 0.72;
+
+      if (pastHeroRef.current === nextPastHero) {
+        return;
+      }
+
+      pastHeroRef.current = nextPastHero;
+      setPastHero(nextPastHero);
+    };
+
     const updatePastHero = () => {
-      setPastHero(window.scrollY > window.innerHeight * 0.72);
+      syncPastHero(window.scrollY);
     };
 
     updatePastHero();
@@ -46,7 +58,12 @@ export function ScrollProgressChrome() {
   }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setPastHero(latest > window.innerHeight * 0.72);
+    const nextPastHero = latest > window.innerHeight * 0.72;
+
+    if (pastHeroRef.current !== nextPastHero) {
+      pastHeroRef.current = nextPastHero;
+      setPastHero(nextPastHero);
+    }
   });
 
   const scrollToTop = () => {
@@ -61,7 +78,7 @@ export function ScrollProgressChrome() {
       <motion.div
         aria-hidden="true"
         data-scroll-progress="track"
-        className="pointer-events-none fixed inset-x-0 top-0 z-[80] h-[5px] bg-black/35 backdrop-blur-md"
+        className="pointer-events-none fixed inset-x-0 top-0 z-[80] h-[5px] bg-black/58"
         initial={false}
         animate={{ opacity: pastHero ? 1 : 0 }}
         transition={{ duration: shouldReduceMotion ? 0 : 0.22 }}
@@ -74,7 +91,7 @@ export function ScrollProgressChrome() {
           style={{ scaleX: smoothProgress }}
         />
         <motion.div
-          className="absolute top-0 h-full w-28 -translate-x-1/2 bg-white/55 blur-md"
+          className="absolute top-0 h-full w-20 -translate-x-1/2 bg-white/42 opacity-70"
           style={{ left: playheadInline }}
         />
       </motion.div>
@@ -83,7 +100,7 @@ export function ScrollProgressChrome() {
         type="button"
         aria-label={language === "ar" ? "الرجوع للأعلى" : "Back to top"}
         data-scroll-progress="top-button"
-        className="group fixed bottom-5 end-5 z-[80] grid h-14 w-14 place-items-center rounded-full border border-white/14 bg-black/55 text-white shadow-2xl shadow-black/35 backdrop-blur-xl transition hover:border-white/34 hover:bg-white/10 sm:bottom-7 sm:end-7 sm:h-16 sm:w-16"
+        className="group fixed bottom-5 end-5 z-[80] grid h-14 w-14 place-items-center rounded-full border border-white/14 bg-black/72 text-white shadow-xl shadow-black/30 transition hover:border-white/34 hover:bg-white/10 sm:bottom-7 sm:end-7 sm:h-16 sm:w-16"
         initial={false}
         animate={{
           opacity: pastHero ? 1 : 0,

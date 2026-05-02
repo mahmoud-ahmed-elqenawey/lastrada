@@ -51,12 +51,10 @@ export function sectionReveal(delay = 0): Variants {
     hidden: {
       opacity: 0,
       y: 42,
-      filter: "blur(14px)",
     },
     show: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: {
         delay,
         duration: 0.82,
@@ -71,12 +69,10 @@ export function headingReveal(direction: Direction = "ltr", delay = 0): Variants
     hidden: {
       opacity: 0,
       x: direction === "rtl" ? 12 : -12,
-      filter: "blur(12px)",
     },
     show: {
       opacity: 1,
       x: 0,
-      filter: "blur(0px)",
       transition: {
         delay,
         duration: 0.78,
@@ -92,13 +88,11 @@ export function cardReveal(delay = 0, y = 34): Variants {
       opacity: 0,
       y,
       scale: 0.975,
-      filter: "blur(12px)",
     },
     show: {
       opacity: 1,
       y: 0,
       scale: 1,
-      filter: "blur(0px)",
       transition: {
         delay,
         duration: 0.66,
@@ -113,12 +107,10 @@ export function itemReveal(delay = 0, y = 22): Variants {
     hidden: {
       opacity: 0,
       y,
-      filter: "blur(9px)",
     },
     show: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: {
         delay,
         duration: 0.54,
@@ -173,12 +165,10 @@ export function mediaReveal(delay = 0): Variants {
     hidden: {
       opacity: 0,
       scale: 1.06,
-      filter: "blur(12px) saturate(0.7)",
     },
     show: {
       opacity: 1,
       scale: 1,
-      filter: "blur(0px) saturate(1)",
       transition: {
         delay,
         duration: 0.9,
@@ -232,13 +222,11 @@ export function heroTitleReveal(delay = 0.16): Variants {
       opacity: 0,
       y: 64,
       scale: 0.965,
-      filter: "blur(18px)",
     },
     show: {
       opacity: 1,
       y: 0,
       scale: 1,
-      filter: "blur(0px)",
       transition: {
         delay,
         duration: 1,
@@ -253,12 +241,10 @@ export function sideReveal(direction: Direction = "ltr", delay = 0): Variants {
     hidden: {
       opacity: 0,
       x: direction === "rtl" ? -34 : 34,
-      filter: "blur(12px)",
     },
     show: {
       opacity: 1,
       x: 0,
-      filter: "blur(0px)",
       transition: {
         delay,
         duration: 0.72,
@@ -273,13 +259,11 @@ export const testimonialSwap: Variants = {
     opacity: 0,
     y: 22,
     scale: 0.985,
-    filter: "blur(10px)",
   },
   show: {
     opacity: 1,
     y: 0,
     scale: 1,
-    filter: "blur(0px)",
     transition: {
       duration: 0.48,
       ease: motionEase,

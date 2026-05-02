@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic, Noto_Kufi_Arabic } from "next/font/google";
+import { Geist, IBM_Plex_Sans_Arabic, Noto_Kufi_Arabic } from "next/font/google";
 import { notFound } from "next/navigation";
 import { defaultLocale, getDirection, isLocale, locales, type Locale } from "@/lib/locales";
 import { getLocalizedMetadata } from "@/lib/seo";
@@ -8,23 +8,21 @@ import "../globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 const arabicBody = IBM_Plex_Sans_Arabic({
   variable: "--font-arabic-body",
   subsets: ["arabic"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "700"],
+  display: "swap",
 });
 
 const arabicDisplay = Noto_Kufi_Arabic({
   variable: "--font-arabic-display",
   subsets: ["arabic"],
-  weight: ["500", "600", "700", "800", "900"],
+  weight: ["600", "700", "800"],
+  display: "swap",
 });
 
 type LocaleLayoutProps = Readonly<{
@@ -58,7 +56,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       lang={locale}
       dir={getDirection(locale)}
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${arabicBody.variable} ${arabicDisplay.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${arabicBody.variable} ${arabicDisplay.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

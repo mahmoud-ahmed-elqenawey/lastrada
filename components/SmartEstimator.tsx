@@ -206,9 +206,9 @@ export function SmartEstimator() {
                   <motion.span
                     key={showEstimate ? formattedEstimate : "empty-estimate"}
                     className="block"
-                    initial={shouldReduceMotion ? false : { opacity: 0, y: 22, filter: "blur(8px)" }}
-                    animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-                    exit={shouldReduceMotion ? undefined : { opacity: 0, y: -18, filter: "blur(8px)" }}
+                    initial={shouldReduceMotion ? false : { opacity: 0, y: 22 }}
+                    animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+                    exit={shouldReduceMotion ? undefined : { opacity: 0, y: -18 }}
                     transition={{ duration: 0.28, ease: motionEase }}
                   >
                     {showEstimate ? `${formattedEstimate} ${aiDemo.currency}` : `- ${aiDemo.currency}`}

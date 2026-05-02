@@ -48,6 +48,7 @@ export function SiteFooter() {
                 alt={brand.name}
                 width={220}
                 height={225}
+                sizes="4rem"
                 className="h-16 w-auto opacity-90"
               />
             </motion.div>

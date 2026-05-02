@@ -114,7 +114,6 @@ export function PortfolioShowcase() {
                   : {
                       opacity: 0,
                       y: -18,
-                      filter: "blur(10px)",
                       transition: { duration: 0.22, ease: motionEase },
                     }
               }

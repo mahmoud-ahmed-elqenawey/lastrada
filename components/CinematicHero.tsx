@@ -3,16 +3,14 @@
 import Image from "next/image";
 import { ArrowUpRight, ChevronDown, Globe2, MessageCircle, PhoneCall } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLaStradaContent } from "@/lib/la-strada-i18n";
 import {
   chipReveal,
   entranceMotion,
   heroTitleReveal,
   itemReveal,
-  lineReveal,
   motionEase,
-  sideReveal,
   staggerContainer,
 } from "@/lib/motion-presets";
 
@@ -20,6 +18,8 @@ export function CinematicHero() {
   const { content, direction, languageSwitchHref } = useLaStradaContent();
   const { brand, hero, media, sourceSite, servicesIntro } = content;
   const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [videoFailed, setVideoFailed] = useState(false);
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -28,17 +28,47 @@ export function CinematicHero() {
   });
 
   const mediaScale = useTransform(scrollYProgress, [0, 1], [1, shouldReduceMotion ? 1 : 1.12]);
-  const mediaY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : 42]);
-  const moonY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : -46]);
-  const starsY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : 62]);
-  const figureY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : 34]);
-  const figureScale = useTransform(scrollYProgress, [0, 1], [1, shouldReduceMotion ? 1 : 0.94]);
   const contentY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : -64]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.9], [1, 0.16]);
-  const frameOpacity = useTransform(scrollYProgress, [0, 1], [0.9, 0.28]);
 
-  const showVideo = !videoFailed && !shouldReduceMotion;
+  const showVideo = Boolean(videoSrc) && !videoFailed && !shouldReduceMotion;
   const featuredServices = content.solutionPillars;
+
+  useEffect(() => {
+    if (shouldReduceMotion) {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const syncVideoSource = () => {
+      setVideoSrc(mediaQuery.matches ? media.heroVideoMobile : media.heroVideo);
+      setVideoFailed(false);
+    };
+    const animationFrame = window.requestAnimationFrame(syncVideoSource);
+
+    mediaQuery.addEventListener("change", syncVideoSource);
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      mediaQuery.removeEventListener("change", syncVideoSource);
+    };
+  }, [media.heroVideo, media.heroVideoMobile, shouldReduceMotion]);
+
+  useEffect(() => {
+    if (!showVideo) {
+      return;
+    }
+
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    video.muted = true;
+    video.defaultMuted = true;
+    void video.play().catch(() => undefined);
+  }, [showVideo]);
 
   return (
     <section
@@ -46,34 +76,30 @@ export function CinematicHero() {
       className="hero-section relative isolate flex min-h-[100svh] overflow-hidden bg-black px-5 py-5 text-white sm:px-8 lg:px-12"
       aria-label="LA STRADA cinematic introduction"
     >
-      <motion.div
-        className="hero-media absolute inset-0"
-        aria-hidden="true"
-        style={{
-          backgroundImage: `url(${media.heroPoster})`,
-          scale: mediaScale,
-          y: mediaY,
-        }}
-      />
-      <motion.div
-        className="hero-moon-fallback pointer-events-none absolute inset-0 z-[1]"
-        aria-hidden="true"
-        style={{ scale: mediaScale, y: mediaY }}
-      >
-        <motion.div className="hero-stars" style={{ y: starsY }} />
-        <motion.div className="hero-moon-halo" style={{ y: moonY }} />
-        <motion.div className="hero-moon" style={{ y: moonY }} />
-        <motion.div className="hero-light-beam hero-light-beam-one" style={{ y: moonY }} />
-        <motion.div className="hero-light-beam hero-light-beam-two" style={{ y: moonY }} />
-        <motion.div className="hero-figure" style={{ y: figureY, scale: figureScale }} />
-        <div className="hero-ground" />
-        <div className="hero-reel-lines absolute inset-0" />
-      </motion.div>
-      <motion.div className="hero-frame" aria-hidden="true" style={{ opacity: frameOpacity }} />
-      <motion.div className="hero-chromatic-wash" aria-hidden="true" style={{ opacity: frameOpacity }} />
-      <div className="hero-letterbox" aria-hidden="true" />
-      <div className="hero-vignette" aria-hidden="true" />
-      <div className="film-grain absolute inset-0 opacity-20" aria-hidden="true" />
+      {showVideo ? (
+        <motion.video
+          key={videoSrc}
+          ref={videoRef}
+          aria-hidden="true"
+          className="hero-video absolute inset-0 h-full w-full object-cover"
+          style={{ scale: mediaScale }}
+          initial={shouldReduceMotion ? false : { opacity: 0 }}
+          animate={shouldReduceMotion ? undefined : { opacity: 1 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.9, ease: motionEase }}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={media.heroPoster}
+          onCanPlay={() => {
+            void videoRef.current?.play().catch(() => undefined);
+          }}
+          onError={() => setVideoFailed(true)}
+        >
+          <source src={videoSrc ?? media.heroVideo} type="video/mp4" />
+        </motion.video>
+      ) : null}
 
       <div className="relative z-10 flex min-h-[calc(100svh-2.5rem)] w-full flex-col">
         <motion.header
@@ -87,6 +113,7 @@ export function CinematicHero() {
               width={220}
               height={225}
               priority
+              sizes="(min-width: 640px) 3.5rem, 3rem"
               className="h-12 w-auto sm:h-14"
             />
           </a>
@@ -152,8 +179,8 @@ export function CinematicHero() {
             </motion.div>
           </motion.div>
 
-          <motion.aside className="hero-side-panel" aria-label={servicesIntro.subtitle} variants={sideReveal(direction, 0.18)}>
-            <motion.span className="hero-panel-line" variants={lineReveal(direction, 0.08)} />
+          <motion.aside className="hero-side-panel" aria-label={servicesIntro.subtitle} variants={itemReveal(0.18, 24)}>
+            <span className="hero-panel-line" />
             <motion.p variants={itemReveal(0.12, 18)}>{servicesIntro.subtitle}</motion.p>
             <motion.div className="hero-service-rail" variants={staggerContainer(0.16, 0.045)}>
               {featuredServices.map((service) => (
@@ -184,26 +211,6 @@ export function CinematicHero() {
           </div>
         </motion.div>
       </div>
-
-      {showVideo ? (
-        <motion.video
-          aria-hidden="true"
-          className="hero-video absolute inset-0 h-full w-full object-cover"
-          style={{ scale: mediaScale }}
-          initial={shouldReduceMotion ? false : { opacity: 0 }}
-          animate={shouldReduceMotion ? undefined : { opacity: 0.78 }}
-          transition={{ duration: shouldReduceMotion ? 0 : 1.2, ease: motionEase }}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={media.heroPoster}
-          onError={() => setVideoFailed(true)}
-        >
-          <source src={media.heroVideo} type="video/mp4" />
-        </motion.video>
-      ) : null}
     </section>
   );
 }

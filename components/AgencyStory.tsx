@@ -240,7 +240,7 @@ export function AgencyStory() {
                       sizes="(min-width: 1024px) 10rem, (min-width: 640px) 80vw, 92vw"
                       className="object-cover object-top opacity-[0.82] saturate-[1.02] transition duration-700 hover:scale-105 hover:opacity-100"
                     />
-                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_36%,rgba(0,0,0,0.52)),radial-gradient(circle_at_22%_14%,var(--accent),transparent_42%)] opacity-40 mix-blend-screen" />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_36%,rgba(0,0,0,0.52)),radial-gradient(circle_at_22%_14%,var(--accent),transparent_42%)] opacity-[0.34]" />
                     <div className="absolute inset-x-4 bottom-4 h-px bg-[linear-gradient(90deg,transparent,var(--accent),transparent)] opacity-75" />
                   </motion.div>
                 ) : null}
