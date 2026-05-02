@@ -1,18 +1,18 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { useState } from "react";
-import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useLaStradaContent, type Testimonial } from "@/lib/la-strada-i18n";
 import {
+  cardReveal,
   chipReveal,
   headingReveal,
   iconReveal,
   itemReveal,
+  itemViewport,
   revealMotion,
   staggerContainer,
-  testimonialSwap,
 } from "@/lib/motion-presets";
 
 function accentStyle(accent: Testimonial["accent"]): CSSProperties {
@@ -23,12 +23,6 @@ export function TestimonialsReel() {
   const { content, direction } = useLaStradaContent();
   const { testimonials } = content;
   const shouldReduceMotion = useReducedMotion();
-  const [activeIndex, setActiveIndex] = useState(0);
-  const activeItem = testimonials.items[activeIndex];
-
-  const move = (step: number) => {
-    setActiveIndex((current) => (current + step + testimonials.items.length) % testimonials.items.length);
-  };
 
   return (
     <section
@@ -64,72 +58,46 @@ export function TestimonialsReel() {
           </motion.div>
 
           <div className="border-y border-white/12">
-            <motion.article
-              key={activeItem.content}
-              className="py-10"
-              style={accentStyle(activeItem.accent)}
-              initial={shouldReduceMotion ? false : "hidden"}
-              animate={shouldReduceMotion ? undefined : "show"}
-              variants={testimonialSwap}
-            >
-              <motion.div
-                className="mb-8 flex gap-1 text-[var(--brand-yellow)]"
-                aria-label="Five star rating"
-                variants={staggerContainer(0.06, 0.035)}
+            {testimonials.items.map((item, index) => (
+              <motion.article
+                key={item.author}
+                className="kinetic-card border-t border-white/12 py-10 first:border-t-0"
+                style={accentStyle(item.accent)}
+                {...revealMotion(shouldReduceMotion, cardReveal(index * 0.045, 26), itemViewport)}
+                whileHover={shouldReduceMotion ? undefined : { y: -3 }}
               >
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <motion.span key={index} variants={chipReveal()}>
-                    <Star aria-hidden="true" size={20} fill="currentColor" />
-                  </motion.span>
-                ))}
-              </motion.div>
+                <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_17rem] xl:items-end">
+                  <div>
+                    <motion.div
+                      className="mb-7 flex gap-1 text-[var(--brand-yellow)]"
+                      aria-label="Five star rating"
+                      variants={staggerContainer(0.04, 0.025)}
+                    >
+                      {Array.from({ length: 5 }).map((_, starIndex) => (
+                        <motion.span key={starIndex} variants={chipReveal()}>
+                          <Star aria-hidden="true" size={18} fill="currentColor" />
+                        </motion.span>
+                      ))}
+                    </motion.div>
 
-              <blockquote className="max-w-5xl text-balance text-3xl font-black leading-tight text-white sm:text-5xl">
-                &quot;{activeItem.content}&quot;
-              </blockquote>
-
-              <div className="mt-10 grid gap-6 border-t border-white/12 pt-7 md:grid-cols-[1fr_auto] md:items-end">
-                <div>
-                  <p className="text-2xl font-black text-white">{activeItem.author}</p>
-                  <p className="mt-2 text-sm font-bold uppercase tracking-[0.16em] text-[var(--accent)]">
-                    {activeItem.role}
-                  </p>
-                  <p className="mt-2 text-base leading-7 text-white/52">{activeItem.company}</p>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <button
-                    type="button"
-                    className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 text-white/70 transition hover:border-white/34 hover:text-white"
-                    onClick={() => move(direction === "rtl" ? 1 : -1)}
-                    aria-label="Previous testimonial"
-                  >
-                    <ChevronLeft aria-hidden="true" size={21} className={direction === "rtl" ? "rotate-180" : ""} />
-                  </button>
-                  <div className="flex gap-2">
-                    {testimonials.items.map((item, index) => (
-                      <button
-                        key={item.author}
-                        type="button"
-                        className={`h-2.5 rounded-full transition ${
-                          index === activeIndex ? "w-8 bg-white" : "w-2.5 bg-white/24"
-                        }`}
-                        onClick={() => setActiveIndex(index)}
-                        aria-label={`Show testimonial ${index + 1}`}
-                      />
-                    ))}
+                    <blockquote className="max-w-5xl text-balance text-2xl font-black leading-tight text-white sm:text-4xl">
+                      &quot;{item.content}&quot;
+                    </blockquote>
                   </div>
-                  <button
-                    type="button"
-                    className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 text-white/70 transition hover:border-white/34 hover:text-white"
-                    onClick={() => move(direction === "rtl" ? -1 : 1)}
-                    aria-label="Next testimonial"
-                  >
-                    <ChevronRight aria-hidden="true" size={21} className={direction === "rtl" ? "rotate-180" : ""} />
-                  </button>
+
+                  <div className="rounded-[8px] border border-white/12 bg-white/[0.03] p-5">
+                    <p className="font-mono text-xs text-[var(--accent)]">
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
+                    <p className="mt-5 text-2xl font-black text-white">{item.author}</p>
+                    <p className="mt-3 text-sm font-bold uppercase leading-6 tracking-[0.14em] text-[var(--accent)]">
+                      {item.role}
+                    </p>
+                    <p className="mt-3 text-base leading-7 text-white/52">{item.company}</p>
+                  </div>
                 </div>
-              </div>
-            </motion.article>
+              </motion.article>
+            ))}
 
             <div className="border-t border-white/12 py-7">
               <p className="mb-5 text-sm font-black uppercase tracking-[0.18em] text-white/38">
@@ -140,16 +108,13 @@ export function TestimonialsReel() {
                 {...revealMotion(shouldReduceMotion, staggerContainer(0.02, 0.035))}
               >
                 {testimonials.items.map((item) => (
-                  <motion.button
-                    key={item.author}
-                    type="button"
-                    className="rounded-full border border-white/12 px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-white/56 transition hover:border-white/32 hover:text-white"
-                    onClick={() => setActiveIndex(testimonials.items.indexOf(item))}
+                  <motion.span
+                    key={item.company}
+                    className="rounded-full border border-white/12 px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-white/56"
                     variants={chipReveal()}
-                    whileTap={shouldReduceMotion ? undefined : { scale: 0.96 }}
                   >
                     {item.company}
-                  </motion.button>
+                  </motion.span>
                 ))}
               </motion.div>
             </div>

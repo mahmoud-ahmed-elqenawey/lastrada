@@ -1,19 +1,24 @@
 import { ImageResponse } from "next/og";
-import { seo } from "@/lib/seo";
+import { getDirection, type Locale } from "@/lib/locales";
+import { getLocalizedSeo } from "@/lib/seo";
 
-export const alt = "LA STRADA marketing and creative solutions agency";
-export const size = {
+export const socialImageSize = {
   width: 1200,
   height: 630,
 };
-export const contentType = "image/png";
 
 const accents = ["#2f4197", "#30a9dc", "#39b54a", "#f9a72b", "#ef4639", "#7158a6"];
 
-export default function Image() {
+export function createSocialImage(locale: Locale) {
+  const seo = getLocalizedSeo(locale);
+  const direction = getDirection(locale);
+  const isArabic = locale === "ar";
+
   return new ImageResponse(
     (
       <div
+        lang={locale}
+        dir={direction}
         style={{
           position: "relative",
           display: "flex",
@@ -22,6 +27,7 @@ export default function Image() {
           overflow: "hidden",
           background: "#050505",
           color: "#f8f8f4",
+          direction,
           fontFamily: "Arial, sans-serif",
         }}
       >
@@ -41,6 +47,7 @@ export default function Image() {
             right: 62,
             height: 2,
             display: "flex",
+            flexDirection: isArabic ? "row-reverse" : "row",
           }}
         >
           {accents.map((accent) => (
@@ -55,31 +62,32 @@ export default function Image() {
             justifyContent: "space-between",
             width: "100%",
             padding: "96px 72px 70px",
+            textAlign: isArabic ? "right" : "left",
           }}
         >
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-            <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 48 }}>
+            <div style={{ display: "flex", flexDirection: "column", maxWidth: 820 }}>
               <div
                 style={{
-                  fontSize: 118,
+                  fontSize: isArabic ? 94 : 118,
                   fontWeight: 900,
-                  letterSpacing: -2,
-                  lineHeight: 0.9,
+                  letterSpacing: 0,
+                  lineHeight: 0.95,
                 }}
               >
-                LA STRADA
+                {seo.imageTitle}
               </div>
               <div
                 style={{
-                  marginTop: 18,
-                  fontSize: 36,
+                  marginTop: 20,
+                  fontSize: isArabic ? 34 : 36,
                   fontWeight: 800,
                   color: "#30a9dc",
-                  letterSpacing: 5,
-                  textTransform: "uppercase",
+                  letterSpacing: isArabic ? 0 : 5,
+                  textTransform: isArabic ? "none" : "uppercase",
                 }}
               >
-                Creative Solutions
+                {seo.imageSubtitle}
               </div>
             </div>
             <div
@@ -102,13 +110,13 @@ export default function Image() {
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 40 }}>
             <div
               style={{
-                maxWidth: 780,
-                fontSize: 34,
-                lineHeight: 1.24,
+                maxWidth: 820,
+                fontSize: isArabic ? 32 : 34,
+                lineHeight: 1.3,
                 color: "rgba(248,248,244,0.82)",
               }}
             >
-              {seo.description}
+              {seo.imageDescription}
             </div>
             <div
               style={{
@@ -118,12 +126,12 @@ export default function Image() {
                 fontWeight: 700,
               }}
             >
-              lastrada.agency
+              lastrada.agency/{locale}
             </div>
           </div>
         </div>
       </div>
     ),
-    size,
+    socialImageSize,
   );
 }

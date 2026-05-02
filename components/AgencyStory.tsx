@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import type { CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Compass, Sparkles, UserRound } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { animate, motion, useInView, useReducedMotion } from "motion/react";
 import { useLaStradaContent, type AgencyStat, type AgencyValue, type TeamMember } from "@/lib/la-strada-i18n";
 import {
   cardReveal,
@@ -27,8 +29,67 @@ function memberStyle(accent: TeamMember["accent"]): CSSProperties {
   return { "--accent": `var(--brand-${accent})` } as CSSProperties;
 }
 
+function parseStatValue(value: string) {
+  const match = value.match(/^(\D*)([\d,.]+)(.*)$/);
+  if (!match) {
+    return { prefix: "", numeric: 0, suffix: value, canAnimate: false };
+  }
+
+  return {
+    prefix: match[1],
+    numeric: Number(match[2].replace(/[^\d]/g, "")),
+    suffix: match[3],
+    canAnimate: true,
+  };
+}
+
+function AnimatedStatValue({ value, language }: { value: string; language: string }) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-12% 0px" });
+  const shouldReduceMotion = useReducedMotion();
+  const parsed = useMemo(() => parseStatValue(value), [value]);
+  const [animatedValue, setAnimatedValue] = useState(0);
+
+  useEffect(() => {
+    if (!parsed.canAnimate || !isInView || shouldReduceMotion) {
+      return;
+    }
+
+    const controls = animate(0, parsed.numeric, {
+      duration: 1.05,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (latest) => setAnimatedValue(Math.round(latest)),
+    });
+
+    return () => controls.stop();
+  }, [isInView, parsed.canAnimate, parsed.numeric, shouldReduceMotion]);
+
+  const formatter = useMemo(
+    () => new Intl.NumberFormat(language === "ar" ? "ar-EG" : "en-US"),
+    [language],
+  );
+
+  if (!parsed.canAnimate) {
+    return (
+      <p ref={ref} className="text-4xl font-black leading-none text-[var(--accent)] sm:text-5xl">
+        {value}
+      </p>
+    );
+  }
+
+  const displayValue = shouldReduceMotion ? parsed.numeric : animatedValue;
+
+  return (
+    <p ref={ref} className="text-4xl font-black leading-none text-[var(--accent)] sm:text-5xl">
+      {parsed.prefix}
+      {formatter.format(displayValue)}
+      {parsed.suffix}
+    </p>
+  );
+}
+
 export function AgencyStory() {
-  const { content, direction } = useLaStradaContent();
+  const { content, direction, language } = useLaStradaContent();
   const { agencyStory, team } = content;
   const shouldReduceMotion = useReducedMotion();
 
@@ -54,7 +115,8 @@ export function AgencyStory() {
               className="max-w-4xl text-balance text-5xl font-black leading-[0.9] tracking-normal sm:text-7xl lg:text-8xl"
               variants={headingReveal(direction)}
             >
-              {agencyStory.title}
+              {agencyStory.title}{" "}
+              <span className="text-[var(--brand-yellow)]">{agencyStory.titleHighlight}</span>
             </motion.h2>
             <motion.p className="mt-8 max-w-3xl text-xl leading-9 text-white/66" variants={itemReveal(0.08, 22)}>
               {agencyStory.body}
@@ -72,9 +134,7 @@ export function AgencyStory() {
                 style={statStyle(stat.accent)}
                 variants={cardReveal(index * 0.04, 20)}
               >
-                <p className="text-4xl font-black leading-none text-[var(--accent)] sm:text-5xl">
-                  {stat.value}
-                </p>
+                <AnimatedStatValue value={stat.value} language={language} />
                 <p className="mt-3 text-sm font-bold uppercase tracking-[0.18em] text-white/48">
                   {stat.label}
                 </p>
@@ -101,9 +161,10 @@ export function AgencyStory() {
             {agencyStory.values.map((value, index) => (
               <motion.article
                 key={value.title}
-                className="grid gap-5 border-t border-white/12 py-7 first:border-t-0 sm:grid-cols-[5rem_0.5fr_1fr] sm:items-start"
+                className="kinetic-card grid gap-5 border-t border-white/12 py-7 first:border-t-0 sm:grid-cols-[5rem_0.5fr_1fr] sm:items-start"
                 style={valueStyle(value.accent)}
                 {...revealMotion(shouldReduceMotion, cardReveal(index * 0.045, 26), itemViewport)}
+                whileHover={shouldReduceMotion ? undefined : { y: -3 }}
               >
                 <span className="font-mono text-sm text-[var(--accent)]">
                   {String(index + 1).padStart(2, "0")}
@@ -138,9 +199,14 @@ export function AgencyStory() {
             {team.members.map((member, index) => (
               <motion.article
                 key={member.name}
-                className="grid gap-5 border-t border-white/12 py-8 first:border-t-0 sm:grid-cols-[5rem_0.62fr_1fr] sm:items-start"
+                className={`kinetic-card grid gap-5 border-t border-white/12 py-8 first:border-t-0 sm:items-start ${
+                  member.bio
+                    ? "sm:grid-cols-[5rem_0.62fr_1fr] lg:grid-cols-[5rem_0.52fr_0.88fr_10rem]"
+                    : "sm:grid-cols-[5rem_1fr_12rem]"
+                }`}
                 style={memberStyle(member.accent)}
                 {...revealMotion(shouldReduceMotion, cardReveal(index * 0.055, 28), itemViewport)}
+                whileHover={shouldReduceMotion ? undefined : { y: -3 }}
               >
                 <span className="font-mono text-sm text-[var(--accent)]">
                   {String(index + 1).padStart(2, "0")}
@@ -149,13 +215,35 @@ export function AgencyStory() {
                   <h4 className="text-3xl font-black leading-none text-white sm:text-4xl">
                     {member.name}
                   </h4>
-                  <p className="mt-4 text-sm font-bold uppercase leading-6 tracking-[0.12em] text-[var(--accent)]">
-                    {member.role}
-                  </p>
+                  {member.role ? (
+                    <p className="mt-4 text-sm font-bold uppercase leading-6 tracking-[0.12em] text-[var(--accent)]">
+                      {member.role}
+                    </p>
+                  ) : null}
                 </div>
-                <p className="text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
-                  {member.bio}
-                </p>
+                {member.bio ? (
+                  <p className="text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
+                    {member.bio}
+                  </p>
+                ) : null}
+                {member.image ? (
+                  <motion.div
+                    className={`relative min-h-64 overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.03] shadow-2xl shadow-black/20 lg:min-h-52 ${
+                      member.bio ? "sm:col-span-3 lg:col-span-1" : ""
+                    }`}
+                    variants={cardReveal(0.12, 22)}
+                  >
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      sizes="(min-width: 1024px) 10rem, (min-width: 640px) 80vw, 92vw"
+                      className="object-cover object-top opacity-[0.82] saturate-[1.02] transition duration-700 hover:scale-105 hover:opacity-100"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_36%,rgba(0,0,0,0.52)),radial-gradient(circle_at_22%_14%,var(--accent),transparent_42%)] opacity-40 mix-blend-screen" />
+                    <div className="absolute inset-x-4 bottom-4 h-px bg-[linear-gradient(90deg,transparent,var(--accent),transparent)] opacity-75" />
+                  </motion.div>
+                ) : null}
               </motion.article>
             ))}
           </div>

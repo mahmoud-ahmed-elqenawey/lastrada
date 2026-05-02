@@ -17,7 +17,7 @@ import {
 } from "@/lib/motion-presets";
 
 export function CinematicHero() {
-  const { content, direction, toggleLanguage } = useLaStradaContent();
+  const { content, direction, languageSwitchHref } = useLaStradaContent();
   const { brand, hero, media, sourceSite, servicesIntro } = content;
   const sectionRef = useRef<HTMLElement>(null);
   const [videoFailed, setVideoFailed] = useState(false);
@@ -29,12 +29,16 @@ export function CinematicHero() {
 
   const mediaScale = useTransform(scrollYProgress, [0, 1], [1, shouldReduceMotion ? 1 : 1.12]);
   const mediaY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : 42]);
+  const moonY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : -46]);
+  const starsY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : 62]);
+  const figureY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : 34]);
+  const figureScale = useTransform(scrollYProgress, [0, 1], [1, shouldReduceMotion ? 1 : 0.94]);
   const contentY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : -64]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.9], [1, 0.16]);
   const frameOpacity = useTransform(scrollYProgress, [0, 1], [0.9, 0.28]);
 
   const showVideo = !videoFailed && !shouldReduceMotion;
-  const featuredServices = content.services.slice(0, 5);
+  const featuredServices = content.solutionPillars;
 
   return (
     <section
@@ -51,6 +55,20 @@ export function CinematicHero() {
           y: mediaY,
         }}
       />
+      <motion.div
+        className="hero-moon-fallback pointer-events-none absolute inset-0 z-[1]"
+        aria-hidden="true"
+        style={{ scale: mediaScale, y: mediaY }}
+      >
+        <motion.div className="hero-stars" style={{ y: starsY }} />
+        <motion.div className="hero-moon-halo" style={{ y: moonY }} />
+        <motion.div className="hero-moon" style={{ y: moonY }} />
+        <motion.div className="hero-light-beam hero-light-beam-one" style={{ y: moonY }} />
+        <motion.div className="hero-light-beam hero-light-beam-two" style={{ y: moonY }} />
+        <motion.div className="hero-figure" style={{ y: figureY, scale: figureScale }} />
+        <div className="hero-ground" />
+        <div className="hero-reel-lines absolute inset-0" />
+      </motion.div>
       <motion.div className="hero-frame" aria-hidden="true" style={{ opacity: frameOpacity }} />
       <motion.div className="hero-chromatic-wash" aria-hidden="true" style={{ opacity: frameOpacity }} />
       <div className="hero-letterbox" aria-hidden="true" />
@@ -92,15 +110,14 @@ export function CinematicHero() {
               <MessageCircle aria-hidden="true" size={17} />
               <span className="hidden sm:inline">{sourceSite.phone.whatsappLabel}</span>
             </a>
-            <button
-              type="button"
+            <a
               className="cinema-button cinema-button-muted min-h-11 px-4"
-              onClick={toggleLanguage}
+              href={languageSwitchHref}
               aria-label="Switch language"
             >
               <Globe2 aria-hidden="true" size={17} />
               {hero.languageLabel}
-            </button>
+            </a>
             <a className="cinema-button cinema-button-ghost hidden lg:inline-flex" href={hero.ctaHref}>
               {hero.ctaLabel}
               <ArrowUpRight aria-hidden="true" className={direction === "rtl" ? "-scale-x-100" : ""} size={18} />
@@ -140,8 +157,8 @@ export function CinematicHero() {
             <motion.p variants={itemReveal(0.12, 18)}>{servicesIntro.subtitle}</motion.p>
             <motion.div className="hero-service-rail" variants={staggerContainer(0.16, 0.045)}>
               {featuredServices.map((service) => (
-                <motion.span key={service.shortTitle} variants={chipReveal()}>
-                  {service.shortTitle}
+                <motion.span key={service.title} variants={chipReveal()}>
+                  {service.title}
                 </motion.span>
               ))}
             </motion.div>

@@ -328,15 +328,18 @@ button:focus-visible {
 
 .hero-copy {
   max-width: 72rem;
+  min-width: 0;
+  width: 100%;
 }
 
 .hero-title {
   color: #fff;
-  font-size: clamp(5rem, 15vw, 15rem);
+  font-size: clamp(5rem, 12vw, 13rem);
   font-weight: 950;
   letter-spacing: 0;
   line-height: 0.75;
-  max-width: 9ch;
+  max-width: min(100%, 9ch);
+  white-space: nowrap;
   text-shadow:
     0 18px 68px rgba(0, 0, 0, 0.78),
     0 0 58px rgba(48, 169, 220, 0.1);
@@ -552,6 +555,7 @@ button:focus-visible {
 }
 
 .hero-title {
+  font-size: clamp(5rem, 12vw, 13rem);
   text-shadow:
     0 0 42px rgba(48, 169, 220, 0.08),
     0 16px 64px rgba(0, 0, 0, 0.7);
@@ -612,6 +616,35 @@ button:focus-visible {
   color: #fff;
 }
 
+.kinetic-card {
+  isolation: isolate;
+  position: relative;
+}
+
+.kinetic-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(110deg, transparent 18%, color-mix(in srgb, var(--accent, #fff) 72%, transparent) 48%, transparent 78%);
+  opacity: 0;
+  transform: translate3d(-18%, 0, 0);
+  transition:
+    opacity 420ms ease,
+    transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[dir="rtl"] .kinetic-card::before {
+  transform: translate3d(18%, 0, 0);
+}
+
+.kinetic-card:hover::before {
+  opacity: 0.08;
+  transform: translate3d(0, 0, 0);
+}
+
 @keyframes cinema-fallback-drift {
   from {
     background-position: center, 0% 40%, center;
@@ -634,6 +667,10 @@ button:focus-visible {
   .cinema-fallback,
   .hero-stars {
     animation: none;
+  }
+
+  .kinetic-card::before {
+    display: none;
   }
 }
 
@@ -725,8 +762,9 @@ button:focus-visible {
   }
 
   .hero-title {
-    font-size: clamp(4rem, 24vw, 6rem);
-    max-width: 8ch;
+    font-size: min(clamp(2.85rem, 13vw, 5.4rem), calc((100vw - 2rem) / 7.55));
+    line-height: 0.86;
+    max-width: 100%;
   }
 
   .hero-tagline {
@@ -751,6 +789,12 @@ button:focus-visible {
     font-size: 0.88rem;
     min-height: 3rem;
     padding: 0 1.05rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: min(clamp(2.55rem, 12.5vw, 4.25rem), calc((100vw - 2rem) / 7.7));
   }
 }
 

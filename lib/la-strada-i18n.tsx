@@ -1,9 +1,16 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import {
+  getAlternateLocale,
+  getDirection,
+  getLocalePath,
+  type Direction,
+  type Locale,
+} from "@/lib/locales";
 
-export type Language = "en" | "ar";
-export type Direction = "ltr" | "rtl";
+export type { Direction };
+export type Language = Locale;
 export type Accent = "blue" | "cyan" | "green" | "yellow" | "red" | "purple";
 
 export type Service = {
@@ -20,6 +27,7 @@ export type SolutionPillar = {
   features: string[];
   accent: Accent;
   icon: "fingerprint" | "share" | "video" | "camera" | "target";
+  image?: string;
 };
 
 export type ReelChapter = {
@@ -47,6 +55,7 @@ export type TeamMember = {
   role: string;
   bio: string;
   accent: Accent;
+  image?: string;
 };
 
 export type PortfolioFilter = {
@@ -141,6 +150,7 @@ export type LaStradaContent = {
   solutionPillars: SolutionPillar[];
   agencyStory: {
     title: string;
+    titleHighlight: string;
     body: string;
     valuesTitle: string;
     valuesBody: string;
@@ -300,13 +310,31 @@ const phoneDisplay = "+962 7X XXX XXXX";
 const phoneHref = "tel:+962700000000";
 const whatsappHref = "https://wa.me/962700000000";
 
+const serviceImages = {
+  brandIdentity: "/lastrada-services/Brand-Identity.jpg.jpeg",
+  digitalStrategy: "/lastrada-services/Digital-Strategy.jpg.jpeg",
+  mediaProduction: "/lastrada-services/Media-&-Production.jpg.jpeg",
+  socialMedia: "/lastrada-services/Social-Media-Marketing.jpg.jpeg",
+  webDesign: "/lastrada-services/Web-Design-&-UI-UX.jpg.jpeg",
+};
+
+const teamImages = {
+  abdulrahman: "/lastrada-team-optimized/abdulrahman.jpg",
+  ammar: "/lastrada-team-optimized/ammar.jpg",
+  malak: "/lastrada-team-optimized/malak.jpg",
+  mansour: "/lastrada-team-optimized/mansour.jpg",
+  marah: "/lastrada-team-optimized/marah.jpg",
+  mohannad: "/lastrada-team-optimized/mohannad.jpg",
+  mounther: "/lastrada-team-optimized/mounther.jpg",
+  nada: "/lastrada-team-optimized/nada.jpg",
+};
+
 const en: LaStradaContent = {
   meta: {
-    title: "LA STRADA | Marketing & Creative Solutions Agency",
-    description:
-      "LA STRADA is a creative marketing agency specializing in photography, content production, motion graphics, editing, graphic design, social media, web, and digital marketing.",
+    title: "LASTRADA AGENCY FOR CREATIVE SOLUTION",
+    description: "LASTRADA AGENCY FOR CREATIVE SOLUTION",
     keywords:
-      "LA STRADA, LASTRADA Agency, creative agency, marketing agency, content production, photography, motion graphics, video editing, graphic design, social media management, web design, digital marketing",
+      "LASTRADA AGENCY FOR CREATIVE SOLUTION, marketing, branding, digital strategy, premium advertising, high-end agency",
   },
   brand: staticBrand,
   media: staticMedia,
@@ -449,6 +477,7 @@ const en: LaStradaContent = {
       features: ["Logo Design", "Brand Guidelines", "Visual Identity", "Brand Strategy"],
       accent: "blue",
       icon: "fingerprint",
+      image: serviceImages.brandIdentity,
     },
     {
       title: "Social Media Marketing",
@@ -456,6 +485,7 @@ const en: LaStradaContent = {
       features: ["Content Strategy", "Community Management", "Paid Advertising", "Analytics & Reporting"],
       accent: "green",
       icon: "share",
+      image: serviceImages.socialMedia,
     },
     {
       title: "Video Production",
@@ -464,6 +494,7 @@ const en: LaStradaContent = {
       features: ["Commercial Videos", "Podcast Videos", "Real Estate", "Event Coverage"],
       accent: "red",
       icon: "video",
+      image: serviceImages.mediaProduction,
     },
     {
       title: "Photography",
@@ -471,6 +502,7 @@ const en: LaStradaContent = {
       features: ["Product Photography", "Corporate Portraits", "Food Photography", "Commercial Shoots"],
       accent: "cyan",
       icon: "camera",
+      image: serviceImages.mediaProduction,
     },
     {
       title: "Digital Strategy",
@@ -478,10 +510,12 @@ const en: LaStradaContent = {
       features: ["Market Research", "Competitor Analysis", "Growth Hacking", "Performance Marketing"],
       accent: "purple",
       icon: "target",
+      image: serviceImages.digitalStrategy,
     },
   ],
   agencyStory: {
-    title: "About Our Story",
+    title: "About",
+    titleHighlight: "Our Story",
     body:
       "We are a collective of creative minds, strategic thinkers, and technology enthusiasts united by a shared vision: to create extraordinary brand experiences that leave lasting impressions and drive meaningful results.",
     valuesTitle: "Our Core Values",
@@ -527,18 +561,56 @@ const en: LaStradaContent = {
         role: "CEO | Creative Leader | Visual Storyteller",
         bio: "With over 12 years of experience in the creative and media industry, I lead dynamic teams to craft impactful visual and marketing solutions. Passionate about photography and visual storytelling, I bring ideas to life that engage and inspire audiences.",
         accent: "cyan",
+        image: teamImages.abdulrahman,
       },
       {
         name: "Al-Mounther Sobh",
         role: "Executive Manager | Advertising Campaign Specialist",
         bio: "With over 12 years of extensive experience in managing advertising campaigns, I lead projects that deliver measurable impact and creative results.",
         accent: "yellow",
+        image: teamImages.mounther,
       },
       {
         name: "Nada Mahmoud",
         role: "Art Director | Social Media Department",
         bio: "Over 8 years of experience in social media design and creative content development, with deep knowledge of the latest trends, design strategies, AI tools, and market insights to deliver impactful visual content.",
         accent: "purple",
+        image: teamImages.nada,
+      },
+      {
+        name: "Marah",
+        role: "",
+        bio: "",
+        accent: "red",
+        image: teamImages.marah,
+      },
+      {
+        name: "Malak",
+        role: "",
+        bio: "",
+        accent: "green",
+        image: teamImages.malak,
+      },
+      {
+        name: "Ammar",
+        role: "",
+        bio: "",
+        accent: "blue",
+        image: teamImages.ammar,
+      },
+      {
+        name: "Mohannad",
+        role: "",
+        bio: "",
+        accent: "yellow",
+        image: teamImages.mohannad,
+      },
+      {
+        name: "Mansour",
+        role: "",
+        bio: "",
+        accent: "cyan",
+        image: teamImages.mansour,
       },
     ],
   },
@@ -751,7 +823,7 @@ const en: LaStradaContent = {
     emailLabel: "Email Us",
     visitLabel: "Visit Us",
     businessHoursLabel: "Business Hours",
-    businessHours: "",
+    businessHours: "9:00 – 6:00",
     globalPresence: "Global Presence",
     startProject: "Start Your Project",
     socialLabel: "",
@@ -797,7 +869,7 @@ const en: LaStradaContent = {
     newsletterSubtitle: "Get the latest insights, trends, and exclusive content delivered to your inbox.",
     emailPlaceholder: "Enter your email",
     madeWith: "Made with",
-    creditLabel: "",
+    creditLabel: "Geeks Code",
     copyright: "© 2024 www.lastrada.agency. All rights reserved.",
     categoryTitles: {
       services: "Services",
@@ -822,11 +894,11 @@ const en: LaStradaContent = {
 
 const ar: LaStradaContent = {
   meta: {
-    title: "لاسترادا | وكالة التسويق والحلول الإبداعية",
+    title: "لاسترادا - وكالة الحلول الإبداعية",
     description:
-      "لاسترادا للحلول التسويقية والإبداعية تقدم خدمات التصوير، صناعة المحتوى، الموشن جرافيك، المونتاج، التصميم، إدارة السوشيال ميديا، تصميم المواقع، والتسويق الإلكتروني.",
+      "وكالة لاسترادا للحلول الإبداعية - شريكك في التسويق والعلامة التجارية والاستراتيجية الرقمية",
     keywords:
-      "لاسترادا, وكالة إبداعية, شركة تسويق, صناعة محتوى, تصوير, موشن جرافيك, مونتاج, تصميم جرافيك, إدارة سوشيال ميديا, تصميم مواقع, تسويق إلكتروني",
+      "لاسترادا, وكالة إبداعية, تسويق, علامة تجارية, استراتيجية رقمية, إعلانات",
   },
   brand: staticBrand,
   media: staticMedia,
@@ -969,6 +1041,7 @@ const ar: LaStradaContent = {
       features: ["تصميم الشعار", "دليل العلامة التجارية", "الهوية البصرية", "استراتيجية العلامة"],
       accent: "blue",
       icon: "fingerprint",
+      image: serviceImages.brandIdentity,
     },
     {
       title: "التسويق عبر وسائل التواصل",
@@ -976,6 +1049,7 @@ const ar: LaStradaContent = {
       features: ["استراتيجية المحتوى", "إدارة المجتمعات الرقمية", "الإعلانات المدفوعة", "التحليلات والتقارير"],
       accent: "green",
       icon: "share",
+      image: serviceImages.socialMedia,
     },
     {
       title: "الإنتاج المرئي",
@@ -983,6 +1057,7 @@ const ar: LaStradaContent = {
       features: ["فيديو إعلاني", "بودكاست فيديو", "فيديو عقاري", "تغطية فعاليات"],
       accent: "red",
       icon: "video",
+      image: serviceImages.mediaProduction,
     },
     {
       title: "التصوير الاحترافي",
@@ -990,17 +1065,20 @@ const ar: LaStradaContent = {
       features: ["تصوير المنتجات", "الصور الشخصية المؤسسية", "تصوير الأطعمة", "الجلسات التجارية"],
       accent: "cyan",
       icon: "camera",
+      image: serviceImages.mediaProduction,
     },
     {
       title: "الاستراتيجية الرقمية",
       description: "استراتيجيات رقمية شاملة تتوافق مع أهدافك التجارية وتعظم تواجدك الرقمي.",
-      features: ["دراسة وتحليل السوق", "تحليل المنافسين بعمق", "استراتيجيات النمو السريع", "التسويق القائم على الأداء"],
+      features: ["دراسة وتحليل السوق", "تحليل المنافسين بعمق", "استراتيجيات النمو السريع", "التسويق القائم على النتائج والأداء"],
       accent: "purple",
       icon: "target",
+      image: serviceImages.digitalStrategy,
     },
   ],
   agencyStory: {
-    title: "قصتنا من نحن",
+    title: "قصتنا",
+    titleHighlight: "من نحن",
     body:
       "نحن مجموعة من العقول الإبداعية والمفكرين الاستراتيجيين وعشاق التكنولوجيا، تجمعنا رؤية مشتركة: خلق تجارب علامات تجارية استثنائية تترك انطباعات دائمة وتحقق نتائج حقيقية.",
     valuesTitle: "قيمنا الجوهرية",
@@ -1046,18 +1124,56 @@ const ar: LaStradaContent = {
         role: "الرئيس التنفيذي | قائد إبداعي | صانع محتوى بصري",
         bio: "بخبرة تزيد عن 12 عاماً في المجال الإبداعي والإعلامي، أقود فرقاً ديناميكية لتقديم حلول بصرية وتسويقية مؤثرة. شغفي بالتصوير وفن السرد البصري يمكنني من تحويل الأفكار إلى محتوى يجذب ويلهم الجمهور.",
         accent: "cyan",
+        image: teamImages.abdulrahman,
       },
       {
         name: "المنذر صبح",
         role: "مدير منفذ | متخصص في إدارة الحملات الإعلانية",
         bio: "يمتلك خبرة طويلة تزيد عن 12 عاماً في إدارة الحملات الإعلانية، ويقود المشاريع لتحقيق نتائج مبتكرة وقابلة للقياس.",
         accent: "yellow",
+        image: teamImages.mounther,
       },
       {
         name: "ندى محمود",
         role: "مديرة فنية – قسم السوشيال ميديا",
         bio: "خبرة تزيد عن 8 سنوات في تصميم المحتوى الإبداعي وإدارة الهوية البصرية لمنصات التواصل الاجتماعي.",
         accent: "purple",
+        image: teamImages.nada,
+      },
+      {
+        name: "مرح",
+        role: "",
+        bio: "",
+        accent: "red",
+        image: teamImages.marah,
+      },
+      {
+        name: "ملاك",
+        role: "",
+        bio: "",
+        accent: "green",
+        image: teamImages.malak,
+      },
+      {
+        name: "عمار",
+        role: "",
+        bio: "",
+        accent: "blue",
+        image: teamImages.ammar,
+      },
+      {
+        name: "مهند",
+        role: "",
+        bio: "",
+        accent: "yellow",
+        image: teamImages.mohannad,
+      },
+      {
+        name: "منصور",
+        role: "",
+        bio: "",
+        accent: "cyan",
+        image: teamImages.mansour,
       },
     ],
   },
@@ -1270,7 +1386,7 @@ const ar: LaStradaContent = {
     emailLabel: "راسلنا",
     visitLabel: "زورنا",
     businessHoursLabel: "ساعات العمل",
-    businessHours: "",
+    businessHours: "9:00 – 6:00",
     globalPresence: "حضورنا العالمي",
     startProject: "ابدأ مشروعك",
     socialLabel: "",
@@ -1316,7 +1432,7 @@ const ar: LaStradaContent = {
     newsletterSubtitle: "احصل على أحدث الرؤى والاتجاهات والمحتوى الحصري في صندوق بريدك.",
     emailPlaceholder: "أدخل بريدك الإلكتروني",
     madeWith: "صُنع بـ",
-    creditLabel: "",
+    creditLabel: "Geeks Code",
     copyright: "© 2024 www.lastrada.agency. جميع الحقوق محفوظة.",
     categoryTitles: {
       services: "الخدمات",
@@ -1345,61 +1461,43 @@ type LanguageContextValue = {
   language: Language;
   direction: Direction;
   content: LaStradaContent;
-  setLanguage: (language: Language) => void;
-  toggleLanguage: () => void;
+  alternateLanguage: Language;
+  languageSwitchHref: string;
 };
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-function getStoredLanguage(): Language {
-  if (typeof window === "undefined") return "en";
-  const stored = window.localStorage.getItem("lastrada-language");
-  return stored === "ar" || stored === "en" ? stored : "en";
-}
-
-function updateMeta(content: LaStradaContent, language: Language) {
-  document.title = content.meta.title;
-  document.documentElement.lang = language;
-  document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
-
-  const description = document.querySelector('meta[name="description"]');
-  description?.setAttribute("content", content.meta.description);
-
-  const keywords = document.querySelector('meta[name="keywords"]');
-  keywords?.setAttribute("content", content.meta.keywords);
-}
-
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("en");
+export function LanguageProvider({
+  children,
+  initialLanguage,
+}: {
+  children: ReactNode;
+  initialLanguage: Language;
+}) {
+  const [hash, setHash] = useState("");
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => {
-      setLanguageState(getStoredLanguage());
-    });
-    return () => cancelAnimationFrame(frame);
+    const syncHash = () => setHash(window.location.hash);
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
   }, []);
 
-  const setLanguage = useCallback((nextLanguage: Language) => {
-    window.localStorage.setItem("lastrada-language", nextLanguage);
-    setLanguageState(nextLanguage);
-  }, []);
-
-  const direction: Direction = language === "ar" ? "rtl" : "ltr";
-  const content = translations[language];
-
-  useEffect(() => {
-    updateMeta(content, language);
-  }, [content, language]);
+  const language = initialLanguage;
+  const direction = getDirection(language);
+  const content = translations[language] ?? translations.en;
+  const alternateLanguage = getAlternateLocale(language);
+  const languageSwitchHref = `${getLocalePath(alternateLanguage)}${hash}`;
 
   const value = useMemo<LanguageContextValue>(
     () => ({
       language,
       direction,
       content,
-      setLanguage,
-      toggleLanguage: () => setLanguage(language === "en" ? "ar" : "en"),
+      alternateLanguage,
+      languageSwitchHref,
     }),
-    [content, direction, language, setLanguage],
+    [alternateLanguage, content, direction, language, languageSwitchHref],
   );
 
   return (

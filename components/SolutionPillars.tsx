@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { CSSProperties } from "react";
 import type { LucideIcon } from "lucide-react";
 import { Camera, Fingerprint, Share2, Target, Video } from "lucide-react";
@@ -13,7 +14,9 @@ import {
   itemReveal,
   itemViewport,
   lineReveal,
+  mediaReveal,
   revealMotion,
+  sweepReveal,
   staggerContainer,
 } from "@/lib/motion-presets";
 
@@ -71,14 +74,18 @@ export function SolutionPillars() {
               return (
                 <motion.article
                   key={pillar.title}
-                  className="group relative overflow-hidden border-t border-white/12 px-5 py-8 first:border-t-0 sm:px-7 lg:px-8 lg:py-10"
+                  className="kinetic-card group relative overflow-hidden border-t border-white/12 px-5 py-8 first:border-t-0 sm:px-7 lg:px-8 lg:py-10"
                   style={accentStyle(pillar.accent, direction)}
                   {...revealMotion(shouldReduceMotion, cardReveal(index * 0.06, 34), itemViewport)}
                   whileHover={shouldReduceMotion ? undefined : { y: -4 }}
                 >
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_var(--pillar-hover-x)_50%,var(--accent),transparent_34rem)] opacity-0 transition duration-500 group-hover:opacity-[0.08]" />
+                  <motion.div
+                    className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,var(--accent),transparent)]"
+                    variants={sweepReveal(direction, 0.04)}
+                  />
                   <div className="absolute inset-y-0 start-0 w-px bg-[linear-gradient(180deg,var(--accent),var(--accent),transparent)] opacity-0 transition duration-500 group-hover:opacity-80" />
-                  <div className="grid gap-6 md:grid-cols-[6rem_1fr]">
+                  <div className="grid gap-6 md:grid-cols-[6rem_1fr] xl:grid-cols-[6rem_minmax(0,1fr)_18rem] xl:items-center">
                     <div>
                       <span className="font-mono text-sm text-white/36">{String(index + 1).padStart(2, "0")}</span>
                       <motion.div
@@ -114,6 +121,23 @@ export function SolutionPillars() {
                         ))}
                       </motion.div>
                     </div>
+
+                    {pillar.image ? (
+                      <motion.div
+                        className="relative min-h-48 overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.03] shadow-2xl shadow-black/20 md:col-span-2 xl:col-span-1"
+                        variants={mediaReveal(0.16)}
+                      >
+                        <Image
+                          src={pillar.image}
+                          alt={pillar.title}
+                          fill
+                          sizes="(min-width: 1280px) 18rem, (min-width: 768px) 70vw, 92vw"
+                          className="object-cover opacity-80 saturate-[1.04] transition duration-700 group-hover:scale-105 group-hover:opacity-95"
+                        />
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.48)),radial-gradient(circle_at_18%_18%,var(--accent),transparent_46%)] opacity-35 mix-blend-screen" />
+                        <div className="absolute inset-x-4 bottom-4 h-px bg-[linear-gradient(90deg,transparent,var(--accent),transparent)] opacity-70" />
+                      </motion.div>
+                    ) : null}
                   </div>
                 </motion.article>
               );

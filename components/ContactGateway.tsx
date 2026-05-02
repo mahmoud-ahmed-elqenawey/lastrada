@@ -7,6 +7,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { useLaStradaContent } from "@/lib/la-strada-i18n";
 import {
   cardReveal,
+  chipReveal,
   headingReveal,
   itemReveal,
   lineReveal,
@@ -155,30 +156,32 @@ export function ContactGateway() {
             <p className="mb-5 mt-9 text-sm font-black uppercase tracking-[0.18em] text-white/38">
               {contactSection.form.service}
             </p>
-            <div className="flex flex-wrap gap-2">
+            <motion.div className="flex flex-wrap gap-2" variants={staggerContainer(0.03, 0.03)}>
               {contactSection.services.map((service) => (
-                <span
+                <motion.span
                   key={service}
                   className="rounded-full border border-white/12 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white/58"
+                  variants={chipReveal()}
                 >
                   {service}
-                </span>
+                </motion.span>
               ))}
-            </div>
+            </motion.div>
 
             <p className="mb-5 mt-9 text-sm font-black uppercase tracking-[0.18em] text-white/38">
               {contactSection.form.budgetRange}
             </p>
-            <div className="flex flex-wrap gap-2">
+            <motion.div className="flex flex-wrap gap-2" variants={staggerContainer(0.03, 0.03)}>
               {contactSection.budgets.map((budget) => (
-                <span
+                <motion.span
                   key={budget}
                   className="rounded-full border border-white/12 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white/58"
+                  variants={chipReveal()}
                 >
                   {budget}
-                </span>
+                </motion.span>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
 
           <motion.form

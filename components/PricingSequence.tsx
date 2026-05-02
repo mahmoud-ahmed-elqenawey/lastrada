@@ -11,6 +11,7 @@ import {
   iconReveal,
   itemReveal,
   itemViewport,
+  motionEase,
   revealMotion,
   sectionReveal,
   staggerContainer,
@@ -81,14 +82,21 @@ export function PricingSequence() {
                   key={option}
                   type="button"
                   aria-pressed={billing === option}
-                  className={`rounded-full px-5 py-2 text-sm font-black transition ${
-                    billing === option ? "bg-white text-black" : "text-white/52 hover:text-white"
+                  className={`relative overflow-hidden rounded-full px-5 py-2 text-sm font-black transition ${
+                    billing === option ? "text-black" : "text-white/52 hover:text-white"
                   }`}
                   onClick={() => setBilling(option)}
                 >
-                  <span>{option === "monthly" ? pricing.monthly : pricing.yearly}</span>
+                  {billing === option ? (
+                    <motion.span
+                      layoutId="pricing-billing-active"
+                      className="absolute inset-0 rounded-full bg-white"
+                      transition={{ duration: 0.24, ease: motionEase }}
+                    />
+                  ) : null}
+                  <span className="relative z-10">{option === "monthly" ? pricing.monthly : pricing.yearly}</span>
                   {option === "yearly" ? (
-                    <span className="ms-2 rounded-full bg-[rgba(57,181,74,0.18)] px-2 py-0.5 text-[0.68rem] text-[var(--brand-green)]">
+                    <span className="relative z-10 ms-2 rounded-full bg-[rgba(57,181,74,0.18)] px-2 py-0.5 text-[0.68rem] text-[var(--brand-green)]">
                       {pricing.save}
                     </span>
                   ) : null}
@@ -102,7 +110,7 @@ export function PricingSequence() {
           {pricing.plans.map((plan, index) => (
             <motion.article
               key={plan.name}
-              className={`relative flex min-h-full flex-col rounded-[8px] border p-6 ${
+              className={`kinetic-card relative flex min-h-full flex-col rounded-[8px] border p-6 ${
                 plan.featured ? "border-[color:var(--accent)] bg-white/[0.055]" : "border-white/12 bg-white/[0.025]"
               }`}
               style={accentStyle(plan.accent)}
@@ -128,7 +136,16 @@ export function PricingSequence() {
                     / {billing === "monthly" ? pricing.perMonth : pricing.perYear}
                   </p>
                 </div>
-              ) : null}
+              ) : (
+                <div className="border-y border-white/12 py-6">
+                  <p className="text-sm font-black uppercase tracking-[0.16em] text-[var(--accent)]">
+                    {pricing.monthly} / {pricing.yearly}
+                  </p>
+                  <p className="mt-3 text-3xl font-black leading-none text-white sm:text-4xl">
+                    {pricing.perMonth} / {pricing.perYear}
+                  </p>
+                </div>
+              )}
 
               <ul className="mt-7 grow space-y-4">
                 {plan.features.map((feature) => (

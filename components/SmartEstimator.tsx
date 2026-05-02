@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Calculator, CheckCircle2, Zap } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useLaStradaContent, type EstimatorOption } from "@/lib/la-strada-i18n";
 import {
   cardReveal,
@@ -10,6 +10,7 @@ import {
   headingReveal,
   iconReveal,
   itemReveal,
+  motionEase,
   revealMotion,
   staggerContainer,
 } from "@/lib/motion-presets";
@@ -192,12 +193,27 @@ export function SmartEstimator() {
               <Calculator aria-hidden="true" size={18} />
             </button>
 
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-white/36">
+              {aiDemo.calculateButton} / {aiDemo.calculating}
+            </p>
+
             <div className="rounded-[8px] border border-white/12 bg-black/28 p-5" aria-live="polite">
               <p className="text-sm font-black uppercase tracking-[0.16em] text-white/38">
                 {aiDemo.estimatedCost}
               </p>
-              <p className="mt-3 text-4xl font-black leading-none text-[var(--brand-yellow)] sm:text-5xl">
-                {showEstimate ? `${formattedEstimate} ${aiDemo.currency}` : "-"}
+              <p className="mt-3 overflow-hidden text-4xl font-black leading-none text-[var(--brand-yellow)] sm:text-5xl">
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.span
+                    key={showEstimate ? formattedEstimate : "empty-estimate"}
+                    className="block"
+                    initial={shouldReduceMotion ? false : { opacity: 0, y: 22, filter: "blur(8px)" }}
+                    animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
+                    exit={shouldReduceMotion ? undefined : { opacity: 0, y: -18, filter: "blur(8px)" }}
+                    transition={{ duration: 0.28, ease: motionEase }}
+                  >
+                    {showEstimate ? `${formattedEstimate} ${aiDemo.currency}` : `- ${aiDemo.currency}`}
+                  </motion.span>
+                </AnimatePresence>
               </p>
               <p className="mt-4 text-sm leading-6 text-white/46">{aiDemo.disclaimer}</p>
             </div>

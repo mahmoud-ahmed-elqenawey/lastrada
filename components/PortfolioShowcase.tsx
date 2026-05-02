@@ -3,7 +3,7 @@
 import type { CSSProperties } from "react";
 import { useMemo, useState } from "react";
 import { ArrowUpRight, Layers3, Play } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useLaStradaContent, type PortfolioProject } from "@/lib/la-strada-i18n";
 import {
   cardReveal,
@@ -12,6 +12,7 @@ import {
   iconReveal,
   itemReveal,
   itemViewport,
+  motionEase,
   revealMotion,
   staggerContainer,
 } from "@/lib/motion-presets";
@@ -99,13 +100,24 @@ export function PortfolioShowcase() {
         </motion.div>
 
         <div className="border-b border-white/12">
+          <AnimatePresence initial={false} mode="popLayout">
           {filteredProjects.map((project, index) => (
             <motion.article
               key={`${project.title}-${activeFilter}`}
-              className="group grid gap-6 border-t border-white/12 py-8 md:grid-cols-[7rem_1fr_0.55fr] md:items-center lg:py-10"
+              className="kinetic-card group grid gap-6 border-t border-white/12 py-8 md:grid-cols-[7rem_1fr_0.55fr] md:items-center lg:py-10"
               style={accentStyle(project.accent)}
               layout
               {...revealMotion(shouldReduceMotion, cardReveal(index * 0.045, 28), itemViewport)}
+              exit={
+                shouldReduceMotion
+                  ? undefined
+                  : {
+                      opacity: 0,
+                      y: -18,
+                      filter: "blur(10px)",
+                      transition: { duration: 0.22, ease: motionEase },
+                    }
+              }
               whileHover={shouldReduceMotion ? undefined : { x: direction === "rtl" ? -6 : 6 }}
             >
               <motion.div
@@ -127,6 +139,8 @@ export function PortfolioShowcase() {
                   <span className="text-[var(--accent)]">{project.type}</span>
                   <span className="h-1 w-1 rounded-full bg-white/30" aria-hidden="true" />
                   <span className="text-white/38">{project.client}</span>
+                  <span className="h-1 w-1 rounded-full bg-white/30" aria-hidden="true" />
+                  <span className="font-mono text-white/34">{project.category}</span>
                 </div>
                 <h3 className="mt-4 text-3xl font-black leading-none tracking-normal text-white sm:text-5xl">
                   {project.title}
@@ -143,6 +157,7 @@ export function PortfolioShowcase() {
               </div>
             </motion.article>
           ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>

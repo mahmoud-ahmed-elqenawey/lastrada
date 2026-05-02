@@ -70,7 +70,7 @@ export function headingReveal(direction: Direction = "ltr", delay = 0): Variants
   return {
     hidden: {
       opacity: 0,
-      x: direction === "rtl" ? 34 : -34,
+      x: direction === "rtl" ? 12 : -12,
       filter: "blur(12px)",
     },
     show: {
@@ -162,6 +162,44 @@ export function iconReveal(delay = 0): Variants {
       transition: {
         delay,
         duration: 0.58,
+        ease: motionEase,
+      },
+    },
+  };
+}
+
+export function mediaReveal(delay = 0): Variants {
+  return {
+    hidden: {
+      opacity: 0,
+      scale: 1.06,
+      filter: "blur(12px) saturate(0.7)",
+    },
+    show: {
+      opacity: 1,
+      scale: 1,
+      filter: "blur(0px) saturate(1)",
+      transition: {
+        delay,
+        duration: 0.9,
+        ease: motionEase,
+      },
+    },
+  };
+}
+
+export function sweepReveal(direction: Direction = "ltr", delay = 0): Variants {
+  return {
+    hidden: {
+      opacity: 0,
+      clipPath: direction === "rtl" ? "inset(0 0 0 100%)" : "inset(0 100% 0 0)",
+    },
+    show: {
+      opacity: 1,
+      clipPath: "inset(0 0% 0 0%)",
+      transition: {
+        delay,
+        duration: 0.86,
         ease: motionEase,
       },
     },
