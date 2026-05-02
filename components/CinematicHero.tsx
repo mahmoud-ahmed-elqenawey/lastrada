@@ -28,6 +28,7 @@ export function CinematicHero() {
   });
 
   const mediaScale = useTransform(scrollYProgress, [0, 1], [1, shouldReduceMotion ? 1 : 1.12]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 1], [1, shouldReduceMotion ? 1 : 0.82]);
   const contentY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : -64]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.9], [1, 0.16]);
 
@@ -100,6 +101,11 @@ export function CinematicHero() {
           <source src={videoSrc ?? media.heroVideo} type="video/mp4" />
         </motion.video>
       ) : null}
+      <motion.div
+        className="hero-video-overlay absolute inset-0"
+        aria-hidden="true"
+        style={{ opacity: overlayOpacity }}
+      />
 
       <div className="relative z-10 flex min-h-[calc(100svh-2.5rem)] w-full flex-col">
         <motion.header
@@ -179,9 +185,8 @@ export function CinematicHero() {
             </motion.div>
           </motion.div>
 
-          <motion.aside className="hero-side-panel" aria-label={servicesIntro.subtitle} variants={itemReveal(0.18, 24)}>
+          <motion.aside className="hero-side-panel" aria-label={servicesIntro.title} variants={itemReveal(0.18, 24)}>
             <span className="hero-panel-line" />
-            <motion.p variants={itemReveal(0.12, 18)}>{servicesIntro.subtitle}</motion.p>
             <motion.div className="hero-service-rail" variants={staggerContainer(0.16, 0.045)}>
               {featuredServices.map((service) => (
                 <motion.span key={service.title} variants={chipReveal()}>
