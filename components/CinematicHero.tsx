@@ -13,6 +13,7 @@ import {
   motionEase,
   staggerContainer,
 } from "@/lib/motion-presets";
+import { isDevLightMode } from "@/lib/runtime-flags";
 
 export function CinematicHero() {
   const { content, direction, languageSwitchHref } = useLaStradaContent();
@@ -32,10 +33,10 @@ export function CinematicHero() {
   const contentY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : -64]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.9], [1, 0.16]);
 
-  const showVideo = Boolean(videoSrc) && !videoFailed && !shouldReduceMotion;
+  const showVideo = Boolean(videoSrc) && !videoFailed && !shouldReduceMotion && !isDevLightMode;
 
   useEffect(() => {
-    if (shouldReduceMotion) {
+    if (shouldReduceMotion || isDevLightMode) {
       return;
     }
 
@@ -76,6 +77,14 @@ export function CinematicHero() {
       className="hero-section relative isolate flex min-h-[100svh] overflow-hidden bg-black px-5 py-5 text-white sm:px-8 lg:px-12"
       aria-label="LA STRADA cinematic introduction"
     >
+      <motion.div
+        className="hero-video-poster absolute inset-0 h-full w-full"
+        aria-hidden="true"
+        style={{
+          backgroundImage: `url(${media.heroPoster})`,
+          scale: mediaScale,
+        }}
+      />
       {showVideo ? (
         <motion.video
           key={videoSrc}
@@ -101,7 +110,7 @@ export function CinematicHero() {
         </motion.video>
       ) : null}
       <motion.div
-        className="hero-video-overlay absolute inset-0"
+        className={`hero-video-overlay absolute inset-0 ${isDevLightMode ? "hero-video-overlay-lite" : ""}`}
         aria-hidden="true"
         style={{ opacity: overlayOpacity }}
       />

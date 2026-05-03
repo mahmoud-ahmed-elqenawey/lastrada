@@ -12,11 +12,22 @@ Marketing website for La Strada, a creative and marketing solutions company.
 ## Development
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Open http://localhost:3000.
+
+`pnpm dev` runs a lighter development mode so the laptop stays calmer while editing: the hero uses the poster image instead of autoplay video, and non-essential interaction chrome is disabled.
+
+Use `pnpm dev:full` when you want to review the full cinematic local experience with video, cursor, scroll progress, and production-like motion.
+
+For real performance checks, use:
+
+```bash
+pnpm build
+pnpm start
+```
 
 ## Brand Assets
 

@@ -5,6 +5,7 @@ import { CinematicHero } from "@/components/CinematicHero";
 import { ScrollProgressChrome } from "@/components/ScrollProgressChrome";
 import { LanguageProvider } from "@/lib/la-strada-i18n";
 import { isLocale } from "@/lib/locales";
+import { isDevLightMode } from "@/lib/runtime-flags";
 import { getJsonLd } from "@/lib/seo";
 
 const InteractionChrome = dynamic(() =>
@@ -60,8 +61,8 @@ export default async function Home({ params }: LocalePageProps) {
       />
       <LanguageProvider initialLanguage={localeParam}>
         <main id="top" className="relative isolate min-h-screen overflow-x-hidden bg-[#050505] text-white">
-          <ScrollProgressChrome />
-          <InteractionChrome />
+          {isDevLightMode ? null : <ScrollProgressChrome />}
+          {isDevLightMode ? null : <InteractionChrome />}
           <CinematicHero />
           <SolutionPillars />
           <PortfolioShowcase />
