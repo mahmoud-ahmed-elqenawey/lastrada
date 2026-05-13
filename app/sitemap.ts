@@ -1,13 +1,13 @@
 import type { MetadataRoute } from "next";
 import { getLaStradaContent } from "@/lib/la-strada-content";
-import { locales } from "@/lib/locales";
+import { defaultLocale, locales } from "@/lib/locales";
 import { siteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const rootLanguages = {
     ar: `${siteUrl}/ar`,
     en: `${siteUrl}/en`,
-    "x-default": `${siteUrl}/ar`,
+    "x-default": `${siteUrl}/${defaultLocale}`,
   };
 
   const projectPages = locales.flatMap((locale) =>
@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         languages: {
           ar: `${siteUrl}/ar/projects/${project.slug}`,
           en: `${siteUrl}/en/projects/${project.slug}`,
-          "x-default": `${siteUrl}/ar/projects/${project.slug}`,
+          "x-default": `${siteUrl}/${defaultLocale}/projects/${project.slug}`,
         },
       },
     })),
@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: `${siteUrl}/ar`,
+      url: `${siteUrl}/en`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
@@ -37,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
-      url: `${siteUrl}/en`,
+      url: `${siteUrl}/ar`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,

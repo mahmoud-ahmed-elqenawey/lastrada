@@ -3,7 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { ProjectCaseStudy } from "@/components/ProjectCaseStudy";
 import { getLaStradaContent } from "@/lib/la-strada-content";
-import { isLocale, type Locale } from "@/lib/locales";
+import { defaultLocale, isLocale, type Locale } from "@/lib/locales";
 import {
   getProjectBySlug,
   getProjectCover,
@@ -33,7 +33,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { locale: localeParam, slug } = await params;
-  const locale: Locale = isLocale(localeParam) ? localeParam : "ar";
+  const locale: Locale = isLocale(localeParam) ? localeParam : defaultLocale;
   const project = getProjectBySlug(locale, slug);
 
   if (!project) {
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
         ...getLanguageAlternates(),
         ar: absoluteUrl(`/ar/projects/${project.slug}`),
         en: absoluteUrl(`/en/projects/${project.slug}`),
-        "x-default": absoluteUrl(`/ar/projects/${project.slug}`),
+        "x-default": absoluteUrl(`/${defaultLocale}/projects/${project.slug}`),
       },
     },
     openGraph: {
