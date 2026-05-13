@@ -49,60 +49,39 @@
     },
     "services": [
       {
-        "title": "Photography",
+        "title": "Brand Identity",
         "shortTitle": "Photo",
-        "description": "Professional photography that captures your brand essence and creates compelling visual narratives.",
+        "description": "Strategic visual identities that elevate your brand value and secure its market position.",
         "accent": "cyan",
         "icon": "camera"
       },
       {
-        "title": "Content Production",
+        "title": "Social Media Marketing",
         "shortTitle": "Content",
-        "description": "Concepts, scripts, shoots, and social-native production built to move across every channel.",
+        "description": "Smart campaigns that turn engagement into results.",
         "accent": "blue",
         "icon": "film"
       },
       {
-        "title": "Motion Graphics",
+        "title": "Video Production",
         "shortTitle": "Motion",
-        "description": "Animated identity, explainers, launch films, and kinetic systems that make ideas feel alive.",
+        "description": "Cinematic video content that tells your story, captivates viewers, and delivers measurable business results.",
         "accent": "purple",
         "icon": "sparkles"
       },
       {
-        "title": "Editing",
+        "title": "Photography",
         "shortTitle": "Edit",
-        "description": "Sharp pacing, sound-led cuts, campaign reels, and visual rhythm for stories that land fast.",
+        "description": "Professional photography that captures your brand essence and creates compelling visual narratives.",
         "accent": "red",
         "icon": "scissors"
       },
       {
-        "title": "Graphic Design",
+        "title": "Digital Strategy",
         "shortTitle": "Design",
-        "description": "Campaign design, brand assets, visual systems, and digital layouts with a premium finish.",
+        "description": "Comprehensive digital strategies that align with your business goals and maximize your online presence.",
         "accent": "yellow",
         "icon": "pen"
-      },
-      {
-        "title": "Social Media",
-        "shortTitle": "Social",
-        "description": "Smart campaigns, content planning, account management, and community presence that turn engagement into results.",
-        "accent": "green",
-        "icon": "share"
-      },
-      {
-        "title": "Web",
-        "shortTitle": "Web",
-        "description": "Expressive websites, interfaces, landing pages, and digital experiences engineered for conversion.",
-        "accent": "cyan",
-        "icon": "code"
-      },
-      {
-        "title": "Digital Marketing",
-        "shortTitle": "Marketing",
-        "description": "Paid campaigns, launch strategy, content funnels, and performance thinking for measurable growth.",
-        "accent": "red",
-        "icon": "megaphone"
       }
     ],
     "reelChapters": [
@@ -180,7 +159,7 @@
           "Commercial Videos",
           "Podcast Videos",
           "Real Estate",
-          "Event Coverage"
+          "Event Coverage "
         ],
         "accent": "red",
         "icon": "video",
@@ -287,43 +266,43 @@
         },
         {
           "name": "Nada Mahmoud",
-          "role": "Art Director | Social Media Department",
+          "role": "Art Director – Social Media Department | Creative & AI-Savvy Leader",
           "bio": "Over 8 years of experience in social media design and creative content development, with deep knowledge of the latest trends, design strategies, AI tools, and market insights to deliver impactful visual content.",
           "accent": "purple",
           "image": "/lastrada-team-optimized/nada.jpg"
         },
         {
-          "name": "Marah",
-          "role": "",
-          "bio": "",
+          "name": "Malak Jamal",
+          "role": "Graphic Designer | AI-Enhanced Visual Creator",
+          "bio": "Up to 6 years of experience in creative design and visual content development, leveraging AI tools to produce innovative and impactful designs.",
           "accent": "red",
           "image": "/lastrada-team-optimized/marah.jpg"
         },
         {
-          "name": "Malak",
-          "role": "",
-          "bio": "",
+          "name": "Marah Matalkah",
+          "role": "Motion Graphic Designer | AI Video Export Specialist",
+          "bio": "3 years of experience in motion graphics, driven by creativity, passion, and talent. Skilled in exporting high-quality AI-assisted videos.",
           "accent": "green",
           "image": "/lastrada-team-optimized/malak.jpg"
         },
         {
-          "name": "Ammar",
-          "role": "",
-          "bio": "",
+          "name": "Mansour Monter",
+          "role": "Video Editing Specialist",
+          "bio": "A dedicated video editing specialist with 5 years of professional experience, focused on crafting high-quality, engaging, and precise video content.",
           "accent": "blue",
           "image": "/lastrada-team-optimized/ammar.jpg"
         },
         {
-          "name": "Mohannad",
-          "role": "",
-          "bio": "",
+          "name": "Al-Mohand Mohammed",
+          "role": "Assistant Photographer & Creative Video Editor",
+          "bio": "A talented assistant photographer and video editor, known for generating innovative and creative ideas that bring visual projects to life.",
           "accent": "yellow",
           "image": "/lastrada-team-optimized/mohannad.jpg"
         },
         {
-          "name": "Mansour",
-          "role": "",
-          "bio": "",
+          "name": "Amar Bani Salameh",
+          "role": "Company Accountant | Trusted & Reliable",
+          "bio": "A dedicated and trustworthy company accountant, ensuring accurate financial management and integrity in all accounting processes.",
           "accent": "cyan",
           "image": "/lastrada-team-optimized/mansour.jpg"
         }
@@ -361,50 +340,102 @@
       ],
       "projects": [
         {
-          "title": "Luxury Real Estate",
+          "slug": "oliga-rose",
+          "summary": "A complete identity and packaging system for a beauty brand, built to feel elegant, cohesive, and memorable across every touchpoint.",
+          "cover": {
+            "type": "image",
+            "src": "/media/portfolio/oliga/oliga-packaging.webp",
+            "alt": "Oliga Rose packaging design showcase by LA STRADA",
+            "label": "Case Study Cover"
+          },
+          "caseStudy": {
+            "overviewTitle": "A complete beauty brand system",
+            "challengeTitle": "Challenge",
+            "challenge": "Oliga Rose needed a visual identity that could move beyond a logo and feel consistent across packaging, print, and digital touchpoints without losing its premium beauty character.",
+            "solutionTitle": "Solution",
+            "solution": "LA STRADA built the brand as a cohesive identity journey, from the core mark to the full packaging direction, balancing elegance, clarity, and shelf-ready product presence.",
+            "deliverablesTitle": "Deliverables",
+            "deliverables": [
+              "Logo design",
+              "Visual identity",
+              "Packaging system",
+              "Print design",
+              "Brand presentation"
+            ],
+            "galleryTitle": "Identity gallery",
+            "videoTitle": "Video assets",
+            "ctaTitle": "Have a product brand that needs this level of presence?",
+            "ctaBody": "Let LA STRADA shape the identity, packaging, and launch story into one memorable system.",
+            "ctaLabel": "Start a similar project"
+          },
+          "title": "Brand Identity | Oliga Rose ",
           "category": "branding",
-          "client": "Premium Properties",
-          "description": "Complete brand identity and marketing campaign for luxury real estate developer",
+          "client": "Oliga Rose",
+          "description": "Olga Rose was developed as a complete branding journey, starting from the core logo design and extending through to the full packaging system. Every element was carefully crafted to reflect a cohesive visual identity that communicates elegance, consistency, and brand character across all touchpoints. The result is a refined and unified brand experience that brings the Olga Rose vision to life in a clear and memorable way.",
           "type": "Brand Identity",
-          "accent": "purple"
+          "accent": "purple",
+          "media": [
+            {
+              "type": "image",
+              "src": "/media/portfolio/oliga/oliga-visual-identity.webp",
+              "alt": "Oliga Rose visual identity artwork by LA STRADA",
+              "label": "Visual Identity"
+            },
+            {
+              "type": "image",
+              "src": "/media/portfolio/oliga/oliga-packaging.webp",
+              "alt": "Oliga Rose packaging design showcase by LA STRADA",
+              "label": "Packaging"
+            }
+          ]
         },
         {
-          "title": "Tech Startup Launch",
+          "slug": "al-ghanem-housing",
+          "summary": "A cinematic real-estate production shaped from script and direction through filming and final edit.",
+          "title": "Video production | Al Ghanem Housing",
           "category": "video",
-          "client": "InnovateTech",
-          "description": "Product launch video and social media campaign for AI startup",
+          "client": "Al Ghanem Housing",
+          "description": "Al Ghanem Housing video project was produced as a complete end-to-end production, starting from script writing and concept development, through full execution, filming direction, and professional editing. The aim was to translate the brand’s message into a clear and engaging visual story that reflects its identity and values in a modern and impactful way.",
           "type": "Video Production",
           "accent": "cyan"
         },
         {
-          "title": "Fashion Brand Revival",
+          "slug": "al-moafah-medical-center",
+          "summary": "A full social media ecosystem for a medical center, spanning content, reels, podcasts, publishing, and paid campaigns.",
+          "title": "Social Media | Al Moafah Medical Center",
           "category": "social",
-          "client": "Elite Fashion",
-          "description": "Social media strategy and content creation for fashion brand relaunch",
+          "client": "Al Moafah Medical Center",
+          "description": "La Strada manages the social media presence of Al-Maafah Medical Center in a fully integrated way, starting from establishing and professionally building the digital platforms and their visual identity, through continuous content management to ensure strong and effective engagement. The work includes producing visual content such as professional photography, reel editing, and podcast production and editing in a modern style that enhances the center’s medical message. It also covers designing all types of promotional posts in line with the center’s brand identity and objectives, publishing and managing content across platforms, as well as planning and executing paid advertising campaigns to increase reach, attract patients, and strengthen Al-Maafah Medical Center’s position as a trusted and distinguished healthcare destination.",
           "type": "Social Media",
           "accent": "red"
         },
         {
-          "title": "Corporate Identity System",
+          "slug": "abu-al-rab-identity",
+          "summary": "A clean, trust-building visual identity system for a dental clinic in Zarqa, complete with brand usage guidance.",
+          "title": "Visual Identity Design | Abu Al-Rab Dental Clinic",
           "category": "branding",
-          "client": "GlobalCorp",
-          "description": "Complete visual identity system for multinational corporation",
+          "client": "Abu Al-Rab Dental Clinic",
+          "description": "La Strada developed the complete visual identity for Abu Al-Rab Dental Clinic in Zarqa, creating a cohesive visual system that reflects the clinic’s professionalism and strengthens patient trust. The work included designing a modern and minimal logo that clearly represents the dental field, along with carefully selected colors and typography to ensure visual harmony and a strong, recognizable identity. In addition, a professional brand guideline was created to define the correct usage of the logo across all digital and print materials, ensuring consistency and high-quality application in every context. La Strada is distinguished in this type of work by its attention to detail and commitment to delivering a complete visual identity that combines creativity, clarity, and strong brand presence that leaves a lasting impression.",
           "type": "Brand Identity",
           "accent": "blue"
         },
         {
-          "title": "Product Launch Campaign",
-          "category": "motion",
-          "client": "TechGiant",
-          "description": "Motion graphics and animation for product launch event",
-          "type": "Motion Graphics",
+          "slug": "abu-al-rab-social",
+          "summary": "A full digital presence for Abu Al-Rab Dental Clinics, powered by social strategy, motion-led reels, and paid growth.",
+          "title": "Social Media | Abu Al-Rab Dental Clinic",
+          "category": "social",
+          "client": "Abu Al-Rab Dental Clinic",
+          "description": "La Strada manages the social media presence of Abu Al-Rab Dental Clinics in a fully integrated way, starting from establishing professional digital platforms and building a strong medical brand presence, through daily content management and developing effective communication strategies that enhance audience engagement and trust. The work includes producing modern reels powered by motion graphics and artificial intelligence to create engaging and impactful visual content, along with designing and publishing promotional posts aligned with the clinic’s identity and marketing objectives, as well as managing paid advertising campaigns across platforms to expand reach and attract more patients. La Strada stands out as your digital partner anywhere in Jordan, accompanying brands step by step to build a strong presence and deliver real, measurable results.",
+          "type": "Social Media",
           "accent": "yellow"
         },
         {
-          "title": "Hospitality Brand Experience",
+          "slug": "mega-cafe-jordan",
+          "summary": "A food and beverage photoshoot built to elevate Mega Cafe's menu and digital presence with polished product imagery.",
+          "title": "Photoshoot | Mega Café Jordan",
           "category": "photography",
-          "client": "Luxury Hotels",
-          "description": "Photography and brand experience design for luxury hotel chain",
+          "client": "Mega Café",
+          "description": "La Strada conducted a professional photoshoot for Mega Café in Jordan focused on menu items, including food and beverages, with the aim of presenting the products in the highest visual quality that highlights their appeal and uniqueness. The session emphasized showcasing each item in an attractive and professional way, capturing the fine details of both food and drinks, enhancing the café’s visual identity and supporting its digital marketing and social media presence effectively.",
           "type": "Photography",
           "accent": "green"
         }

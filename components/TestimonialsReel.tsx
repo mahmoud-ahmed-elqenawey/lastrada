@@ -40,7 +40,7 @@ export function TestimonialsReel() {
             {...revealMotion(shouldReduceMotion, staggerContainer(0.04, 0.08))}
           >
             <motion.div
-              className="mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-white/14 bg-white/[0.03] text-[var(--brand-yellow)]"
+              className="soft-icon mb-8 flex h-14 w-14 items-center justify-center rounded-full text-[var(--brand-yellow)]"
               variants={iconReveal()}
             >
               <Quote aria-hidden="true" size={24} />
@@ -57,11 +57,11 @@ export function TestimonialsReel() {
             </motion.p>
           </motion.div>
 
-          <div className="border-y border-white/12">
+          <div className="space-y-3">
             {testimonials.items.map((item, index) => (
               <motion.article
                 key={item.author}
-                className="kinetic-card border-t border-white/12 py-10 first:border-t-0"
+                className="kinetic-card soft-row px-5 py-10 sm:px-7 lg:px-8"
                 style={accentStyle(item.accent)}
                 {...revealMotion(shouldReduceMotion, cardReveal(index * 0.045, 26), itemViewport)}
                 whileHover={shouldReduceMotion ? undefined : { y: -3 }}
@@ -85,7 +85,7 @@ export function TestimonialsReel() {
                     </blockquote>
                   </div>
 
-                  <div className="rounded-[8px] border border-white/12 bg-white/[0.03] p-5">
+                  <div className="soft-panel rounded-[8px] p-5">
                     <p className="font-mono text-xs text-[var(--accent)]">
                       {String(index + 1).padStart(2, "0")}
                     </p>
@@ -99,7 +99,7 @@ export function TestimonialsReel() {
               </motion.article>
             ))}
 
-            <div className="border-t border-white/12 py-7">
+            <div className="soft-panel rounded-[8px] p-5 sm:p-7">
               <p className="mb-5 text-sm font-black uppercase tracking-[0.18em] text-white/38">
                 {testimonials.trustedByTitle}
               </p>
@@ -110,7 +110,7 @@ export function TestimonialsReel() {
                 {testimonials.items.map((item) => (
                   <motion.span
                     key={item.company}
-                    className="rounded-full border border-white/12 px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-white/56"
+                    className="rounded-full bg-white/[0.035] px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-white/56 shadow-[inset_0_1px_0_rgba(255,255,255,0.055)]"
                     variants={chipReveal()}
                   >
                     {item.company}

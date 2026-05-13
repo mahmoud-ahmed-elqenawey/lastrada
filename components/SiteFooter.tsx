@@ -38,7 +38,7 @@ export function SiteFooter() {
         {...revealMotion(shouldReduceMotion, staggerContainer(0.04, 0.07))}
       >
         <motion.div
-          className="grid gap-12 border-y border-white/12 py-12 lg:grid-cols-[1.1fr_1.4fr]"
+          className="soft-panel grid gap-12 rounded-[8px] p-5 sm:p-8 lg:grid-cols-[1.1fr_1.4fr] lg:p-10"
           variants={cardReveal(0, 28)}
         >
           <motion.div variants={staggerContainer(0.04, 0.055)}>
@@ -72,7 +72,7 @@ export function SiteFooter() {
               </p>
             </motion.div>
 
-            <motion.div className="mt-9 border-t border-white/12 pt-8" variants={itemReveal(0.08, 18)}>
+            <motion.div className="mt-9 rounded-[8px] bg-white/[0.018] p-5" variants={itemReveal(0.08, 18)}>
               <h3 className="text-lg font-black text-white">{footer.stayUpdated}</h3>
               <p className="mt-3 max-w-md text-sm leading-6 text-white/48">
                 {footer.newsletterSubtitle}
@@ -141,7 +141,7 @@ export function SiteFooter() {
         </motion.div>
 
         <motion.div
-          className="mt-5 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/5 pt-5"
+          className="mt-5 flex flex-wrap gap-x-6 gap-y-3"
           variants={staggerContainer(0.1, 0.035)}
         >
           {legalLinks.map((label) => (

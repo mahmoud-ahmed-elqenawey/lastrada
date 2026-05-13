@@ -66,13 +66,39 @@ export type PortfolioFilter = {
   label: string;
 };
 
+export type PortfolioMedia = {
+  type: "image" | "video";
+  src: string;
+  alt: string;
+  poster?: string;
+  label?: string;
+};
+
 export type PortfolioProject = {
+  slug: string;
   title: string;
   category: string;
   client: string;
   description: string;
+  summary?: string;
   type: string;
   accent: Accent;
+  cover?: PortfolioMedia;
+  media?: PortfolioMedia[];
+  caseStudy?: {
+    overviewTitle: string;
+    challengeTitle: string;
+    challenge: string;
+    solutionTitle: string;
+    solution: string;
+    deliverablesTitle: string;
+    deliverables: string[];
+    galleryTitle: string;
+    videoTitle: string;
+    ctaTitle: string;
+    ctaBody: string;
+    ctaLabel: string;
+  };
 };
 
 export type Testimonial = {

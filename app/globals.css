@@ -4,7 +4,7 @@
   --background: #050505;
   --foreground: #f8f8f4;
   --muted: rgba(248, 248, 244, 0.66);
-  --line: rgba(255, 255, 255, 0.14);
+  --line: rgba(255, 255, 255, 0.1);
   --brand-blue: #2f4197;
   --brand-cyan: #30a9dc;
   --brand-green: #39b54a;
@@ -52,31 +52,26 @@ main > section {
 
 main > section:not(:first-of-type) {
   min-height: 100svh;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
   content-visibility: auto;
   contain: layout paint style;
   contain-intrinsic-size: auto 100svh;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 0 72px 120px rgba(5, 5, 5, 0.48);
+    inset 0 96px 150px rgba(5, 5, 5, 0.42),
+    inset 0 -72px 130px rgba(5, 5, 5, 0.34);
 }
 
 main > section:not(:first-of-type)::before {
   content: "";
   position: absolute;
-  inset-inline: clamp(1.25rem, 4vw, 3rem);
-  top: 0;
+  inset-inline: clamp(2rem, 10vw, 9rem);
+  top: -5rem;
   z-index: 2;
-  height: 1px;
+  height: clamp(8rem, 14vw, 13rem);
   pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(48, 169, 220, 0.6),
-    rgba(249, 167, 43, 0.52),
-    rgba(239, 70, 57, 0.5),
-    transparent
-  );
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(48, 169, 220, 0.12), rgba(249, 167, 43, 0.07) 42%, transparent 72%);
+  filter: blur(34px);
+  opacity: 0.72;
 }
 
 main > section:not(:first-of-type)::after {
@@ -457,6 +452,35 @@ button:focus-visible {
   background: rgba(248, 248, 244, 0.08);
   border-color: rgba(248, 248, 244, 0.34);
   color: #fff;
+}
+
+.soft-panel {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.034), rgba(255, 255, 255, 0.01)),
+    rgba(255, 255, 255, 0.014);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.038),
+    0 24px 90px rgba(0, 0, 0, 0.22);
+}
+
+.soft-row {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022), rgba(255, 255, 255, 0.006) 62%, transparent),
+    rgba(255, 255, 255, 0.006);
+  border-radius: 8px;
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.14);
+}
+
+.soft-frame {
+  background: rgba(255, 255, 255, 0.025);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.042),
+    0 22px 80px rgba(0, 0, 0, 0.3);
+}
+
+.soft-icon {
+  background: rgba(255, 255, 255, 0.034);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
 }
 
 .kinetic-card {

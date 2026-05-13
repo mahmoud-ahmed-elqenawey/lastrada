@@ -127,12 +127,12 @@ export function SmartEstimator() {
         </motion.div>
 
         <motion.div
-          className="rounded-[8px] border border-white/12 bg-white/[0.035] p-5 shadow-2xl shadow-black/30 sm:p-8"
+          className="soft-panel rounded-[8px] p-5 sm:p-8"
           {...revealMotion(shouldReduceMotion, cardReveal(0.1, 36))}
         >
           <div className="mb-8 flex items-center gap-3">
             <motion.span
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 text-[var(--brand-cyan)]"
+              className="soft-icon flex h-12 w-12 items-center justify-center rounded-full text-[var(--brand-cyan)]"
               variants={iconReveal(0.08)}
             >
               <Calculator aria-hidden="true" size={22} />
@@ -197,7 +197,7 @@ export function SmartEstimator() {
               {aiDemo.calculateButton} / {aiDemo.calculating}
             </p>
 
-            <div className="rounded-[8px] border border-white/12 bg-black/28 p-5" aria-live="polite">
+            <div className="soft-row p-5" aria-live="polite">
               <p className="text-sm font-black uppercase tracking-[0.16em] text-white/38">
                 {aiDemo.estimatedCost}
               </p>

@@ -53,7 +53,7 @@ export function PricingSequence() {
         >
           <div>
             <motion.div
-              className="mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-white/14 bg-white/[0.03] text-[var(--brand-yellow)]"
+              className="soft-icon mb-8 flex h-14 w-14 items-center justify-center rounded-full text-[var(--brand-yellow)]"
               variants={iconReveal()}
             >
               <Crown aria-hidden="true" size={24} />
@@ -110,8 +110,8 @@ export function PricingSequence() {
           {pricing.plans.map((plan, index) => (
             <motion.article
               key={plan.name}
-              className={`kinetic-card relative flex min-h-full flex-col rounded-[8px] border p-6 ${
-                plan.featured ? "border-[color:var(--accent)] bg-white/[0.055]" : "border-white/12 bg-white/[0.025]"
+              className={`kinetic-card soft-panel relative flex min-h-full flex-col overflow-hidden rounded-[8px] p-6 ${
+                plan.featured ? "shadow-[inset_0_1px_0_rgba(255,255,255,0.09),0_24px_90px_rgba(0,0,0,0.25)]" : ""
               }`}
               style={accentStyle(plan.accent)}
               {...revealMotion(shouldReduceMotion, cardReveal(index * 0.06, 34), itemViewport)}
@@ -122,13 +122,13 @@ export function PricingSequence() {
                   <h3 className="text-3xl font-black leading-none text-white">{plan.name}</h3>
                   <p className="mt-4 text-base leading-7 text-white/58">{plan.description}</p>
                 </div>
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/12 text-[var(--accent)]">
+                <span className="soft-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[var(--accent)]">
                   {plan.featured ? <Sparkles aria-hidden="true" size={20} /> : <Rocket aria-hidden="true" size={20} />}
                 </span>
               </div>
 
               {plan.price ? (
-                <div className="border-y border-white/12 py-6">
+                <div className="soft-row px-5 py-6">
                   <p className="text-5xl font-black leading-none text-[var(--accent)]">
                     {formatPrice(plan.price, billing)}
                   </p>
@@ -137,7 +137,7 @@ export function PricingSequence() {
                   </p>
                 </div>
               ) : (
-                <div className="border-y border-white/12 py-6">
+                <div className="soft-row px-5 py-6">
                   <p className="text-sm font-black uppercase tracking-[0.16em] text-[var(--accent)]">
                     {pricing.monthly} / {pricing.yearly}
                   </p>
@@ -164,7 +164,7 @@ export function PricingSequence() {
         </div>
 
         <motion.div
-          className="mt-10 grid gap-7 border-y border-white/12 py-10 md:grid-cols-[1fr_auto] md:items-center"
+          className="soft-panel mt-10 grid gap-7 rounded-[8px] px-5 py-10 sm:px-7 md:grid-cols-[1fr_auto] md:items-center lg:px-8"
           {...revealMotion(shouldReduceMotion, sectionReveal(0), itemViewport)}
         >
           <div>

@@ -74,15 +74,15 @@ export function ContactGateway() {
             </motion.div>
           </div>
 
-          <motion.div className="border-y border-white/12" variants={cardReveal(0.1, 28)}>
-            <p className="border-b border-white/12 py-5 text-sm font-black uppercase tracking-[0.18em] text-white/38">
+          <motion.div className="soft-panel rounded-[8px] p-5 sm:p-7" variants={cardReveal(0.1, 28)}>
+            <p className="mb-5 text-sm font-black uppercase tracking-[0.18em] text-white/38">
               {contactSection.getInTouch}
             </p>
             <a
               href={contactSection.emailHref}
-              className="group grid gap-4 border-b border-white/12 py-6 sm:grid-cols-[3rem_1fr_2rem] sm:items-center"
+              className="group grid gap-4 rounded-[8px] bg-white/[0.025] p-4 transition hover:bg-white/[0.04] sm:grid-cols-[3rem_1fr_2rem] sm:items-center"
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 text-[var(--brand-cyan)]">
+              <span className="soft-icon flex h-12 w-12 items-center justify-center rounded-full text-[var(--brand-cyan)]">
                 <Mail aria-hidden="true" size={22} />
               </span>
               <span>
@@ -104,8 +104,8 @@ export function ContactGateway() {
               />
             </a>
 
-            <div className="grid gap-4 py-6 sm:grid-cols-[3rem_1fr] sm:items-center">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 text-[var(--brand-red)]">
+            <div className="mt-3 grid gap-4 rounded-[8px] bg-white/[0.018] p-4 sm:grid-cols-[3rem_1fr] sm:items-center">
+              <span className="soft-icon flex h-12 w-12 items-center justify-center rounded-full text-[var(--brand-red)]">
                 <MapPin aria-hidden="true" size={22} />
               </span>
               <span>
@@ -122,8 +122,8 @@ export function ContactGateway() {
             </div>
 
             {contactSection.businessHours ? (
-              <div className="grid gap-4 border-t border-white/12 py-6 sm:grid-cols-[3rem_1fr] sm:items-center">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 text-[var(--brand-yellow)]">
+              <div className="mt-3 grid gap-4 rounded-[8px] bg-white/[0.018] p-4 sm:grid-cols-[3rem_1fr] sm:items-center">
+                <span className="soft-icon flex h-12 w-12 items-center justify-center rounded-full text-[var(--brand-yellow)]">
                   <Clock3 aria-hidden="true" size={22} />
                 </span>
                 <span>
@@ -140,13 +140,13 @@ export function ContactGateway() {
         </div>
 
         <div className="mt-16 grid gap-8 lg:grid-cols-[0.78fr_1.22fr]">
-          <motion.div className="border-y border-white/12 py-7" variants={cardReveal(0.14, 28)}>
+          <motion.div className="soft-panel rounded-[8px] p-5 sm:p-7" variants={cardReveal(0.14, 28)}>
             <p className="mb-5 text-sm font-black uppercase tracking-[0.18em] text-white/38">
               {contactSection.globalPresence}
             </p>
             <div className="space-y-4">
               {contactSection.offices.map((office) => (
-                <div key={`${office.country}-${office.address}`} className="rounded-[8px] border border-white/12 bg-white/[0.025] p-5">
+                <div key={`${office.country}-${office.address}`} className="soft-row p-5">
                   <p className="text-xl font-black text-white">{office.country}</p>
                   <p className="mt-2 text-sm leading-6 text-white/54">{office.address}</p>
                 </div>
@@ -160,7 +160,7 @@ export function ContactGateway() {
               {contactSection.services.map((service) => (
                 <motion.span
                   key={service}
-                  className="rounded-full border border-white/12 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white/58"
+                  className="rounded-full bg-white/[0.035] px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white/58 shadow-[inset_0_1px_0_rgba(255,255,255,0.055)]"
                   variants={chipReveal()}
                 >
                   {service}
@@ -175,7 +175,7 @@ export function ContactGateway() {
               {contactSection.budgets.map((budget) => (
                 <motion.span
                   key={budget}
-                  className="rounded-full border border-white/12 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white/58"
+                  className="rounded-full bg-white/[0.035] px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white/58 shadow-[inset_0_1px_0_rgba(255,255,255,0.055)]"
                   variants={chipReveal()}
                 >
                   {budget}
@@ -185,7 +185,7 @@ export function ContactGateway() {
           </motion.div>
 
           <motion.form
-            className="rounded-[8px] border border-white/12 bg-white/[0.035] p-5 sm:p-8"
+            className="soft-panel rounded-[8px] p-5 sm:p-8"
             onSubmit={handleSubmit}
             variants={cardReveal(0.18, 32)}
           >

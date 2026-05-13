@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 import { useMemo, useState } from "react";
 import { ArrowUpRight, Layers3, Play } from "lucide-react";
@@ -16,13 +18,66 @@ import {
   revealMotion,
   staggerContainer,
 } from "@/lib/motion-presets";
+import { getProjectCover, getProjectPath, getProjectSummary, getProjectTitle } from "@/lib/portfolio-projects";
 
 function accentStyle(accent: PortfolioProject["accent"]): CSSProperties {
   return { "--accent": `var(--brand-${accent})` } as CSSProperties;
 }
 
+function ProjectCoverPreview({ project, index }: { project: PortfolioProject; index: number }) {
+  const cover = getProjectCover(project);
+  const previewSrc = cover?.type === "video" ? cover.poster : cover?.src;
+
+  if (cover && previewSrc) {
+    return (
+      <motion.div
+        className="soft-frame relative aspect-[4/5] w-full max-w-[13rem] overflow-hidden rounded-[8px] bg-[#0b0b0b]"
+        variants={iconReveal(0.06)}
+      >
+        <Image
+          src={previewSrc}
+          alt={cover.alt}
+          fill
+          sizes="(min-width: 1024px) 11rem, (min-width: 768px) 10rem, 52vw"
+          className="object-cover transition duration-700 group-hover:scale-[1.045]"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,0.58))]" />
+        <span className="absolute start-3 top-3 font-mono text-xs text-white/60">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        {cover.type === "video" ? (
+          <span className="absolute end-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/35 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-sm">
+            <Play aria-hidden="true" size={13} fill="currentColor" />
+          </span>
+        ) : null}
+        {cover.label ? (
+          <span className="absolute inset-x-3 bottom-3 rounded-full bg-black/44 px-3 py-2 text-center text-[0.64rem] font-black uppercase tracking-[0.13em] text-white/74 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-sm">
+            {cover.label}
+          </span>
+        ) : null}
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      className="soft-frame relative h-24 w-full overflow-hidden rounded-[8px] md:h-28"
+      variants={iconReveal(0.06)}
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_22%,var(--accent),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.12),transparent_48%)] opacity-55" />
+      <div className="absolute inset-x-3 bottom-3 h-px bg-[linear-gradient(90deg,transparent,var(--accent),transparent)]" />
+      <span className="absolute start-3 top-3 font-mono text-xs text-white/44">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <span className="soft-icon absolute bottom-3 end-3 flex h-8 w-8 items-center justify-center rounded-full text-[var(--accent)]">
+        <Play aria-hidden="true" size={14} fill="currentColor" />
+      </span>
+    </motion.div>
+  );
+}
+
 export function PortfolioShowcase() {
-  const { content, direction } = useLaStradaContent();
+  const { content, direction, language } = useLaStradaContent();
   const { portfolio } = content;
   const shouldReduceMotion = useReducedMotion();
   const [activeFilter, setActiveFilter] = useState("all");
@@ -50,7 +105,7 @@ export function PortfolioShowcase() {
         >
           <div>
             <motion.div
-              className="mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-white/14 bg-white/[0.03] text-[var(--brand-purple)]"
+              className="soft-icon mb-8 flex h-14 w-14 items-center justify-center rounded-full text-[var(--brand-purple)]"
               variants={iconReveal()}
             >
               <Layers3 aria-hidden="true" size={24} />
@@ -73,7 +128,7 @@ export function PortfolioShowcase() {
         </motion.div>
 
         <motion.div
-          className="mt-12 flex flex-wrap gap-2 border-y border-white/12 py-5"
+          className="mt-12 flex flex-wrap gap-2"
           {...revealMotion(shouldReduceMotion, staggerContainer(0.04, 0.035), itemViewport)}
         >
           {portfolio.filters.map((filter) => {
@@ -99,63 +154,65 @@ export function PortfolioShowcase() {
           })}
         </motion.div>
 
-        <div className="border-b border-white/12">
+        <div className="mt-7 space-y-3">
           <AnimatePresence initial={false} mode="popLayout">
-          {filteredProjects.map((project, index) => (
-            <motion.article
-              key={`${project.title}-${activeFilter}`}
-              className="kinetic-card group grid gap-6 border-t border-white/12 py-8 md:grid-cols-[7rem_1fr_0.55fr] md:items-center lg:py-10"
-              style={accentStyle(project.accent)}
-              layout
-              {...revealMotion(shouldReduceMotion, cardReveal(index * 0.045, 28), itemViewport)}
-              exit={
-                shouldReduceMotion
-                  ? undefined
-                  : {
-                      opacity: 0,
-                      y: -18,
-                      transition: { duration: 0.22, ease: motionEase },
-                    }
-              }
-              whileHover={shouldReduceMotion ? undefined : { x: direction === "rtl" ? -6 : 6 }}
-            >
-              <motion.div
-                className="relative h-24 w-full overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.03] md:h-28"
-                variants={iconReveal(0.06)}
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_22%,var(--accent),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.12),transparent_48%)] opacity-55" />
-                <div className="absolute inset-x-3 bottom-3 h-px bg-[linear-gradient(90deg,transparent,var(--accent),transparent)]" />
-                <span className="absolute start-3 top-3 font-mono text-xs text-white/44">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="absolute bottom-3 end-3 flex h-8 w-8 items-center justify-center rounded-full border border-white/16 text-[var(--accent)]">
-                  <Play aria-hidden="true" size={14} fill="currentColor" />
-                </span>
-              </motion.div>
+            {filteredProjects.map((project, index) => {
+              const projectTitle = getProjectTitle(project);
 
-              <div>
-                <div className="flex flex-wrap items-center gap-3 text-xs font-black uppercase tracking-[0.16em]">
-                  <span className="text-[var(--accent)]">{project.type}</span>
-                  <span className="h-1 w-1 rounded-full bg-white/30" aria-hidden="true" />
-                  <span className="text-white/38">{project.client}</span>
-                  <span className="h-1 w-1 rounded-full bg-white/30" aria-hidden="true" />
-                  <span className="font-mono text-white/34">{project.category}</span>
-                </div>
-                <h3 className="mt-4 text-3xl font-black leading-none tracking-normal text-white sm:text-5xl">
-                  {project.title}
-                </h3>
-                <p className="mt-4 max-w-3xl text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
-                  {project.description}
-                </p>
-              </div>
+              return (
+                <motion.article
+                  key={`${project.slug}-${activeFilter}`}
+                  className="kinetic-card soft-row group overflow-hidden"
+                  style={accentStyle(project.accent)}
+                  layout
+                  {...revealMotion(shouldReduceMotion, cardReveal(index * 0.045, 28), itemViewport)}
+                  exit={
+                    shouldReduceMotion
+                      ? undefined
+                      : {
+                          opacity: 0,
+                          y: -18,
+                          transition: { duration: 0.22, ease: motionEase },
+                        }
+                  }
+                  whileHover={shouldReduceMotion ? undefined : { x: direction === "rtl" ? -6 : 6 }}
+                >
+                  <Link
+                    href={getProjectPath(language, project)}
+                    className="grid gap-6 px-5 py-8 outline-none md:grid-cols-[10rem_minmax(0,1fr)_3.5rem] md:items-center sm:px-7 lg:px-8 lg:py-10"
+                    aria-label={`${projectTitle} case study`}
+                  >
+                    <ProjectCoverPreview project={project} index={index} />
 
-              <div className="flex justify-start md:justify-end">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 text-white/60 transition group-hover:border-[color:var(--accent)] group-hover:text-[var(--accent)]">
-                  <ArrowUpRight aria-hidden="true" className={direction === "rtl" ? "-scale-x-100" : ""} size={21} />
-                </span>
-              </div>
-            </motion.article>
-          ))}
+                    <div>
+                      <div className="flex flex-wrap items-center gap-3 text-xs font-black uppercase tracking-[0.16em]">
+                        <span className="text-[var(--accent)]">{project.type}</span>
+                        <span className="h-1 w-1 rounded-full bg-white/30" aria-hidden="true" />
+                        <span className="text-white/38">{project.client}</span>
+                        <span className="h-1 w-1 rounded-full bg-white/30" aria-hidden="true" />
+                        <span className="font-mono text-white/34">{project.category}</span>
+                      </div>
+                      <h3 className="mt-4 text-3xl font-black leading-none tracking-normal text-white sm:text-5xl">
+                        {projectTitle}
+                      </h3>
+                      <p className="mt-4 max-w-3xl text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
+                        {getProjectSummary(project)}
+                      </p>
+                    </div>
+
+                    <div className="flex justify-start md:justify-end">
+                      <span className="soft-icon flex h-12 w-12 items-center justify-center rounded-full text-white/60 transition group-hover:text-[var(--accent)]">
+                        <ArrowUpRight
+                          aria-hidden="true"
+                          className={direction === "rtl" ? "-scale-x-100" : ""}
+                          size={21}
+                        />
+                      </span>
+                    </div>
+                  </Link>
+                </motion.article>
+              );
+            })}
           </AnimatePresence>
         </div>
       </div>

@@ -106,7 +106,7 @@ export function AgencyStory() {
             {...revealMotion(shouldReduceMotion, staggerContainer(0.04, 0.08))}
           >
             <motion.div
-              className="mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-white/14 bg-white/[0.03]"
+              className="soft-icon mb-8 flex h-14 w-14 items-center justify-center rounded-full"
               variants={iconReveal()}
             >
               <Sparkles aria-hidden="true" className="text-[var(--brand-yellow)]" size={24} />
@@ -124,13 +124,13 @@ export function AgencyStory() {
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-2 border-y border-white/12"
+            className="grid grid-cols-2 gap-3"
             {...revealMotion(shouldReduceMotion, staggerContainer(0.08, 0.055))}
           >
             {agencyStory.stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                className="border-t border-white/12 p-5 first:border-t-0 odd:border-e odd:border-white/12 sm:p-7 [&:nth-child(2)]:border-t-0"
+                className="soft-panel rounded-[8px] p-5 sm:p-7"
                 style={statStyle(stat.accent)}
                 variants={cardReveal(index * 0.04, 20)}
               >
@@ -157,11 +157,11 @@ export function AgencyStory() {
             ) : null}
           </div>
 
-          <div className="border-y border-white/12">
+          <div className="space-y-3">
             {agencyStory.values.map((value, index) => (
               <motion.article
                 key={value.title}
-                className="kinetic-card grid gap-5 border-t border-white/12 py-7 first:border-t-0 sm:grid-cols-[5rem_0.5fr_1fr] sm:items-start"
+                className="kinetic-card soft-row grid gap-5 px-5 py-7 sm:grid-cols-[5rem_0.5fr_1fr] sm:items-start sm:px-7"
                 style={valueStyle(value.accent)}
                 {...revealMotion(shouldReduceMotion, cardReveal(index * 0.045, 26), itemViewport)}
                 whileHover={shouldReduceMotion ? undefined : { y: -3 }}
@@ -182,7 +182,7 @@ export function AgencyStory() {
 
         <div className="mt-20 grid gap-12 lg:grid-cols-[0.38fr_1fr]">
           <div className="lg:sticky lg:top-24 lg:h-fit">
-            <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-white/14 bg-white/[0.03]">
+            <div className="soft-icon mb-8 flex h-14 w-14 items-center justify-center rounded-full">
               <UserRound aria-hidden="true" className="text-white/76" size={24} />
             </div>
             <h3 className="max-w-lg text-balance text-5xl font-black leading-[0.95] tracking-normal sm:text-6xl">
@@ -195,11 +195,11 @@ export function AgencyStory() {
             ) : null}
           </div>
 
-          <div className="border-y border-white/12">
+          <div className="space-y-3">
             {team.members.map((member, index) => (
               <motion.article
                 key={member.name}
-                className={`kinetic-card grid gap-5 border-t border-white/12 py-8 first:border-t-0 sm:items-start ${
+                className={`kinetic-card soft-row grid gap-5 px-5 py-8 sm:items-start sm:px-7 ${
                   member.bio
                     ? "sm:grid-cols-[5rem_0.62fr_1fr] lg:grid-cols-[5rem_0.52fr_0.88fr_10rem]"
                     : "sm:grid-cols-[5rem_1fr_12rem]"
@@ -228,7 +228,7 @@ export function AgencyStory() {
                 ) : null}
                 {member.image ? (
                   <motion.div
-                    className={`relative min-h-64 overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.03] shadow-2xl shadow-black/20 lg:min-h-52 ${
+                    className={`soft-frame relative min-h-64 overflow-hidden rounded-[8px] lg:min-h-52 ${
                       member.bio ? "sm:col-span-3 lg:col-span-1" : ""
                     }`}
                     variants={cardReveal(0.12, 22)}
@@ -250,11 +250,11 @@ export function AgencyStory() {
         </div>
 
         <motion.div
-          className="mt-20 grid gap-10 border-y border-white/12 py-12 lg:grid-cols-[0.34fr_1fr] lg:items-end lg:py-16"
+          className="soft-panel mt-20 grid gap-10 rounded-[8px] px-5 py-12 sm:px-7 lg:grid-cols-[0.34fr_1fr] lg:items-end lg:px-8 lg:py-16"
           {...revealMotion(shouldReduceMotion, sectionReveal(0), itemViewport)}
         >
           <div>
-            <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/14 bg-white/[0.03] text-[var(--brand-yellow)]">
+            <div className="soft-icon flex h-14 w-14 items-center justify-center rounded-full text-[var(--brand-yellow)]">
               <Compass aria-hidden="true" size={24} />
             </div>
             <p className="mt-7 font-mono text-sm font-black uppercase tracking-[0.2em] text-white/38">

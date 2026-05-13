@@ -1,8 +1,30 @@
 import type { MetadataRoute } from "next";
-import { getLanguageAlternates, siteUrl } from "@/lib/seo";
+import { getLaStradaContent } from "@/lib/la-strada-content";
+import { locales } from "@/lib/locales";
+import { siteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const languages = getLanguageAlternates();
+  const rootLanguages = {
+    ar: `${siteUrl}/ar`,
+    en: `${siteUrl}/en`,
+    "x-default": `${siteUrl}/ar`,
+  };
+
+  const projectPages = locales.flatMap((locale) =>
+    getLaStradaContent(locale).portfolio.projects.map((project) => ({
+      url: `${siteUrl}/${locale}/projects/${project.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.72,
+      alternates: {
+        languages: {
+          ar: `${siteUrl}/ar/projects/${project.slug}`,
+          en: `${siteUrl}/en/projects/${project.slug}`,
+          "x-default": `${siteUrl}/ar/projects/${project.slug}`,
+        },
+      },
+    })),
+  );
 
   return [
     {
@@ -11,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
       alternates: {
-        languages,
+        languages: rootLanguages,
       },
     },
     {
@@ -20,8 +42,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
       alternates: {
-        languages,
+        languages: rootLanguages,
       },
     },
+    ...projectPages,
   ];
 }

@@ -16,7 +16,6 @@ import {
   lineReveal,
   mediaReveal,
   revealMotion,
-  sweepReveal,
   staggerContainer,
 } from "@/lib/motion-presets";
 
@@ -67,29 +66,25 @@ export function SolutionPillars() {
             </motion.p>
           </motion.div>
 
-          <div className="border-y border-white/12">
+          <div className="space-y-3">
             {solutionPillars.map((pillar, index) => {
               const Icon = iconMap[pillar.icon];
 
               return (
                 <motion.article
                   key={pillar.title}
-                  className="kinetic-card group relative overflow-hidden border-t border-white/12 px-5 py-8 first:border-t-0 sm:px-7 lg:px-8 lg:py-10"
+                  className="kinetic-card soft-row group relative overflow-hidden px-5 py-8 sm:px-7 lg:px-8 lg:py-10"
                   style={accentStyle(pillar.accent, direction)}
                   {...revealMotion(shouldReduceMotion, cardReveal(index * 0.06, 34), itemViewport)}
                   whileHover={shouldReduceMotion ? undefined : { y: -4 }}
                 >
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_var(--pillar-hover-x)_50%,var(--accent),transparent_34rem)] opacity-0 transition duration-500 group-hover:opacity-[0.08]" />
-                  <motion.div
-                    className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,var(--accent),transparent)]"
-                    variants={sweepReveal(direction, 0.04)}
-                  />
                   <div className="absolute inset-y-0 start-0 w-px bg-[linear-gradient(180deg,var(--accent),var(--accent),transparent)] opacity-0 transition duration-500 group-hover:opacity-80" />
                   <div className="grid gap-6 md:grid-cols-[6rem_1fr] xl:grid-cols-[6rem_minmax(0,1fr)_18rem] xl:items-center">
                     <div>
                       <span className="font-mono text-sm text-white/36">{String(index + 1).padStart(2, "0")}</span>
                       <motion.div
-                        className="mt-5 flex h-14 w-14 items-center justify-center rounded-full border border-white/12 bg-white/[0.03] text-[var(--accent)]"
+                        className="soft-icon mt-5 flex h-14 w-14 items-center justify-center rounded-full text-[var(--accent)]"
                         variants={iconReveal(0.08)}
                       >
                         <Icon aria-hidden="true" size={23} />
@@ -113,7 +108,7 @@ export function SolutionPillars() {
                         {pillar.features.map((feature) => (
                           <motion.span
                             key={feature}
-                            className="rounded-full border border-white/12 px-3 py-2 text-xs font-bold text-white/58 transition group-hover:border-[color:var(--accent)] group-hover:text-white/78"
+                            className="rounded-full bg-white/[0.035] px-3 py-2 text-xs font-bold text-white/58 shadow-[inset_0_1px_0_rgba(255,255,255,0.055)] transition group-hover:text-white/78"
                             variants={chipReveal()}
                           >
                             {feature}
@@ -124,7 +119,7 @@ export function SolutionPillars() {
 
                     {pillar.image ? (
                       <motion.div
-                        className="relative min-h-48 overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.03] shadow-2xl shadow-black/20 md:col-span-2 xl:col-span-1"
+                        className="soft-frame relative min-h-48 overflow-hidden rounded-[8px] md:col-span-2 xl:col-span-1"
                         variants={mediaReveal(0.16)}
                       >
                         <Image
