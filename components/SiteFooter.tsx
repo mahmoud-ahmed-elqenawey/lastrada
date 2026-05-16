@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import type { FormEvent } from "react";
-import { ExternalLink, Mail, MapPin, Send } from "lucide-react";
+import { Clock3, ExternalLink, Mail, MapPin, PhoneCall, Send } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useLaStradaContent } from "@/lib/la-strada-i18n";
 import {
@@ -22,7 +22,7 @@ const footerAnchors = {
 
 export function SiteFooter() {
   const { content } = useLaStradaContent();
-  const { brand, footer, sourceSite } = content;
+  const { brand, contactSection, footer, sourceSite } = content;
   const legalLinks = Object.values(footer.legal);
   const shouldReduceMotion = useReducedMotion();
 
@@ -66,11 +66,37 @@ export function SiteFooter() {
                 <Mail aria-hidden="true" size={18} className="text-[var(--brand-cyan)]" />
                 {sourceSite.email}
               </a>
+              <a className="flex items-center gap-3 transition hover:text-white" href={sourceSite.phone.href}>
+                <PhoneCall aria-hidden="true" size={18} className="text-[var(--brand-green)]" />
+                {sourceSite.phone.display}
+              </a>
+              <p className="flex items-center gap-3">
+                <Clock3 aria-hidden="true" size={18} className="text-[var(--brand-yellow)]" />
+                {contactSection.businessHoursLabel}: {contactSection.businessHours}
+              </p>
               <p className="flex items-center gap-3">
                 <MapPin aria-hidden="true" size={18} className="text-[var(--brand-red)]" />
                 {sourceSite.office.country} - {sourceSite.office.address}
               </p>
             </motion.div>
+
+            {sourceSite.socialLinks.length ? (
+              <motion.div className="mt-6 flex flex-wrap gap-3" variants={staggerContainer(0.08, 0.035)}>
+                {sourceSite.socialLinks.map((link) => (
+                  <motion.a
+                    key={link.href}
+                    className="inline-flex items-center gap-2 rounded-full bg-white/[0.035] px-4 py-2 text-sm font-bold text-white/56 transition hover:bg-white/10 hover:text-white"
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    variants={chipReveal()}
+                  >
+                    {link.label}
+                    <ExternalLink aria-hidden="true" size={14} />
+                  </motion.a>
+                ))}
+              </motion.div>
+            ) : null}
 
             <motion.div className="mt-9 rounded-[8px] bg-white/[0.018] p-5" variants={itemReveal(0.08, 18)}>
               <h3 className="text-lg font-black text-white">{footer.stayUpdated}</h3>

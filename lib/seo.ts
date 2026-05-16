@@ -184,6 +184,7 @@ export function getJsonLd(locale: Locale) {
         logo: absoluteUrl(brand.logo),
         image: absoluteUrl(`${path}/opengraph-image`),
         email: sourceSite.email,
+        telephone: sourceSite.phone.href.replace("tel:", ""),
         description: page.description,
         slogan:
           locale === "ar"
@@ -202,10 +203,11 @@ export function getJsonLd(locale: Locale) {
         contactPoint: {
           "@type": "ContactPoint",
           email: sourceSite.email,
+          telephone: sourceSite.phone.href.replace("tel:", ""),
           contactType: "customer service",
           availableLanguage: ["Arabic", "English"],
         },
-        sameAs: [sourceSite.facebook],
+        sameAs: sourceSite.socialLinks.map((link) => link.href),
         knowsAbout: page.services.map((service) => service.name),
       },
       {

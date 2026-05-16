@@ -61,7 +61,7 @@ export default async function Home({ params }: LocalePageProps) {
       />
       <LanguageProvider initialLanguage={localeParam}>
         <main id="top" className="relative isolate min-h-screen overflow-x-hidden bg-[#050505] text-white">
-          {isDevLightMode ? null : <ScrollProgressChrome />}
+          <ScrollProgressChrome />
           {isDevLightMode ? null : <InteractionChrome />}
           <CinematicHero />
           <SolutionPillars />

@@ -142,6 +142,11 @@ export type LaStradaContent = {
     url: string;
     email: string;
     facebook: string;
+    instagram: string;
+    socialLinks: Array<{
+      label: string;
+      href: string;
+    }>;
     phone: {
       display: string;
       href: string;

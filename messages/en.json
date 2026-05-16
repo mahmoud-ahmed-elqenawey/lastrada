@@ -18,12 +18,23 @@
       "url": "https://www.lastrada.agency/",
       "email": "info@lastrada.agency",
       "facebook": "https://www.facebook.com/lastrada.marketing",
+      "instagram": "https://www.instagram.com/lastrada.agency/",
+      "socialLinks": [
+        {
+          "label": "Facebook",
+          "href": "https://www.facebook.com/lastrada.marketing"
+        },
+        {
+          "label": "Instagram",
+          "href": "https://www.instagram.com/lastrada.agency/"
+        }
+      ],
       "phone": {
-        "display": "+962 7X XXX XXXX",
-        "href": "tel:+962700000000",
+        "display": "0795410422",
+        "href": "tel:+962795410422",
         "whatsappLabel": "WhatsApp",
-        "whatsappHref": "https://wa.me/962700000000",
-        "callLabel": "Call"
+        "whatsappHref": "https://wa.me/962795410422",
+        "callLabel": "Call us"
       },
       "office": {
         "country": "Jordan",
@@ -625,10 +636,10 @@
       "emailLabel": "Email Us",
       "visitLabel": "Visit Us",
       "businessHoursLabel": "Business Hours",
-      "businessHours": "9:00 – 6:00",
+      "businessHours": "9:00–6:00",
       "globalPresence": "Global Presence",
       "startProject": "Start Your Project",
-      "socialLabel": "",
+      "socialLabel": "Social Channels",
       "services": [
         "Marketing",
         "Web & App",

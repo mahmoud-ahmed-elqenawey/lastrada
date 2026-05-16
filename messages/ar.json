@@ -18,12 +18,23 @@
       "url": "https://www.lastrada.agency/",
       "email": "info@lastrada.agency",
       "facebook": "https://www.facebook.com/lastrada.marketing",
+      "instagram": "https://www.instagram.com/lastrada.agency/",
+      "socialLinks": [
+        {
+          "label": "فيسبوك",
+          "href": "https://www.facebook.com/lastrada.marketing"
+        },
+        {
+          "label": "إنستجرام",
+          "href": "https://www.instagram.com/lastrada.agency/"
+        }
+      ],
       "phone": {
-        "display": "+962 7X XXX XXXX",
-        "href": "tel:+962700000000",
+        "display": "0795410422",
+        "href": "tel:+962795410422",
         "whatsappLabel": "واتساب",
-        "whatsappHref": "https://wa.me/962700000000",
-        "callLabel": "اتصال"
+        "whatsappHref": "https://wa.me/962795410422",
+        "callLabel": "اتصل بنا"
       },
       "office": {
         "country": "الأردن",
@@ -625,10 +636,10 @@
       "emailLabel": "راسلنا",
       "visitLabel": "زورنا",
       "businessHoursLabel": "ساعات العمل",
-      "businessHours": "9:00 – 6:00",
+      "businessHours": "9:00–6:00",
       "globalPresence": "حضورنا العالمي",
       "startProject": "ابدأ مشروعك",
-      "socialLabel": "",
+      "socialLabel": "قنوات التواصل",
       "services": [
         "التسويق",
         "الويب والتطبيقات",

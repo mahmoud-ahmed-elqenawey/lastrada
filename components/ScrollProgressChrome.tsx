@@ -29,11 +29,6 @@ export function ScrollProgressChrome() {
   });
 
   const ringOffset = useTransform(smoothProgress, [0, 1], [ringCircumference, 0]);
-  const playheadInline = useTransform(
-    smoothProgress,
-    [0, 1],
-    direction === "rtl" ? ["100%", "0%"] : ["0%", "100%"],
-  );
 
   useEffect(() => {
     const syncPastHero = (latest: number) => {
@@ -78,21 +73,18 @@ export function ScrollProgressChrome() {
       <motion.div
         aria-hidden="true"
         data-scroll-progress="track"
-        className="pointer-events-none fixed inset-x-0 top-0 z-[80] h-[5px] bg-black/58"
+        className="scroll-progress-shell"
         initial={false}
         animate={{ opacity: pastHero ? 1 : 0 }}
         transition={{ duration: shouldReduceMotion ? 0 : 0.22 }}
       >
+        <div className="scroll-progress-rail" />
         <motion.div
           data-scroll-progress="bar"
-          className={`h-full bg-[linear-gradient(90deg,var(--brand-blue),var(--brand-cyan),var(--brand-green),var(--brand-yellow),var(--brand-red),var(--brand-purple))] shadow-[0_0_24px_rgba(48,169,220,0.45)] ${
-            direction === "rtl" ? "origin-right" : "origin-left"
+          className={`scroll-progress-fill ${
+            direction === "rtl" ? "scroll-progress-fill-rtl origin-right" : "scroll-progress-fill-ltr origin-left"
           }`}
           style={{ scaleX: smoothProgress }}
-        />
-        <motion.div
-          className="absolute top-0 h-full w-20 -translate-x-1/2 bg-white/42 opacity-70"
-          style={{ left: playheadInline }}
         />
       </motion.div>
 

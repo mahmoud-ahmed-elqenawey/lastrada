@@ -2,7 +2,17 @@
 
 import type { FormEvent } from "react";
 import { useState } from "react";
-import { ArrowUpRight, CheckCircle2, Clock3, ExternalLink, Mail, MapPin, Send } from "lucide-react";
+import {
+  ArrowUpRight,
+  CheckCircle2,
+  Clock3,
+  ExternalLink,
+  Mail,
+  MapPin,
+  MessageCircle,
+  PhoneCall,
+  Send,
+} from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useLaStradaContent } from "@/lib/la-strada-i18n";
 import {
@@ -60,15 +70,15 @@ export function ContactGateway() {
                 {contactSection.ctaLabel}
                 <Send aria-hidden="true" size={18} />
               </a>
-              {contactSection.socialLabel ? (
+              {sourceSite.phone.whatsappHref ? (
                 <a
                   className="cinema-button cinema-button-muted"
-                  href={contactSection.facebookHref}
+                  href={sourceSite.phone.whatsappHref}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {contactSection.socialLabel}
-                  <ExternalLink aria-hidden="true" size={18} />
+                  {sourceSite.phone.whatsappLabel}
+                  <MessageCircle aria-hidden="true" size={18} />
                 </a>
               ) : null}
             </motion.div>
@@ -91,6 +101,60 @@ export function ContactGateway() {
                 </span>
                 <span className="mt-2 block text-xl font-black text-white sm:text-2xl">
                   {sourceSite.email}
+                </span>
+              </span>
+              <ArrowUpRight
+                aria-hidden="true"
+                className={`text-white/42 transition group-hover:-translate-y-0.5 group-hover:text-white ${
+                  direction === "rtl"
+                    ? "-scale-x-100 group-hover:-translate-x-0.5"
+                    : "group-hover:translate-x-0.5"
+                }`}
+                size={22}
+              />
+            </a>
+
+            <a
+              href={sourceSite.phone.href}
+              className="group mt-3 grid gap-4 rounded-[8px] bg-white/[0.018] p-4 transition hover:bg-white/[0.035] sm:grid-cols-[3rem_1fr_2rem] sm:items-center"
+            >
+              <span className="soft-icon flex h-12 w-12 items-center justify-center rounded-full text-[var(--brand-green)]">
+                <PhoneCall aria-hidden="true" size={22} />
+              </span>
+              <span>
+                <span className="block text-sm font-bold uppercase tracking-[0.18em] text-white/38">
+                  {sourceSite.phone.callLabel}
+                </span>
+                <span className="mt-2 block text-xl font-black text-white sm:text-2xl">
+                  {sourceSite.phone.display}
+                </span>
+              </span>
+              <ArrowUpRight
+                aria-hidden="true"
+                className={`text-white/42 transition group-hover:-translate-y-0.5 group-hover:text-white ${
+                  direction === "rtl"
+                    ? "-scale-x-100 group-hover:-translate-x-0.5"
+                    : "group-hover:translate-x-0.5"
+                }`}
+                size={22}
+              />
+            </a>
+
+            <a
+              href={sourceSite.phone.whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="group mt-3 grid gap-4 rounded-[8px] bg-white/[0.018] p-4 transition hover:bg-white/[0.035] sm:grid-cols-[3rem_1fr_2rem] sm:items-center"
+            >
+              <span className="soft-icon flex h-12 w-12 items-center justify-center rounded-full text-[var(--brand-green)]">
+                <MessageCircle aria-hidden="true" size={22} />
+              </span>
+              <span>
+                <span className="block text-sm font-bold uppercase tracking-[0.18em] text-white/38">
+                  {sourceSite.phone.whatsappLabel}
+                </span>
+                <span className="mt-2 block text-xl font-black text-white sm:text-2xl">
+                  {sourceSite.phone.display}
                 </span>
               </span>
               <ArrowUpRight
@@ -134,6 +198,28 @@ export function ContactGateway() {
                     {contactSection.businessHours}
                   </span>
                 </span>
+              </div>
+            ) : null}
+
+            {sourceSite.socialLinks.length ? (
+              <div className="mt-3 rounded-[8px] bg-white/[0.018] p-4">
+                <span className="block text-sm font-bold uppercase tracking-[0.18em] text-white/38">
+                  {contactSection.socialLabel}
+                </span>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {sourceSite.socialLinks.map((link) => (
+                    <a
+                      key={link.href}
+                      className="inline-flex items-center gap-2 rounded-full bg-white/[0.045] px-4 py-2 text-sm font-bold text-white/68 transition hover:bg-white/10 hover:text-white"
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {link.label}
+                      <ExternalLink aria-hidden="true" size={15} />
+                    </a>
+                  ))}
+                </div>
               </div>
             ) : null}
           </motion.div>
