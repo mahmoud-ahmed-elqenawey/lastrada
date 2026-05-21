@@ -1,0 +1,57 @@
+{
+  "slug": "oliga-rose",
+  "summary": "A complete identity and packaging system for a beauty brand, built to feel elegant, cohesive, and memorable across every touchpoint.",
+  "cover": {
+    "type": "image",
+    "src": "lastrada-media/oliga-rose/images/%D9%85%D8%B3%D8%B7%D8%B1%D8%A9-%D8%A7%D9%88%D9%84%D9%8A%D9%82%D8%A7-_013.jpg",
+    "alt": "Oliga Rose packaging design showcase by LA STRADA",
+    "label": "Case Study Cover"
+  },
+  "caseStudy": {
+    "overviewTitle": "A complete beauty brand system",
+    "challengeTitle": "Challenge",
+    "challenge": "Oliga Rose needed a visual identity that could move beyond a logo and feel consistent across packaging, print, and digital touchpoints without losing its premium beauty character.",
+    "solutionTitle": "Solution",
+    "solution": "LA STRADA built the brand as a cohesive identity journey, from the core mark to the full packaging direction, balancing elegance, clarity, and shelf-ready product presence.",
+    "deliverablesTitle": "Deliverables",
+    "deliverables": [
+      "Logo design",
+      "Visual identity",
+      "Packaging system",
+      "Print design",
+      "Brand presentation"
+    ],
+    "galleryTitle": "Identity gallery",
+    "videoTitle": "Video assets",
+    "ctaTitle": "Have a product brand that needs this level of presence?",
+    "ctaBody": "Let LA STRADA shape the identity, packaging, and launch story into one memorable system.",
+    "ctaLabel": "Start a similar project"
+  },
+  "title": "Brand Identity | Oliga Rose",
+  "category": "branding",
+  "client": "Oliga Rose",
+  "description": "Olga Rose was developed as a complete branding journey, starting from the core logo design and extending through to the full packaging system. Every element was carefully crafted to reflect a cohesive visual identity that communicates elegance, consistency, and brand character across all touchpoints. The result is a refined and unified brand experience that brings the Olga Rose vision to life in a clear and memorable way.",
+  "type": "Brand Identity",
+  "accent": "purple",
+  "media": [
+    {
+      "type": "image",
+      "src": "lastrada-media/oliga-rose/images/%D9%85%D8%B3%D8%B7%D8%B1%D8%A9-%D8%A7%D9%88%D9%84%D9%8A%D9%82%D8%A7-_022.jpg",
+      "alt": "Oliga Rose visual identity artwork by LA STRADA",
+      "label": "Visual Identity"
+    },
+    {
+      "type": "image",
+      "src": "lastrada-media/oliga-rose/images/%D9%85%D8%B3%D8%B7%D8%B1%D8%A9-%D8%A7%D9%88%D9%84%D9%8A%D9%82%D8%A7-_013.jpg",
+      "alt": "Oliga Rose packaging design showcase by LA STRADA",
+      "label": "Packaging"
+    },
+    {
+      "type": "video",
+      "src": "lastrada-media/oliga-rose/videos/%D9%85%D9%88%D8%B4%D9%86%20%D8%A7%D9%84%D9%87%D9%88%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A8%D8%B5%D8%B1%D9%8A%D8%A9%20%D8%A7%D9%88%D9%84%D9%8A%D9%82%D8%A7.mp4",
+      "poster": "lastrada-media/oliga-rose/images/%D9%85%D8%B3%D8%B7%D8%B1%D8%A9-%D8%A7%D9%88%D9%84%D9%8A%D9%82%D8%A7-_013.jpg",
+      "alt": "Oliga Rose brand identity and packaging video by LA STRADA",
+      "label": "Project Reel"
+    }
+  ]
+}

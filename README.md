@@ -29,6 +29,16 @@ pnpm build
 pnpm start
 ```
 
+## Media Hosting
+
+Project media is loaded from Cloudflare R2 through:
+
+```bash
+NEXT_PUBLIC_LA_STRADA_MEDIA_BASE_URL=https://pub-9152d84694a54c949533f907a0433921.r2.dev
+```
+
+Set the same environment variable in Vercel. Project files can then store media as R2 object paths like `lastrada-media/oliga-rose/videos/file.mp4`.
+
 ## Brand Assets
 
 - Optimized web logo: `public/brand/lastrada-logo.png`

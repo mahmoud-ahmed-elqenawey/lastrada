@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { ProjectCaseStudy } from "@/components/ProjectCaseStudy";
 import { getLaStradaContent } from "@/lib/la-strada-content";
 import { defaultLocale, isLocale, type Locale } from "@/lib/locales";
 import {
+  getCanonicalProjectSlug,
   getProjectBySlug,
   getProjectCover,
   getProjectStaticParams,
@@ -34,7 +35,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { locale: localeParam, slug } = await params;
   const locale: Locale = isLocale(localeParam) ? localeParam : defaultLocale;
-  const project = getProjectBySlug(locale, slug);
+  const canonicalSlug = getCanonicalProjectSlug(slug);
+  const project = getProjectBySlug(locale, canonicalSlug);
 
   if (!project) {
     return {};
@@ -97,8 +99,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   setRequestLocale(localeParam);
 
+  const canonicalSlug = getCanonicalProjectSlug(slug);
+
+  if (canonicalSlug !== slug) {
+    redirect(`/${localeParam}/projects/${canonicalSlug}`);
+  }
+
   const content = getLaStradaContent(localeParam);
-  const project = getProjectBySlug(localeParam, slug);
+  const project = getProjectBySlug(localeParam, canonicalSlug);
 
   if (!project) {
     notFound();

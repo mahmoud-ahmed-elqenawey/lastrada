@@ -216,9 +216,6 @@ export function ProjectCaseStudy({
                   className="soft-frame relative aspect-[9/14] overflow-hidden rounded-[8px] md:aspect-[4/5]"
                 >
                   <MediaFrame media={item} />
-                  <figcaption className="absolute inset-x-4 bottom-4 z-10 rounded-full bg-black/44 px-4 py-2 text-center text-xs font-black uppercase tracking-[0.15em] text-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-sm">
-                    {item.label ?? `${copy.gallery} ${index + 1}`}
-                  </figcaption>
                 </figure>
               ))}
             </div>

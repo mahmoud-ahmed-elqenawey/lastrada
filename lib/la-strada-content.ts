@@ -1,7 +1,6 @@
-import arMessages from "@/messages/ar.json";
-import enMessages from "@/messages/en.json";
 import type { LaStradaContent } from "@/lib/la-strada-i18n";
 import { defaultLocale, type Locale } from "@/lib/locales";
+import { getLaStradaMessages } from "@/lib/la-strada-messages";
 
 export type SeoService = {
   title: string;
@@ -9,8 +8,8 @@ export type SeoService = {
 };
 
 export const localizedContent: Record<Locale, LaStradaContent> = {
-  ar: arMessages.content as LaStradaContent,
-  en: enMessages.content as LaStradaContent,
+  ar: getLaStradaMessages("ar").content,
+  en: getLaStradaMessages("en").content,
 };
 
 export function getLaStradaContent(locale: Locale) {
