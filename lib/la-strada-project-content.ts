@@ -2,6 +2,12 @@ import arOligaRose from "@/messages/projects/oliga-rose/ar.json";
 import enOligaRose from "@/messages/projects/oliga-rose/en.json";
 import arElmo3afah from "@/messages/projects/elmo3afah/ar.json";
 import enElmo3afah from "@/messages/projects/elmo3afah/en.json";
+import arAlGhanemHousing from "@/messages/projects/al-ghanem-housing/ar.json";
+import enAlGhanemHousing from "@/messages/projects/al-ghanem-housing/en.json";
+import arMegaCafeJordan from "@/messages/projects/mega-cafe-jordan/ar.json";
+import enMegaCafeJordan from "@/messages/projects/mega-cafe-jordan/en.json";
+import arAbuAlRabSocial from "@/messages/projects/abu-al-rab-social/ar.json";
+import enAbuAlRabSocial from "@/messages/projects/abu-al-rab-social/en.json";
 import type { LaStradaContent, PortfolioMedia, PortfolioProject } from "@/lib/la-strada-i18n";
 import type { Locale } from "@/lib/locales";
 import { resolveMediaUrl } from "@/lib/media-url";
@@ -14,11 +20,17 @@ type ProjectOverride = {
 const projectOverrides: Record<Locale, ProjectOverride[]> = {
   ar: [
     { project: arOligaRose as PortfolioProject },
+    { project: arAlGhanemHousing as PortfolioProject },
     { project: arElmo3afah as PortfolioProject, replacesSlug: "al-moafah-medical-center" },
+    { project: arAbuAlRabSocial as PortfolioProject },
+    { project: arMegaCafeJordan as PortfolioProject },
   ],
   en: [
     { project: enOligaRose as PortfolioProject },
+    { project: enAlGhanemHousing as PortfolioProject },
     { project: enElmo3afah as PortfolioProject, replacesSlug: "al-moafah-medical-center" },
+    { project: enAbuAlRabSocial as PortfolioProject },
+    { project: enMegaCafeJordan as PortfolioProject },
   ],
 };
 

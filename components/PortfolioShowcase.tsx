@@ -18,6 +18,7 @@ import {
   revealMotion,
   staggerContainer,
 } from "@/lib/motion-presets";
+import { isLaStradaRemoteMediaUrl } from "@/lib/media-url";
 import { getProjectCover, getProjectPath, getProjectSummary, getProjectTitle } from "@/lib/portfolio-projects";
 
 function accentStyle(accent: PortfolioProject["accent"]): CSSProperties {
@@ -38,6 +39,7 @@ function ProjectCoverPreview({ project, index }: { project: PortfolioProject; in
           src={previewSrc}
           alt={cover.alt}
           fill
+          unoptimized={isLaStradaRemoteMediaUrl(previewSrc)}
           sizes="(min-width: 1024px) 11rem, (min-width: 768px) 10rem, 52vw"
           className="object-cover transition duration-700 group-hover:scale-[1.045]"
         />
@@ -48,11 +50,6 @@ function ProjectCoverPreview({ project, index }: { project: PortfolioProject; in
         {cover.type === "video" ? (
           <span className="absolute end-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/35 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-sm">
             <Play aria-hidden="true" size={13} fill="currentColor" />
-          </span>
-        ) : null}
-        {cover.label ? (
-          <span className="absolute inset-x-3 bottom-3 rounded-full bg-black/44 px-3 py-2 text-center text-[0.64rem] font-black uppercase tracking-[0.13em] text-white/74 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-sm">
-            {cover.label}
           </span>
         ) : null}
       </motion.div>

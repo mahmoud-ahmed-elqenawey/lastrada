@@ -23,3 +23,14 @@ export function resolveMediaUrl(src?: string) {
 
   return `${getLaStradaMediaBaseUrl()}/${cleanSrc.replace(/^\/+/, "")}`;
 }
+
+export function isLaStradaRemoteMediaUrl(src?: string) {
+  if (!src) return false;
+
+  try {
+    const baseHostname = new URL(getLaStradaMediaBaseUrl()).hostname;
+    return new URL(src).hostname === baseHostname;
+  } catch {
+    return false;
+  }
+}

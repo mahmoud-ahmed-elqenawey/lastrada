@@ -3,12 +3,8 @@ import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, ImageIcon } from "lucide-react";
 import type { LaStradaContent, PortfolioMedia, PortfolioProject } from "@/lib/la-strada-i18n";
 import { getAlternateLocale, getDirection, getLocalePath, type Locale } from "@/lib/locales";
+import { isLaStradaRemoteMediaUrl } from "@/lib/media-url";
 import { getProjectCover, getProjectPath, getProjectSummary, getProjectTitle } from "@/lib/portfolio-projects";
-
-function mediaPreviewSrc(media?: PortfolioMedia) {
-  if (!media) return undefined;
-  return media.type === "video" ? media.poster : media.src;
-}
 
 function MediaFrame({
   media,
@@ -40,6 +36,7 @@ function MediaFrame({
       alt={media.alt}
       fill
       priority={priority}
+      unoptimized={isLaStradaRemoteMediaUrl(media.src)}
       sizes="(min-width: 1280px) 42vw, (min-width: 768px) 48vw, 92vw"
       className={`object-cover ${className}`}
     />
@@ -58,9 +55,8 @@ export function ProjectCaseStudy({
   const direction = getDirection(locale);
   const alternateLocale = getAlternateLocale(locale);
   const cover = getProjectCover(project);
-  const coverPreview = mediaPreviewSrc(cover);
   const heroMedia =
-    cover && coverPreview
+    cover
       ? cover.type === "video" && cover.poster
         ? ({ type: "image", src: cover.poster, alt: cover.alt, label: cover.label } satisfies PortfolioMedia)
         : cover

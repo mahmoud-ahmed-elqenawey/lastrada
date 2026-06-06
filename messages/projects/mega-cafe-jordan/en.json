@@ -1,0 +1,84 @@
+{
+  "slug": "mega-cafe-jordan",
+  "summary": "A food and beverage photoshoot built to elevate Mega Cafe's menu and digital presence with polished product imagery and short-form reels.",
+  "cover": {
+    "type": "image",
+    "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%A8%D9%88%D8%B8%D8%A9.jpg",
+    "alt": "Mega Cafe ice cream product photo by LA STRADA",
+    "label": "Photoshoot"
+  },
+  "caseStudy": {
+    "overviewTitle": "Menu visuals with reel-ready energy",
+    "challengeTitle": "Challenge",
+    "challenge": "Mega Cafe needed food and beverage visuals that could make menu items feel clear, appetizing, and usable across social media, not just a basic product shoot.",
+    "solutionTitle": "Solution",
+    "solution": "LA STRADA built a visual set around drinks, desserts, and cafe moments, then supported the stills with short-form video reels for a stronger digital presence.",
+    "deliverablesTitle": "Deliverables",
+    "deliverables": [
+      "Food photography",
+      "Drink photography",
+      "Dessert photography",
+      "Social media reels",
+      "Visual content direction"
+    ],
+    "galleryTitle": "Cafe gallery",
+    "videoTitle": "Video assets",
+    "ctaTitle": "Want your menu to look as good online as it feels in-store?",
+    "ctaBody": "LA STRADA can produce the photography and reels your brand needs for sharper social media presence.",
+    "ctaLabel": "Start a photoshoot"
+  },
+  "title": "Photoshoot | Mega Cafe Jordan",
+  "category": "photography",
+  "client": "Mega Cafe",
+  "description": "LA STRADA conducted a professional photoshoot for Mega Cafe in Jordan focused on menu items, including food, drinks, desserts, and cafe visuals. The work was designed to present products with high visual quality, strengthen the cafe's social media presence, and support its digital marketing content with both still imagery and short-form video assets.",
+  "type": "Photography",
+  "accent": "green",
+  "media": [
+    {
+      "type": "image",
+      "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%A8%D9%88%D8%B8%D8%A9.jpg",
+      "alt": "Mega Cafe ice cream product photo by LA STRADA",
+      "label": "Ice Cream"
+    },
+    {
+      "type": "image",
+      "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%AD%D9%84%D9%88%D9%8A%D8%A7%D8%AA%20(1).jpg",
+      "alt": "Mega Cafe dessert product photo by LA STRADA",
+      "label": "Desserts"
+    },
+    {
+      "type": "image",
+      "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%AD%D9%84%D9%88%D9%8A%D8%A7%D8%AA%20(4).jpg",
+      "alt": "Mega Cafe sweets product photo by LA STRADA",
+      "label": "Sweets"
+    },
+    {
+      "type": "video",
+      "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/videos/La%20Strada%20Story%20Mega.mp4",
+      "poster": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%A8%D9%88%D8%B8%D8%A9.jpg",
+      "alt": "Mega Cafe story reel by LA STRADA",
+      "label": "Story Reel"
+    },
+    {
+      "type": "video",
+      "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/videos/Maga%20Cafe%20Reel%201-2.mp4",
+      "poster": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%AD%D9%84%D9%88%D9%8A%D8%A7%D8%AA%20(1).jpg",
+      "alt": "Mega Cafe reel by LA STRADA",
+      "label": "Reel"
+    },
+    {
+      "type": "video",
+      "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/videos/Mega%20Reel%202.mp4",
+      "poster": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%AD%D9%84%D9%88%D9%8A%D8%A7%D8%AA%20(1).jpg",
+      "alt": "Mega Cafe second reel by LA STRADA",
+      "label": "Reel 2"
+    },
+    {
+      "type": "video",
+      "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/videos/Mega%20Reel%203.mp4",
+      "poster": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%A8%D9%88%D8%B8%D8%A9.jpg",
+      "alt": "Mega Cafe third reel by LA STRADA",
+      "label": "Reel 3"
+    }
+  ]
+}

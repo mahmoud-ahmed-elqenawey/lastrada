@@ -1,0 +1,84 @@
+{
+  "slug": "mega-cafe-jordan",
+  "summary": "جلسة تصوير للأطعمة والمشروبات ترفع جودة ظهور قائمة ميجا كافيه وحضوره الرقمي بصور منتجات مصقولة وريلز قصيرة.",
+  "cover": {
+    "type": "image",
+    "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%A8%D9%88%D8%B8%D8%A9.jpg",
+    "alt": "تصوير بوظة ميجا كافيه من لاسترادا",
+    "label": "جلسة تصوير"
+  },
+  "caseStudy": {
+    "overviewTitle": "صور قائمة طعام بطاقة تناسب الريلز",
+    "challengeTitle": "التحدي",
+    "challenge": "احتاج ميجا كافيه إلى صور أطعمة ومشروبات تظهر المنتجات بوضوح وجاذبية وتصلح للاستخدام على السوشيال ميديا، وليس مجرد تصوير منتجات تقليدي.",
+    "solutionTitle": "الحل",
+    "solution": "بنت لاسترادا مجموعة بصرية تشمل المشروبات والحلويات ولحظات الكافيه، مع دعم الصور بفيديوهات قصيرة لرفع قوة الحضور الرقمي.",
+    "deliverablesTitle": "المخرجات",
+    "deliverables": [
+      "تصوير الأطعمة",
+      "تصوير المشروبات",
+      "تصوير الحلويات",
+      "ريلز للسوشيال ميديا",
+      "إخراج المحتوى البصري"
+    ],
+    "galleryTitle": "معرض الكافيه",
+    "videoTitle": "محتوى الفيديو",
+    "ctaTitle": "عايز قائمة منتجاتك تظهر أونلاين بنفس جودة التجربة؟",
+    "ctaBody": "تقدر لاسترادا تنتج الصور والريلز اللي تحتاجها علامتك لحضور أقوى على السوشيال ميديا.",
+    "ctaLabel": "ابدأ جلسة تصوير"
+  },
+  "title": "جلسة تصوير | ميجا كافيه الأردن",
+  "category": "photography",
+  "client": "ميجا كافيه",
+  "description": "قامت لاسترادا بتنفيذ جلسة تصوير احترافية لميجا كافيه في الأردن ركزت على عناصر قائمة الطعام، بما في ذلك الأطعمة والمشروبات والحلويات وأجواء الكافيه. صُمم العمل لعرض المنتجات بجودة بصرية عالية، وتعزيز حضور الكافيه على منصات التواصل الاجتماعي، ودعم المحتوى التسويقي بصور ثابتة وفيديوهات قصيرة.",
+  "type": "التصوير الاحترافي",
+  "accent": "green",
+  "media": [
+    {
+      "type": "image",
+      "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%A8%D9%88%D8%B8%D8%A9.jpg",
+      "alt": "تصوير بوظة ميجا كافيه من لاسترادا",
+      "label": "بوظة"
+    },
+    {
+      "type": "image",
+      "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%AD%D9%84%D9%88%D9%8A%D8%A7%D8%AA%20(1).jpg",
+      "alt": "تصوير حلويات ميجا كافيه من لاسترادا",
+      "label": "حلويات"
+    },
+    {
+      "type": "image",
+      "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%AD%D9%84%D9%88%D9%8A%D8%A7%D8%AA%20(4).jpg",
+      "alt": "تصوير منتجات حلويات ميجا كافيه من لاسترادا",
+      "label": "حلويات"
+    },
+    {
+      "type": "video",
+      "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/videos/La%20Strada%20Story%20Mega.mp4",
+      "poster": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%A8%D9%88%D8%B8%D8%A9.jpg",
+      "alt": "ستوري ميجا كافيه من لاسترادا",
+      "label": "ستوري"
+    },
+    {
+      "type": "video",
+      "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/videos/Maga%20Cafe%20Reel%201-2.mp4",
+      "poster": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%AD%D9%84%D9%88%D9%8A%D8%A7%D8%AA%20(1).jpg",
+      "alt": "ريل ميجا كافيه من لاسترادا",
+      "label": "ريل"
+    },
+    {
+      "type": "video",
+      "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/videos/Mega%20Reel%202.mp4",
+      "poster": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%AD%D9%84%D9%88%D9%8A%D8%A7%D8%AA%20(1).jpg",
+      "alt": "الريل الثاني لميجا كافيه من لاسترادا",
+      "label": "ريل 2"
+    },
+    {
+      "type": "video",
+      "src": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/videos/Mega%20Reel%203.mp4",
+      "poster": "lastrada-media/Photoshoot%20%7C%20Mega%20Caf%C3%A9/images/%D8%A8%D9%88%D8%B8%D8%A9.jpg",
+      "alt": "الريل الثالث لميجا كافيه من لاسترادا",
+      "label": "ريل 3"
+    }
+  ]
+}

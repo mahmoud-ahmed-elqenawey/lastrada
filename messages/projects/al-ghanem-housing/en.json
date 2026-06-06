@@ -1,0 +1,45 @@
+{
+  "slug": "al-ghanem-housing",
+  "summary": "A cinematic real-estate video production shaped from script and direction through filming and final edit.",
+  "cover": {
+    "type": "image",
+    "src": "lastrada-media/Al-Ganem/videos/Cover%20Reel%20Alganem.jpg",
+    "alt": "Al Ghanem Housing cinematic video production by LA STRADA",
+    "label": "Project Film Cover"
+  },
+  "caseStudy": {
+    "overviewTitle": "A complete real-estate film",
+    "challengeTitle": "Challenge",
+    "challenge": "Al Ghanem Housing needed a video that could present the project with clarity, atmosphere, and a polished visual rhythm instead of a simple informational edit.",
+    "solutionTitle": "Solution",
+    "solution": "LA STRADA handled the video as a complete production pipeline, shaping the script, directing the shoot, and editing the final story into a cinematic brand piece.",
+    "deliverablesTitle": "Deliverables",
+    "deliverables": [
+      "Script writing",
+      "Creative direction",
+      "Video production",
+      "Editing",
+      "Final reel delivery"
+    ],
+    "galleryTitle": "Project film",
+    "videoTitle": "Video assets",
+    "ctaTitle": "Need a real-estate story with stronger visual impact?",
+    "ctaBody": "LA STRADA can shape the concept, shoot, and final edit into a clear cinematic project film.",
+    "ctaLabel": "Start a video project"
+  },
+  "title": "Video Production | Al Ghanem Housing",
+  "category": "video",
+  "client": "Al Ghanem Housing",
+  "description": "Al Ghanem Housing video project was produced as a complete end-to-end production, starting from script writing and concept development, through full execution, filming direction, and professional editing. The aim was to translate the brand's message into a clear and engaging visual story that reflects its identity and values in a modern and impactful way.",
+  "type": "Video Production",
+  "accent": "cyan",
+  "media": [
+    {
+      "type": "video",
+      "src": "lastrada-media/Al-Ganem/videos/iscan%20alghanem%20--16.mp4",
+      "poster": "lastrada-media/Al-Ganem/videos/Cover%20Reel%20Alganem.jpg",
+      "alt": "Al Ghanem Housing final video production by LA STRADA",
+      "label": "Final Film"
+    }
+  ]
+}
