@@ -33,7 +33,7 @@ function formatPrice(price: string, billing: Billing) {
 
 export function PricingSequence() {
   const { content, direction } = useLaStradaContent();
-  const { pricing, contactSection } = content;
+  const { pricing, sourceSite } = content;
   const shouldReduceMotion = useReducedMotion();
   const [billing, setBilling] = useState<Billing>("monthly");
 
@@ -156,7 +156,12 @@ export function PricingSequence() {
                 ))}
               </ul>
 
-              <a className="cinema-button cinema-button-muted mt-8 w-full" href={contactSection.emailHref}>
+              <a
+                className="cinema-button cinema-button-muted mt-8 w-full"
+                href={sourceSite.phone.whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {pricing.getStarted}
               </a>
             </motion.article>
@@ -171,7 +176,12 @@ export function PricingSequence() {
             <h3 className="text-3xl font-black text-white sm:text-4xl">{pricing.customTitle}</h3>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-white/60">{pricing.customSubtitle}</p>
           </div>
-          <a className="cinema-button cinema-button-primary" href={contactSection.emailHref}>
+          <a
+            className="cinema-button cinema-button-primary"
+            href={sourceSite.phone.whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+          >
             {pricing.contactSales}
           </a>
         </motion.div>

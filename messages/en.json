@@ -187,7 +187,7 @@
         ],
         "accent": "cyan",
         "icon": "camera",
-        "image": "/lastrada-services/Media-&-Production.jpg.jpeg"
+        "image": "/lastrada-services/Photography.jpg.jpeg"
       },
       {
         "title": "Digital Strategy",
@@ -287,21 +287,21 @@
           "role": "Graphic Designer | AI-Enhanced Visual Creator",
           "bio": "Up to 6 years of experience in creative design and visual content development, leveraging AI tools to produce innovative and impactful designs.",
           "accent": "red",
-          "image": "/lastrada-team-optimized/marah.jpg"
+          "image": "/lastrada-team-optimized/malak.jpg"
         },
         {
           "name": "Marah Matalkah",
           "role": "Motion Graphic Designer | AI Video Export Specialist",
           "bio": "3 years of experience in motion graphics, driven by creativity, passion, and talent. Skilled in exporting high-quality AI-assisted videos.",
           "accent": "green",
-          "image": "/lastrada-team-optimized/malak.jpg"
+          "image": "/lastrada-team-optimized/marah.jpg"
         },
         {
           "name": "Mansour Monter",
           "role": "Video Editing Specialist",
           "bio": "A dedicated video editing specialist with 5 years of professional experience, focused on crafting high-quality, engaging, and precise video content.",
           "accent": "blue",
-          "image": "/lastrada-team-optimized/ammar.jpg"
+          "image": "/lastrada-team-optimized/mohannad.jpg"
         },
         {
           "name": "Al-Mohand Mohammed",

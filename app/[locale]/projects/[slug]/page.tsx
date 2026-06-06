@@ -21,11 +21,6 @@ type ProjectPageProps = {
   }>;
 };
 
-function getAbsoluteMediaUrl(src?: string) {
-  if (!src) return undefined;
-  return src.startsWith("http") ? src : absoluteUrl(src);
-}
-
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -45,7 +40,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const content = getLaStradaContent(locale);
   const path = `/${locale}/projects/${project.slug}`;
   const cover = getProjectCover(project);
-  const coverImage = getAbsoluteMediaUrl(cover?.type === "video" ? cover.poster : cover?.src);
+  const socialImage = absoluteUrl(`${path}/opengraph-image`);
   const projectTitle = getProjectTitle(project);
   const title = `${projectTitle} | ${content.brand.name}`;
   const description = getProjectSummary(project);
@@ -70,22 +65,20 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       siteName: content.brand.name,
       type: "article",
       locale: locale === "ar" ? "ar_JO" : "en_US",
-      images: coverImage
-        ? [
-            {
-              url: coverImage,
-              width: 900,
-              height: 1600,
-              alt: cover?.alt ?? projectTitle,
-            },
-          ]
-        : undefined,
+      images: [
+        {
+          url: socialImage,
+          width: 1200,
+          height: 630,
+          alt: cover?.alt ?? projectTitle,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: coverImage ? [{ url: coverImage, alt: cover?.alt ?? projectTitle }] : undefined,
+      images: [{ url: socialImage, alt: cover?.alt ?? projectTitle }],
     },
   };
 }

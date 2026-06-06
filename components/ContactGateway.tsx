@@ -34,6 +34,18 @@ export function ContactGateway() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setShowNotice(true);
+
+    const formData = new FormData(event.currentTarget);
+    const message = [
+      "New project request from LA STRADA website",
+      `Name: ${formData.get("name") ?? ""}`,
+      `Email: ${formData.get("email") ?? ""}`,
+      `Company: ${formData.get("company") ?? ""}`,
+      `Service: ${formData.get("service") ?? ""}`,
+      `Budget: ${formData.get("budget") ?? ""}`,
+      `Details: ${formData.get("message") ?? ""}`,
+    ].join("\n");
+    window.open(`${sourceSite.phone.whatsappHref}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -66,9 +78,14 @@ export function ContactGateway() {
               {contactSection.body}
             </motion.p>
             <motion.div className="mt-10 flex flex-col gap-4 sm:flex-row" variants={itemReveal(0.12, 18)}>
-              <a className="cinema-button cinema-button-primary" href={contactSection.emailHref}>
+              <a
+                className="cinema-button cinema-button-primary"
+                href={sourceSite.phone.whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {contactSection.ctaLabel}
-                <Send aria-hidden="true" size={18} />
+                <MessageCircle aria-hidden="true" size={18} />
               </a>
               {sourceSite.phone.whatsappHref ? (
                 <a

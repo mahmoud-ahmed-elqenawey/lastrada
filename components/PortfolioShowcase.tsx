@@ -41,7 +41,7 @@ function ProjectCoverPreview({ project, index }: { project: PortfolioProject; in
           fill
           unoptimized={isLaStradaRemoteMediaUrl(previewSrc)}
           sizes="(min-width: 1024px) 11rem, (min-width: 768px) 10rem, 52vw"
-          className="object-cover transition duration-700 group-hover:scale-[1.045]"
+          className="object-contain transition duration-700 group-hover:scale-[1.045]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,0.58))]" />
         <span className="absolute start-3 top-3 font-mono text-xs text-white/60">

@@ -187,7 +187,7 @@
         ],
         "accent": "cyan",
         "icon": "camera",
-        "image": "/lastrada-services/Media-&-Production.jpg.jpeg"
+        "image": "/lastrada-services/Photography.jpg.jpeg"
       },
       {
         "title": "الاستراتيجية الرقمية",
@@ -287,21 +287,21 @@
           "role": "مصممة جرافيك | مصممة محتوى بصري مدعوم بالذكاء الاصطناعي",
           "bio": "خبرة تصل إلى 6 سنوات في التصميم الإبداعي وتطوير المحتوى البصري، مع استخدام أدوات الذكاء الاصطناعي لإنتاج تصاميم مبتكرة ومؤثرة.",
           "accent": "red",
-          "image": "/lastrada-team-optimized/marah.jpg"
+          "image": "/lastrada-team-optimized/malak.jpg"
         },
         {
           "name": "مرح مطالقة",
           "role": "مصممة موشن جرافيك | متخصصة في تصدير فيديوهات مدعومة بالذكاء الاصطناعي",
           "bio": "خبرة ثلاث سنوات في تصميم الموشن جرافيك، إبداع مدفوع بالشغف والموهبة، ومتخصصة في تصدير فيديوهات عالية الجودة باستخدام أدوات الذكاء الاصطناعي.",
           "accent": "green",
-          "image": "/lastrada-team-optimized/malak.jpg"
+          "image": "/lastrada-team-optimized/marah.jpg"
         },
         {
           "name": "منصور زيادنة",
           "role": "ممنتج فيديو",
           "bio": "متخصص مونتاج فيديو بخبرة 5 سنوات، يركز على إنتاج محتوى فيديو احترافي، جذاب، ودقيق.",
           "accent": "blue",
-          "image": "/lastrada-team-optimized/ammar.jpg"
+          "image": "/lastrada-team-optimized/mohannad.jpg"
         },
         {
           "name": "المهند محمد",

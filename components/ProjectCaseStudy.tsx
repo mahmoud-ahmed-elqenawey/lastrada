@@ -18,7 +18,7 @@ function MediaFrame({
   if (media.type === "video") {
     return (
       <video
-        className={`h-full w-full object-cover ${className}`}
+        className={`h-full w-full object-contain ${className}`}
         controls
         playsInline
         preload="metadata"
@@ -38,7 +38,7 @@ function MediaFrame({
       priority={priority}
       unoptimized={isLaStradaRemoteMediaUrl(media.src)}
       sizes="(min-width: 1280px) 42vw, (min-width: 768px) 48vw, 92vw"
-      className={`object-cover ${className}`}
+      className={`object-contain ${className}`}
     />
   );
 }
@@ -96,8 +96,10 @@ export function ProjectCaseStudy({
             <Link href={getProjectPath(alternateLocale, project)} className="cinema-button cinema-button-muted min-h-11 px-4">
               {copy.switchLanguage}
             </Link>
-            <Link
-              href={content.contactSection.emailHref}
+            <a
+              href={content.sourceSite.phone.whatsappHref}
+              target="_blank"
+              rel="noreferrer"
               className="cinema-button cinema-button-primary hidden min-h-11 px-4 sm:inline-flex"
             >
               {copy.openProject}
@@ -106,7 +108,7 @@ export function ProjectCaseStudy({
                 className={direction === "rtl" ? "-scale-x-100" : ""}
                 size={18}
               />
-            </Link>
+            </a>
           </div>
         </header>
 
@@ -228,10 +230,15 @@ export function ProjectCaseStudy({
                 {caseStudy?.ctaBody ?? content.finalCta.body}
               </p>
             </div>
-            <Link href={content.contactSection.emailHref} className="cinema-button cinema-button-primary w-fit">
+            <a
+              href={content.sourceSite.phone.whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="cinema-button cinema-button-primary w-fit"
+            >
               {caseStudy?.ctaLabel ?? content.finalCta.ctaLabel}
               <ArrowUpRight aria-hidden="true" className={direction === "rtl" ? "-scale-x-100" : ""} size={18} />
-            </Link>
+            </a>
           </div>
         </section>
       </div>

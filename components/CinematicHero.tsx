@@ -159,7 +159,12 @@ export function CinematicHero() {
               <Globe2 aria-hidden="true" size={17} />
               {hero.languageLabel}
             </a>
-            <a className="cinema-button cinema-button-ghost hidden lg:inline-flex" href={hero.ctaHref}>
+            <a
+              className="cinema-button cinema-button-ghost hidden lg:inline-flex"
+              href={sourceSite.phone.whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+            >
               {hero.ctaLabel}
               <ArrowUpRight aria-hidden="true" className={direction === "rtl" ? "-scale-x-100" : ""} size={18} />
             </a>
@@ -182,7 +187,13 @@ export function CinematicHero() {
               {hero.agencyLabel} / {hero.subtitle}
             </motion.p>
             <motion.div className="hero-cta-row" variants={staggerContainer(0.04, 0.06)}>
-              <motion.a className="cinema-button cinema-button-primary" href={hero.ctaHref} variants={chipReveal()}>
+              <motion.a
+                className="cinema-button cinema-button-primary"
+                href={sourceSite.phone.whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                variants={chipReveal()}
+              >
                 {hero.ctaLabel}
                 <ArrowUpRight aria-hidden="true" className={direction === "rtl" ? "-scale-x-100" : ""} size={19} />
               </motion.a>
