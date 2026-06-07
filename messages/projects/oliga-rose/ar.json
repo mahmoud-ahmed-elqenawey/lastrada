@@ -3,7 +3,7 @@
   "summary": "نظام هوية وتغليف متكامل لعلامة تجميلية، مصمم ليظهر بأناقة واتساق وذاكرة بصرية قوية عبر كل نقاط التواصل.",
   "cover": {
     "type": "image",
-    "src": "lastrada-media/oliga-rose/images/%D9%85%D8%B3%D8%B7%D8%B1%D8%A9-%D8%A7%D9%88%D9%84%D9%8A%D9%82%D8%A7-_013.jpg",
+    "src": "lastrada-media/oliga-rose/images/%D9%85%D8%B3%D8%B7%D8%B1%D8%A9-%D8%A7%D9%88%D9%84%D9%8A%D9%82%D8%A7-_01.jpg.jpeg",
     "alt": "تصميم عبوات أولجا روز من لاسترادا",
     "label": "غلاف دراسة الحالة"
   },
@@ -42,14 +42,14 @@
     },
     {
       "type": "image",
-      "src": "lastrada-media/oliga-rose/images/%D9%85%D8%B3%D8%B7%D8%B1%D8%A9-%D8%A7%D9%88%D9%84%D9%8A%D9%82%D8%A7-_013.jpg",
+      "src": "lastrada-media/oliga-rose/images/%D9%85%D8%B3%D8%B7%D8%B1%D8%A9-%D8%A7%D9%88%D9%84%D9%8A%D9%82%D8%A7-_01.jpg.jpeg",
       "alt": "تصميم عبوات أولجا روز من لاسترادا",
       "label": "التغليف"
     },
     {
       "type": "video",
       "src": "lastrada-media/oliga-rose/videos/%D9%85%D9%88%D8%B4%D9%86%20%D8%A7%D9%84%D9%87%D9%88%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A8%D8%B5%D8%B1%D9%8A%D8%A9%20%D8%A7%D9%88%D9%84%D9%8A%D9%82%D8%A7.mp4",
-      "poster": "lastrada-media/oliga-rose/images/%D9%85%D8%B3%D8%B7%D8%B1%D8%A9-%D8%A7%D9%88%D9%84%D9%8A%D9%82%D8%A7-_013.jpg",
+      "poster": "lastrada-media/oliga-rose/images/%D9%85%D8%B3%D8%B7%D8%B1%D8%A9-%D8%A7%D9%88%D9%84%D9%8A%D9%82%D8%A7-_01.jpg.jpeg",
       "alt": "فيديو هوية وتغليف أولجا روز من لاسترادا",
       "label": "فيديو المشروع"
     }
