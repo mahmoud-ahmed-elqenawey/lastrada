@@ -195,13 +195,13 @@ export function AgencyStory() {
             ) : null}
           </div>
 
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 gap-3">
             {team.members.map((member, index) => (
               <motion.article
                 key={member.name}
-                className={`kinetic-card soft-row grid gap-5 px-5 py-8 sm:items-start sm:px-7 ${
+                className={`kinetic-card soft-row grid w-full min-w-0 gap-5 px-5 py-8 sm:items-start sm:px-7 ${
                   member.bio
-                    ? "sm:grid-cols-[5rem_0.62fr_1fr] lg:grid-cols-[5rem_0.52fr_0.88fr_10rem]"
+                    ? "sm:grid-cols-[5rem_minmax(0,0.62fr)_minmax(0,1fr)] lg:grid-cols-[5rem_minmax(14rem,0.58fr)_minmax(18rem,1fr)_12rem]"
                     : "sm:grid-cols-[5rem_1fr_12rem]"
                 }`}
                 style={memberStyle(member.accent)}
@@ -211,7 +211,7 @@ export function AgencyStory() {
                 <span className="font-mono text-sm text-[var(--accent)]">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <div>
+                <div className="min-w-0">
                   <h4 className="text-3xl font-black leading-none text-white sm:text-4xl">
                     {member.name}
                   </h4>
@@ -222,13 +222,13 @@ export function AgencyStory() {
                   ) : null}
                 </div>
                 {member.bio ? (
-                  <p className="text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
+                  <p className="min-w-0 text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
                     {member.bio}
                   </p>
                 ) : null}
                 {member.image ? (
                   <motion.div
-                    className={`soft-frame relative min-h-64 overflow-hidden rounded-[8px] lg:min-h-52 ${
+                    className={`soft-frame relative min-h-64 w-full overflow-hidden rounded-[8px] lg:min-h-52 ${
                       member.bio ? "sm:col-span-3 lg:col-span-1" : ""
                     }`}
                     variants={cardReveal(0.12, 22)}
@@ -241,7 +241,6 @@ export function AgencyStory() {
                       className="object-cover object-top opacity-[0.82] saturate-[1.02] transition duration-700 hover:scale-105 hover:opacity-100"
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_36%,rgba(0,0,0,0.52)),radial-gradient(circle_at_22%_14%,var(--accent),transparent_42%)] opacity-[0.34]" />
-                    <div className="absolute inset-x-4 bottom-4 h-px bg-[linear-gradient(90deg,transparent,var(--accent),transparent)] opacity-75" />
                   </motion.div>
                 ) : null}
               </motion.article>
