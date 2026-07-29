@@ -318,13 +318,6 @@ function LocalizedFields({
       </div>
       <Field label="العنوان" name={`title${suffix}`} required dir={dir} defaultValue={translation?.title ?? ""} minLength={2} />
       <Field label="العميل" name={`client${suffix}`} required dir={dir} defaultValue={translation?.client ?? ""} minLength={2} />
-      <Field
-        label="اسم الخدمة المعروض اختياري"
-        name={`type${suffix}`}
-        dir={dir}
-        defaultValue={translation?.type ?? ""}
-        help="اتركه فارغا لاستخدام اسم الخدمة المختار من القائمة الرئيسية."
-      />
       <Textarea label="ملخص قصير" name={`summary${suffix}`} dir={dir} defaultValue={translation?.summary ?? ""} />
       <Textarea
         label="الوصف"
