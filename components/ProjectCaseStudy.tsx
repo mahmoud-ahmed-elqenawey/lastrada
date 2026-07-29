@@ -5,6 +5,7 @@ import type { LaStradaContent, PortfolioMedia, PortfolioProject } from "@/lib/la
 import { getAlternateLocale, getDirection, getLocalePath, type Locale } from "@/lib/locales";
 import { isLaStradaRemoteMediaUrl } from "@/lib/media-url";
 import { getProjectCover, getProjectPath, getProjectSummary, getProjectTitle } from "@/lib/portfolio-projects";
+import { getServiceCategoryLabel } from "@/lib/service-taxonomy";
 
 function MediaFrame({
   media,
@@ -65,6 +66,7 @@ export function ProjectCaseStudy({
   const caseStudy = project.caseStudy;
   const gallery = project.media ?? (cover ? [cover] : []);
   const projectTitle = getProjectTitle(project);
+  const categoryLabel = getServiceCategoryLabel(project.category, locale);
 
   const copy = {
     back: locale === "ar" ? "العودة للأعمال" : "Back to work",
@@ -73,9 +75,36 @@ export function ProjectCaseStudy({
     service: locale === "ar" ? "الخدمة" : "Service",
     category: locale === "ar" ? "التصنيف" : "Category",
     overview: locale === "ar" ? "نظرة عامة" : "Overview",
+    successTitle: locale === "ar" ? `قصة نجاح لاسترادا مع ${project.client}` : `LA STRADA success story with ${project.client}`,
+    successIntro:
+      locale === "ar"
+        ? `حوّلت لاسترادا احتياج ${project.client} إلى تجربة عملية واضحة في ${project.type}، تبدأ من فهم التحدي وتنتهي بمحتوى أو نظام بصري قابل للاستخدام والنمو.`
+        : `LA STRADA translated ${project.client}'s need into a clear ${project.type} experience, moving from challenge definition to a visual or content system built for use and growth.`,
+    successChallenge: locale === "ar" ? "بداية التعاون" : "Starting point",
+    successExecution: locale === "ar" ? "دور لاسترادا" : "LA STRADA role",
+    successImpact: locale === "ar" ? "الأثر" : "Impact",
     openProject: locale === "ar" ? "ابدأ مشروعك" : "Start your project",
     gallery: locale === "ar" ? "معرض المشروع" : "Project gallery",
   };
+
+  const successStory = caseStudy?.successStory ?? copy.successIntro;
+  const successItems = [
+    {
+      title: copy.successChallenge,
+      body: caseStudy?.challenge ?? summary,
+    },
+    {
+      title: copy.successExecution,
+      body: caseStudy?.solution ?? project.description,
+    },
+    {
+      title: copy.successImpact,
+      body:
+        locale === "ar"
+          ? `النتيجة كانت حضوراً أوضح لـ ${project.client} من خلال ${project.type} يعكس هوية العلامة ويجعل التواصل مع الجمهور أكثر تنظيماً وقوة.`
+          : `The result gave ${project.client} a clearer presence through ${project.type}, strengthening brand expression and making audience communication more structured and effective.`,
+    },
+  ];
 
   return (
     <main className="relative isolate min-h-screen overflow-hidden bg-[#050505] text-white" dir={direction} lang={locale}>
@@ -112,17 +141,17 @@ export function ProjectCaseStudy({
           </div>
         </header>
 
-        <section className="grid flex-1 gap-10 py-12 lg:grid-cols-[minmax(0,0.96fr)_minmax(21rem,0.74fr)] lg:items-center lg:py-20">
+        <section className="grid flex-1 gap-10 py-12 lg:grid-cols-[minmax(0,0.78fr)_minmax(24rem,0.9fr)] lg:items-center lg:py-20">
           <div>
             <div className="flex flex-wrap items-center gap-3 text-xs font-black uppercase tracking-[0.16em]">
               <span className="text-[var(--brand-purple)]">{project.type}</span>
               <span className="h-1 w-1 rounded-full bg-white/30" aria-hidden="true" />
               <span className="text-white/42">{project.client}</span>
               <span className="h-1 w-1 rounded-full bg-white/30" aria-hidden="true" />
-              <span className="font-mono text-white/34">{project.category}</span>
+              <span className="font-mono text-white/34">{categoryLabel}</span>
             </div>
 
-            <h1 className="mt-6 max-w-5xl text-balance text-5xl font-black leading-[0.94] tracking-normal sm:text-7xl lg:text-8xl">
+            <h1 className="mt-6 max-w-5xl text-balance text-5xl font-black leading-[0.98] tracking-normal sm:text-7xl lg:text-8xl">
               {projectTitle}
             </h1>
 
@@ -132,7 +161,7 @@ export function ProjectCaseStudy({
               {[
                 [copy.client, project.client],
                 [copy.service, project.type],
-                [copy.category, project.category],
+                [copy.category, categoryLabel],
               ].map(([label, value]) => (
                 <div key={label}>
                   <dt className="text-xs font-black uppercase tracking-[0.16em] text-white/34">{label}</dt>
@@ -144,9 +173,9 @@ export function ProjectCaseStudy({
 
           <div className="relative">
             <div className="absolute -inset-8 rounded-full bg-[radial-gradient(circle,var(--brand-yellow),transparent_62%)] opacity-10 blur-3xl" />
-            <div className="soft-frame relative aspect-[9/14] overflow-hidden rounded-[8px]">
+            <div className="project-detail-hero-media soft-frame relative aspect-[16/11] overflow-hidden rounded-[8px] bg-[#050505]">
               {heroMedia ? (
-                <MediaFrame media={heroMedia} priority />
+                <MediaFrame media={heroMedia} priority className="p-2 sm:p-3" />
               ) : (
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_34%_24%,var(--brand-purple),transparent_36%),linear-gradient(135deg,rgba(255,255,255,0.1),transparent_52%)] opacity-70" />
               )}
@@ -198,6 +227,36 @@ export function ProjectCaseStudy({
           ) : null}
         </section>
 
+        <section className="py-16 lg:py-24" aria-labelledby="project-success-story">
+          <div className="soft-panel overflow-hidden rounded-[8px] p-5 sm:p-7 lg:p-8">
+            <div className="grid gap-10 lg:grid-cols-[0.58fr_1fr] lg:items-start">
+              <div>
+                <p className="font-mono text-sm font-black uppercase tracking-[0.2em] text-[var(--brand-yellow)]">
+                  {project.client}
+                </p>
+                <h2 id="project-success-story" className="mt-5 max-w-3xl text-4xl font-black leading-tight sm:text-5xl">
+                  {caseStudy?.successTitle ?? copy.successTitle}
+                </h2>
+                <p className="mt-6 max-w-2xl text-lg leading-8 text-white/62">{successStory}</p>
+              </div>
+
+              <div className="grid gap-3">
+                {successItems.map((item, index) => (
+                  <article key={item.title} className="soft-row grid gap-5 p-5 sm:grid-cols-[4rem_1fr] sm:p-6">
+                    <span className="font-mono text-sm text-[var(--brand-cyan)]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 className="text-2xl font-black text-white">{item.title}</h3>
+                      <p className="mt-4 text-base leading-8 text-white/62 sm:text-lg">{item.body}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {gallery.length ? (
           <section className="py-16 lg:py-24">
             <div className="mb-8 flex items-center justify-between gap-4">
@@ -207,13 +266,13 @@ export function ProjectCaseStudy({
               </span>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="project-gallery-grid grid gap-5 md:grid-cols-2">
               {gallery.map((item, index) => (
                 <figure
                   key={`${item.src}-${index}`}
-                  className="soft-frame relative aspect-[9/14] overflow-hidden rounded-[8px] md:aspect-[4/5]"
+                  className="project-gallery-frame soft-frame relative aspect-[4/5] overflow-hidden rounded-[8px] bg-[#050505]"
                 >
-                  <MediaFrame media={item} />
+                  <MediaFrame media={item} className="p-2 sm:p-3" />
                 </figure>
               ))}
             </div>

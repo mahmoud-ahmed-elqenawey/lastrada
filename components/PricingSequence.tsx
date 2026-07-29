@@ -1,7 +1,6 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { useState } from "react";
 import { Check, Crown, Rocket, Sparkles } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useLaStradaContent, type PricingPlan } from "@/lib/la-strada-i18n";
@@ -11,31 +10,19 @@ import {
   iconReveal,
   itemReveal,
   itemViewport,
-  motionEase,
   revealMotion,
   sectionReveal,
   staggerContainer,
 } from "@/lib/motion-presets";
 
-type Billing = "monthly" | "yearly";
-
 function accentStyle(accent: PricingPlan["accent"]): CSSProperties {
   return { "--accent": `var(--brand-${accent})` } as CSSProperties;
-}
-
-function formatPrice(price: string, billing: Billing) {
-  const numeric = Number(price.replace(/[^\d]/g, ""));
-  if (!numeric) return price;
-
-  const value = billing === "yearly" ? numeric * 10 : numeric;
-  return `$${new Intl.NumberFormat("en-US").format(value)}`;
 }
 
 export function PricingSequence() {
   const { content, direction } = useLaStradaContent();
   const { pricing, sourceSite } = content;
   const shouldReduceMotion = useReducedMotion();
-  const [billing, setBilling] = useState<Billing>("monthly");
 
   return (
     <section
@@ -74,34 +61,10 @@ export function PricingSequence() {
               {pricing.subtitle}
             </motion.p>
             <motion.div
-              className="mt-7 inline-flex rounded-full border border-white/12 bg-white/[0.03] p-1"
+              className="mt-7 inline-flex rounded-full border border-white/12 bg-white/[0.03] px-5 py-2 text-sm font-black text-white/70"
               variants={itemReveal(0.12, 16)}
             >
-              {(["monthly", "yearly"] as Billing[]).map((option) => (
-                <button
-                  key={option}
-                  type="button"
-                  aria-pressed={billing === option}
-                  className={`relative overflow-hidden rounded-full px-5 py-2 text-sm font-black transition ${
-                    billing === option ? "text-black" : "text-white/52 hover:text-white"
-                  }`}
-                  onClick={() => setBilling(option)}
-                >
-                  {billing === option ? (
-                    <motion.span
-                      layoutId="pricing-billing-active"
-                      className="absolute inset-0 rounded-full bg-white"
-                      transition={{ duration: 0.24, ease: motionEase }}
-                    />
-                  ) : null}
-                  <span className="relative z-10">{option === "monthly" ? pricing.monthly : pricing.yearly}</span>
-                  {option === "yearly" ? (
-                    <span className="relative z-10 ms-2 rounded-full bg-[rgba(57,181,74,0.18)] px-2 py-0.5 text-[0.68rem] text-[var(--brand-green)]">
-                      {pricing.save}
-                    </span>
-                  ) : null}
-                </button>
-              ))}
+              {pricing.monthly}
             </motion.div>
           </div>
         </motion.div>
@@ -129,21 +92,15 @@ export function PricingSequence() {
 
               {plan.price ? (
                 <div className="soft-row px-5 py-6">
-                  <p className="text-5xl font-black leading-none text-[var(--accent)]">
-                    {formatPrice(plan.price, billing)}
-                  </p>
-                  <p className="mt-2 text-sm font-black uppercase tracking-[0.16em] text-white/38">
-                    / {billing === "monthly" ? pricing.perMonth : pricing.perYear}
-                  </p>
+                  <p className="text-5xl font-black leading-none text-[var(--accent)]">{plan.price}</p>
+                  <p className="mt-2 text-sm font-black uppercase tracking-[0.16em] text-white/38">{pricing.perMonth}</p>
                 </div>
               ) : (
                 <div className="soft-row px-5 py-6">
                   <p className="text-sm font-black uppercase tracking-[0.16em] text-[var(--accent)]">
-                    {pricing.monthly} / {pricing.yearly}
+                    {pricing.monthly}
                   </p>
-                  <p className="mt-3 text-3xl font-black leading-none text-white sm:text-4xl">
-                    {pricing.perMonth} / {pricing.perYear}
-                  </p>
+                  <p className="mt-3 text-3xl font-black leading-none text-white sm:text-4xl">{pricing.perMonth}</p>
                 </div>
               )}
 
@@ -169,21 +126,13 @@ export function PricingSequence() {
         </div>
 
         <motion.div
-          className="soft-panel mt-10 grid gap-7 rounded-[8px] px-5 py-10 sm:px-7 md:grid-cols-[1fr_auto] md:items-center lg:px-8"
+          className="soft-panel mt-10 rounded-[8px] px-5 py-8 sm:px-7 lg:px-8"
           {...revealMotion(shouldReduceMotion, sectionReveal(0), itemViewport)}
         >
-          <div>
-            <h3 className="text-3xl font-black text-white sm:text-4xl">{pricing.customTitle}</h3>
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-white/60">{pricing.customSubtitle}</p>
-          </div>
-          <a
-            className="cinema-button cinema-button-primary"
-            href={sourceSite.phone.whatsappHref}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {pricing.contactSales}
-          </a>
+          <p className="max-w-5xl text-base leading-8 text-white/66 sm:text-lg">
+            <span className="font-black text-white">{pricing.customTitle}: </span>
+            {pricing.customSubtitle}
+          </p>
         </motion.div>
       </div>
     </section>

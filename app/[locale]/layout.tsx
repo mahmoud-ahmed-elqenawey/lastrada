@@ -1,31 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, IBM_Plex_Sans_Arabic, Noto_Kufi_Arabic } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { defaultLocale, getDirection, isLocale, locales, type Locale } from "@/lib/locales";
 import { getLocalizedMetadata } from "@/lib/seo";
-import "../globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const arabicBody = IBM_Plex_Sans_Arabic({
-  variable: "--font-arabic-body",
-  subsets: ["arabic"],
-  weight: ["400", "500", "700"],
-  display: "swap",
-});
-
-const arabicDisplay = Noto_Kufi_Arabic({
-  variable: "--font-arabic-display",
-  subsets: ["arabic"],
-  weight: ["600", "700", "800"],
-  display: "swap",
-});
 
 type LocaleLayoutProps = Readonly<{
   children: React.ReactNode;
@@ -58,17 +36,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const messages = await getMessages();
 
   return (
-    <html
-      lang={locale}
-      dir={getDirection(locale)}
-      suppressHydrationWarning
-      className={`${geistSans.variable} ${arabicBody.variable} ${arabicDisplay.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <NextIntlClientProvider locale={locale} messages={messages} timeZone="Africa/Amman">
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider locale={locale} messages={messages} timeZone="Africa/Amman">
+      <div lang={locale} dir={getDirection(locale)} className="min-h-full">
+        {children}
+      </div>
+    </NextIntlClientProvider>
   );
 }

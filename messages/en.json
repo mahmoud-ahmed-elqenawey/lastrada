@@ -17,16 +17,20 @@
     "sourceSite": {
       "url": "https://www.lastrada.agency/",
       "email": "info@lastrada.agency",
-      "facebook": "https://www.facebook.com/lastrada.marketing",
-      "instagram": "https://www.instagram.com/lastrada.agency/",
+      "facebook": "https://www.facebook.com/share/1DDRwC9uZ7/?mibextid=wwXIfr",
+      "instagram": "https://www.instagram.com/lastrada.agency?igsh=MWkyeDU0djMyODE4Ng==",
       "socialLinks": [
         {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/lastrada-group/"
+        },
+        {
           "label": "Facebook",
-          "href": "https://www.facebook.com/lastrada.marketing"
+          "href": "https://www.facebook.com/share/1DDRwC9uZ7/?mibextid=wwXIfr"
         },
         {
           "label": "Instagram",
-          "href": "https://www.instagram.com/lastrada.agency/"
+          "href": "https://www.instagram.com/lastrada.agency?igsh=MWkyeDU0djMyODE4Ng=="
         }
       ],
       "phone": {
@@ -39,7 +43,8 @@
       "office": {
         "country": "Jordan",
         "address": "Irbid - Down Town - K . Talal .St"
-      }
+      },
+      "linkedin": "https://www.linkedin.com/company/lastrada-group/"
     },
     "hero": {
       "brandName": "LASTRADA",
@@ -60,39 +65,39 @@
     },
     "services": [
       {
-        "title": "Brand Identity",
-        "shortTitle": "Photo",
-        "description": "Strategic visual identities that elevate your brand value and secure its market position.",
-        "accent": "cyan",
-        "icon": "camera"
+        "title": "Marketing Strategies",
+        "shortTitle": "Strategy",
+        "description": "Marketing plans built around market insight, competitors, target audiences, and brand growth goals.",
+        "accent": "purple",
+        "icon": "megaphone"
       },
       {
-        "title": "Social Media Marketing",
-        "shortTitle": "Content",
-        "description": "Smart campaigns that turn engagement into results.",
+        "title": "Graphic Design",
+        "shortTitle": "Design",
+        "description": "Brand identities, graphics, print assets, and visual systems that express the brand clearly.",
         "accent": "blue",
+        "icon": "pen"
+      },
+      {
+        "title": "Programming & Digital Solutions",
+        "shortTitle": "Web",
+        "description": "Websites, stores, apps, and custom systems built for performance, security, and clear user experience.",
+        "accent": "green",
+        "icon": "code"
+      },
+      {
+        "title": "Content Production",
+        "shortTitle": "Content",
+        "description": "Creative content, photography, editing, and video production aligned with the brand identity.",
+        "accent": "red",
         "icon": "film"
       },
       {
-        "title": "Video Production",
-        "shortTitle": "Motion",
-        "description": "Cinematic video content that tells your story, captivates viewers, and delivers measurable business results.",
-        "accent": "purple",
-        "icon": "sparkles"
-      },
-      {
-        "title": "Photography",
-        "shortTitle": "Edit",
-        "description": "Professional photography that captures your brand essence and creates compelling visual narratives.",
-        "accent": "red",
-        "icon": "scissors"
-      },
-      {
-        "title": "Digital Strategy",
-        "shortTitle": "Design",
-        "description": "Comprehensive digital strategies that align with your business goals and maximize your online presence.",
-        "accent": "yellow",
-        "icon": "pen"
+        "title": "Social Media Management",
+        "shortTitle": "Social",
+        "description": "Complete account, content, ads, engagement, and reporting management to improve reach and conversions.",
+        "accent": "cyan",
+        "icon": "share"
       }
     ],
     "reelChapters": [
@@ -138,69 +143,90 @@
     },
     "solutionPillars": [
       {
-        "title": "Brand Identity",
-        "description": "Strategic visual identities that elevate your brand value and secure its market position.",
+        "title": "Marketing Strategies",
+        "description": "Marketing plans built around market insight, competitors, target audiences, and brand growth goals.",
+        "accent": "purple",
         "features": [
-          "Logo Design",
-          "Brand Guidelines",
-          "Visual Identity",
-          "Brand Strategy"
+          "Marketing plans and strategy development",
+          "Market and competitor research",
+          "Target audience definition",
+          "Brand marketing identity development",
+          "Campaign management and development",
+          "Performance measurement, analysis, and reporting"
         ],
+        "icon": "target",
+        "image": "/lastrada-services/Digital-Strategy.jpg.jpeg"
+      },
+      {
+        "title": "Graphic Design",
+        "description": "Brand identities, graphics, print assets, and visual systems that express the brand clearly.",
         "accent": "blue",
+        "features": [
+          "Visual identity and brand design",
+          "Logo Design",
+          "Commercial and advertising print design",
+          "Social media posts and ad creatives",
+          "Brochures, catalogs, and flyers",
+          "Billboards and signage",
+          "Product packaging design",
+          "Infographics and presentations",
+          "Print-ready artwork preparation"
+        ],
         "icon": "fingerprint",
         "image": "/lastrada-services/Brand-Identity.jpg.jpeg"
       },
       {
-        "title": "Social Media Marketing",
-        "description": "Smart campaigns that turn engagement into results.",
-        "features": [
-          "Content Strategy",
-          "Community Management",
-          "Paid Advertising",
-          "Analytics & Reporting"
-        ],
+        "title": "Programming & Digital Solutions",
+        "description": "Websites, stores, apps, and custom systems built for performance, security, and clear user experience.",
         "accent": "green",
-        "icon": "share",
-        "image": "/lastrada-services/Social-Media-Marketing.jpg.jpeg"
+        "features": [
+          "Website design and development",
+          "E-commerce development",
+          "UI/UX design and development",
+          "Android and iOS mobile app development",
+          "Custom systems and dashboards",
+          "Payment gateways and digital service integrations",
+          "Website speed and performance optimization",
+          "Maintenance and technical support",
+          "Website and application security enhancement"
+        ],
+        "icon": "code",
+        "image": "/lastrada-services/Brand-Identity.jpg.jpeg"
       },
       {
-        "title": "Video Production",
-        "description": "Cinematic video content that tells your story, captivates viewers, and delivers measurable business results.",
-        "features": [
-          "Commercial Videos",
-          "Podcast Videos",
-          "Real Estate",
-          "Event Coverage "
-        ],
+        "title": "Content Production",
+        "description": "Creative content, photography, editing, and video production aligned with the brand identity.",
         "accent": "red",
+        "features": [
+          "Creative content planning",
+          "Marketing and advertising copywriting",
+          "Professional studio or on-location photoshoots",
+          "Product and service photography",
+          "Advertising video production",
+          "Professional video editing",
+          "Photo retouching and processing",
+          "Brand-aligned content production"
+        ],
         "icon": "video",
         "image": "/lastrada-services/Media-&-Production.jpg.jpeg"
       },
       {
-        "title": "Photography",
-        "description": "Professional photography that captures your brand essence and creates compelling visual narratives.",
-        "features": [
-          "Product Photography",
-          "Corporate Portraits",
-          "Food Photography",
-          "Commercial Shoots"
-        ],
+        "title": "Social Media Management",
+        "description": "Complete account, content, ads, engagement, and reporting management to improve reach and conversions.",
         "accent": "cyan",
-        "icon": "camera",
-        "image": "/lastrada-services/Photography.jpg.jpeg"
-      },
-      {
-        "title": "Digital Strategy",
-        "description": "Comprehensive digital strategies that align with your business goals and maximize your online presence.",
         "features": [
-          "Market Research",
-          "Competitor Analysis",
-          "Growth Hacking",
-          "Performance Marketing"
+          "Social media account setup and management",
+          "Monthly content planning",
+          "Content design and publishing",
+          "Engagement, messages, and comments management",
+          "Social media advertising campaign management",
+          "Meta Ads management: Facebook & Instagram",
+          "Google Ads campaign management",
+          "Results analysis and performance reporting",
+          "Performance improvement, reach, and conversion growth"
         ],
-        "accent": "purple",
-        "icon": "target",
-        "image": "/lastrada-services/Digital-Strategy.jpg.jpeg"
+        "icon": "share",
+        "image": "/lastrada-services/Social-Media-Marketing.jpg.jpeg"
       }
     ],
     "agencyStory": {
@@ -276,6 +302,13 @@
           "image": "/lastrada-team-optimized/mounther.jpg"
         },
         {
+          "name": "Karma",
+          "role": "Senior Marketing Manager | Performance Marketing & Growth Strategist",
+          "bio": "Senior Marketing Manager with a proven track record in Performance Marketing, CRM, and Marketing Automation. Skilled in leading integrated, multi-channel campaigns across Google Ads, Meta, LinkedIn, and Email Marketing to drive measurable growth. Combines strategic vision with hands-on execution to optimize customer journeys, boost lead generation, and turn data into decisions that move the bottom line.",
+          "accent": "blue",
+          "image": "/lastrada-team-optimized/karma.jpg"
+        },
+        {
           "name": "Nada Mahmoud",
           "role": "Art Director – Social Media Department | Creative & AI-Savvy Leader",
           "bio": "Over 8 years of experience in social media design and creative content development, with deep knowledge of the latest trends, design strategies, AI tools, and market insights to deliver impactful visual content.",
@@ -329,24 +362,24 @@
           "label": "All Work"
         },
         {
-          "key": "branding",
-          "label": "Branding"
+          "key": "marketing_strategy",
+          "label": "Marketing Strategies"
         },
         {
-          "key": "video",
-          "label": "Video"
+          "key": "graphic_design",
+          "label": "Graphic Design"
         },
         {
-          "key": "social",
-          "label": "Social Media"
+          "key": "digital_development",
+          "label": "Programming & Digital Solutions"
         },
         {
-          "key": "motion",
-          "label": "Motion Graphics"
+          "key": "content_production",
+          "label": "Content Production"
         },
         {
-          "key": "website",
-          "label": "Website"
+          "key": "social_media_management",
+          "label": "Social Media Management"
         }
       ],
       "projects": [
@@ -380,7 +413,7 @@
             "ctaLabel": "Start a similar project"
           },
           "title": "Brand Identity | Oliga Rose ",
-          "category": "branding",
+          "category": "graphic_design",
           "client": "Oliga Rose",
           "description": "Olga Rose was developed as a complete branding journey, starting from the core logo design and extending through to the full packaging system. Every element was carefully crafted to reflect a cohesive visual identity that communicates elegance, consistency, and brand character across all touchpoints. The result is a refined and unified brand experience that brings the Olga Rose vision to life in a clear and memorable way.",
           "type": "Brand Identity",
@@ -404,7 +437,7 @@
           "slug": "al-ghanem-housing",
           "summary": "A cinematic real-estate production shaped from script and direction through filming and final edit.",
           "title": "Video production | Al Ghanem Housing",
-          "category": "video",
+          "category": "content_production",
           "client": "Al Ghanem Housing",
           "description": "Al Ghanem Housing video project was produced as a complete end-to-end production, starting from script writing and concept development, through full execution, filming direction, and professional editing. The aim was to translate the brand’s message into a clear and engaging visual story that reflects its identity and values in a modern and impactful way.",
           "type": "Video Production",
@@ -414,7 +447,7 @@
           "slug": "al-moafah-medical-center",
           "summary": "A full social media ecosystem for a medical center, spanning content, reels, podcasts, publishing, and paid campaigns.",
           "title": "Social Media | Al Moafah Medical Center",
-          "category": "social",
+          "category": "social_media_management",
           "client": "Al Moafah Medical Center",
           "description": "La Strada manages the social media presence of Al-Maafah Medical Center in a fully integrated way, starting from establishing and professionally building the digital platforms and their visual identity, through continuous content management to ensure strong and effective engagement. The work includes producing visual content such as professional photography, reel editing, and podcast production and editing in a modern style that enhances the center’s medical message. It also covers designing all types of promotional posts in line with the center’s brand identity and objectives, publishing and managing content across platforms, as well as planning and executing paid advertising campaigns to increase reach, attract patients, and strengthen Al-Maafah Medical Center’s position as a trusted and distinguished healthcare destination.",
           "type": "Social Media",
@@ -424,7 +457,7 @@
           "slug": "abu-al-rab-social",
           "summary": "A full digital presence for Abu Al-Rab Dental Clinics, powered by social strategy, motion-led reels, and paid growth.",
           "title": "Social Media | Abu Al-Rab Dental Clinic",
-          "category": "social",
+          "category": "social_media_management",
           "client": "Abu Al-Rab Dental Clinic",
           "description": "La Strada manages the social media presence of Abu Al-Rab Dental Clinics in a fully integrated way, starting from establishing professional digital platforms and building a strong medical brand presence, through daily content management and developing effective communication strategies that enhance audience engagement and trust. The work includes producing modern reels powered by motion graphics and artificial intelligence to create engaging and impactful visual content, along with designing and publishing promotional posts aligned with the clinic’s identity and marketing objectives, as well as managing paid advertising campaigns across platforms to expand reach and attract more patients. La Strada stands out as your digital partner anywhere in Jordan, accompanying brands step by step to build a strong presence and deliver real, measurable results.",
           "type": "Social Media",
@@ -434,7 +467,7 @@
           "slug": "mega-cafe-jordan",
           "summary": "A food and beverage photoshoot built to elevate Mega Cafe's menu and digital presence with polished product imagery.",
           "title": "Photoshoot | Mega Café Jordan",
-          "category": "photography",
+          "category": "content_production",
           "client": "Mega Café",
           "description": "La Strada conducted a professional photoshoot for Mega Café in Jordan focused on menu items, including food and beverages, with the aim of presenting the products in the highest visual quality that highlights their appeal and uniqueness. The session emphasized showcasing each item in an attractive and professional way, capturing the fine details of both food and drinks, enhancing the café’s visual identity and supporting its digital marketing and social media presence effectively.",
           "type": "Photography",
@@ -442,177 +475,213 @@
         }
       ]
     },
+    "featuredBrands": {
+      "title": "Featured",
+      "titleHighlight": "Brands",
+      "subtitle": "A focused look at brands LA STRADA has shaped through identity, production, photography, and social media systems.",
+      "brands": []
+    },
     "testimonials": {
-      "title": "Client",
-      "titleHighlight": "Success Stories",
-      "subtitle": "Don't just take our word for it. Here's what our clients say about working with us.",
-      "trustedByTitle": "Trusted by Industry Leaders",
+      "title": "What",
+      "titleHighlight": "Clients Say",
+      "subtitle": "Real video and written feedback from clients who worked with LA STRADA on identity, production, marketing, and digital presence.",
+      "videoLabel": "Watch feedback",
+      "transcriptLabel": "Written transcript",
+      "unavailableLabel": "Video will be added soon",
       "items": [
         {
-          "content": "Working with this agency transformed our brand completely. Their creative vision and strategic approach delivered results beyond our expectations.",
-          "author": "David Miller",
-          "role": "CEO, TechInnovate",
-          "company": "Fortune 500 Technology Company",
-          "accent": "cyan"
+          "content": "LA STRADA understood the brand from the first session and turned the identity and packaging into a clear, polished system that fits the product and audience.",
+          "author": "Oliga Rose",
+          "role": "Brand Identity & Packaging",
+          "company": "Oliga Rose",
+          "accent": "purple",
+          "videoSrc": "/media/testimonials/oliga-rose.mp4",
+          "posterSrc": "/media/testimonials/oliga-rose-poster.jpg",
+          "duration": "0:42"
         },
         {
-          "content": "The team's attention to detail and innovative approach helped us establish a strong market presence. Exceptional work quality and professional service.",
-          "author": "Sarah Chen",
-          "role": "Marketing Director, LuxuryHomes",
-          "company": "Premium Real Estate Developer",
-          "accent": "purple"
+          "content": "The video came out cinematic and organized. The team was clear across planning, filming, and editing, and the final result presented the project with stronger confidence.",
+          "author": "Al Ghanem Housing",
+          "role": "Video Production",
+          "company": "Al Ghanem Housing",
+          "accent": "cyan",
+          "videoSrc": "/media/testimonials/al-ghanem.mp4",
+          "posterSrc": "/media/testimonials/al-ghanem-poster.jpg",
+          "duration": "0:38"
         },
         {
-          "content": "From concept to execution, they delivered a comprehensive brand strategy that elevated our market position and drove significant growth.",
-          "author": "Michael Rodriguez",
-          "role": "Founder, EliteFinance",
-          "company": "Financial Services Startup",
-          "accent": "yellow"
+          "content": "The medical content became clearer and easier for people to understand. LA STRADA balanced healthcare information and attractive design professionally.",
+          "author": "Al Moafah Medical Center",
+          "role": "Content & Social Media",
+          "company": "Al Moafah Medical Center",
+          "accent": "green",
+          "videoSrc": "/media/testimonials/elmo3afah.mp4",
+          "posterSrc": "/media/testimonials/elmo3afah-poster.jpg",
+          "duration": "0:45"
+        },
+        {
+          "content": "The social content became clearer and more consistent. The team cared about details and kept the accounts looking professional.",
+          "author": "Abu Al-Rab Dental Clinic",
+          "role": "Social Media & Medical Content",
+          "company": "Abu Al-Rab Dental Clinic",
+          "accent": "yellow",
+          "videoSrc": "/media/testimonials/abu-al-rab.mp4",
+          "posterSrc": "/media/testimonials/abu-al-rab-poster.jpg",
+          "duration": "0:36"
+        },
+        {
+          "content": "The photoshoot helped us present products in a cleaner and more appetizing way. The assets became ready for ads and social media with minimal extra work.",
+          "author": "Mega Café",
+          "role": "Product Photography",
+          "company": "Mega Café",
+          "accent": "red",
+          "videoSrc": "/media/testimonials/mega-cafe.mp4",
+          "posterSrc": "/media/testimonials/mega-cafe-poster.jpg",
+          "duration": "0:34"
+        },
+        {
+          "content": "The workflow was organized from planning to delivery. LA STRADA turned ideas into clear content that we could use directly in campaigns.",
+          "author": "Content Production Client",
+          "role": "Content Production & Campaigns",
+          "company": "Content Production Client",
+          "accent": "blue",
+          "videoSrc": "/media/testimonials/content-production-client.mp4",
+          "posterSrc": "/media/testimonials/content-production-client-poster.jpg",
+          "duration": "0:40"
         }
       ]
     },
     "aiDemo": {
-      "badge": "Smart Estimation",
-      "title": "Get Instant",
-      "titleHighlight": "Project Cost Estimates",
-      "subtitle": "Our intelligent system leverages data from hundreds of past projects to provide fast and reliable cost estimates tailored to your needs.",
+      "badge": "Cost Calculator",
+      "title": "Choose a Service",
+      "titleHighlight": "and Get a Preliminary Estimate",
+      "subtitle": "Start by selecting what you need: programming or media and editing. The calculator then shows only the relevant options for that service.",
       "features": [
-        "Instant cost estimation",
-        "Based on 500+ projects",
-        "Powered by AI insights"
+        "Each service path has different questions",
+        "The estimate changes based on selected services",
+        "Prices are calculated in US dollars"
       ],
       "calculatorTitle": "Project Cost Calculator",
       "labels": {
-        "projectType": "projectType",
-        "complexity": "complexity",
-        "timeline": "timeline",
-        "teamSize": "teamSize"
+        "serviceTrack": "Service Type",
+        "projectType": "Programming Service",
+        "projectSize": "Project Size",
+        "timeline": "Timeline",
+        "mediaServices": "Media and Editing Services"
       },
       "options": {
+        "serviceTrack": [
+          {
+            "value": "programming",
+            "label": "Programming"
+          },
+          {
+            "value": "media",
+            "label": "Media & Editing"
+          }
+        ],
         "projectType": [
           {
+            "value": "website",
+            "label": "Business Website"
+          },
+          {
+            "value": "e-commerce",
+            "label": "E-commerce"
+          },
+          {
             "value": "web-app",
-            "label": "Web App"
+            "label": "Platform / Web App"
           },
           {
             "value": "mobile-app",
             "label": "Mobile App"
-          },
-          {
-            "value": "ai-solution",
-            "label": "AI Solution"
-          },
-          {
-            "value": "custom-software",
-            "label": "Custom Software"
           }
         ],
-        "complexity": [
+        "projectSize": [
           {
-            "value": "simple",
-            "label": "Simple"
+            "value": "starter",
+            "label": "Simple: Few Pages"
           },
           {
-            "value": "medium",
-            "label": "Medium"
+            "value": "standard",
+            "label": "Standard: Pages and Clear Features"
           },
           {
-            "value": "complex",
-            "label": "Complex"
+            "value": "advanced",
+            "label": "Advanced: Dashboard or Integrations"
           }
         ],
         "timeline": [
           {
-            "value": "urgent",
-            "label": "Urgent"
+            "value": "flexible",
+            "label": "Flexible"
           },
           {
             "value": "normal",
             "label": "Normal"
           },
           {
-            "value": "flexible",
-            "label": "Flexible"
-          }
-        ],
-        "teamSize": [
-          {
-            "value": "small",
-            "label": "1-3 Devs"
-          },
-          {
-            "value": "medium",
-            "label": "4-6 Devs"
-          },
-          {
-            "value": "large",
-            "label": "7+ Devs"
+            "value": "fast",
+            "label": "Fast"
           }
         ]
       },
       "calculateButton": "Calculate Cost",
       "calculating": "Calculating...",
       "estimatedCost": "Estimated Cost",
-      "currency": "EGP",
-      "disclaimer": "*Actual cost may vary depending on specific requirements"
+      "currency": "USD",
+      "disclaimer": "*This is a preliminary estimate. Final pricing may vary based on project details and execution scope"
     },
     "pricing": {
-      "title": "Choose Your",
-      "titleHighlight": "Plan",
-      "subtitle": "Flexible pricing options designed to grow with your business and deliver exceptional value.",
-      "monthly": "Monthly",
-      "yearly": "Yearly",
-      "save": "Save 17%",
-      "perMonth": "month",
-      "perYear": "year",
-      "getStarted": "Get Started",
-      "customTitle": "Need a Custom Solution?",
-      "customSubtitle": "We create tailored packages for enterprise clients with specific requirements and larger scale projects.",
-      "contactSales": "Contact Sales Team",
+      "title": "Social Media",
+      "titleHighlight": "Packages",
+      "subtitle": "Monthly packages built for different publishing needs, from essential presence to high-volume visibility.",
+      "monthly": "Monthly package",
+      "yearly": "",
+      "save": "",
+      "perMonth": "Social Media Management",
+      "perYear": "",
+      "getStarted": "Request Package",
+      "customTitle": "Note",
+      "customSubtitle": "These packages are designed around monthly project needs, starting from the lowest content requirement up to the highest publishing level. Pricing varies based on project type and needs.",
+      "contactSales": "Ask for Pricing",
       "plans": [
         {
-          "name": "Starter",
-          "description": "Perfect for startups and small businesses looking to establish their brand presence.",
+          "name": "Silver Package",
+          "description": "A focused monthly package for essential brand presence with steady content and one photo session.",
           "price": "",
           "accent": "cyan",
           "features": [
-            "Brand Identity Package",
-            "Social Media Strategy",
-            "Basic Website Design",
-            "Content Creation (10 posts/month)",
-            "Monthly Performance Reports",
-            "Email Support"
+            "4 Reels",
+            "6 Posts",
+            "6 Stories",
+            "1 Photo Session"
           ]
         },
         {
-          "name": "Professional",
-          "description": "Comprehensive solution for growing businesses ready to scale their marketing efforts.",
+          "name": "Gold Package",
+          "description": "A balanced package for brands that need more publishing volume and richer content variety.",
           "price": "",
           "accent": "purple",
           "featured": true,
           "features": [
-            "Everything in Starter",
-            "Video Production (2 videos/month)",
-            "Advanced Analytics & Reporting",
-            "Paid Advertising Management",
-            "Content Creation (25 posts/month)",
-            "Dedicated Account Manager",
-            "Priority Support"
+            "6 Reels",
+            "10 Posts",
+            "12 Stories",
+            "1 Photo Session"
           ]
         },
         {
-          "name": "Enterprise",
-          "description": "Complete marketing ecosystem for established companies seeking market dominance.",
+          "name": "Platinum Package",
+          "description": "A high-intensity package for projects that need stronger visibility and more visual content each month.",
           "price": "",
           "accent": "red",
           "features": [
-            "Everything in Professional",
-            "Custom Strategy Development",
-            "Unlimited Content Creation",
-            "Advanced Motion Graphics",
-            "Multi-platform Campaigns",
-            "Executive Team Access",
-            "24/7 Premium Support"
+            "8 Reels",
+            "12 Posts",
+            "15 Stories",
+            "2 Photo Sessions"
           ]
         }
       ]
@@ -631,11 +700,11 @@
       "startProject": "Start Your Project",
       "socialLabel": "Social Channels",
       "services": [
-        "Marketing",
-        "Web & App",
-        "Branding",
-        "Production",
-        "Events Planning"
+        "Marketing Strategies",
+        "Graphic Design",
+        "Programming & Digital Solutions",
+        "Content Production",
+        "Social Media Management"
       ],
       "budgets": [
         "$10k - $25k",
@@ -667,7 +736,7 @@
         "localNotice": ""
       },
       "emailHref": "mailto:info@lastrada.agency?subject=New%20project%20with%20LA%20STRADA",
-      "facebookHref": "https://www.facebook.com/lastrada.marketing"
+      "facebookHref": "https://www.facebook.com/share/1DDRwC9uZ7/?mibextid=wwXIfr"
     },
     "finalCta": {
       "title": "Let your next campaign feel impossible to ignore.",

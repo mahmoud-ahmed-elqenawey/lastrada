@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import type { CSSProperties } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Compass, Sparkles, UserRound } from "lucide-react";
+import { Compass, Sparkles } from "lucide-react";
 import { animate, motion, useInView, useReducedMotion } from "motion/react";
-import { useLaStradaContent, type AgencyStat, type AgencyValue, type TeamMember } from "@/lib/la-strada-i18n";
+import { useLaStradaContent, type AgencyStat, type AgencyValue } from "@/lib/la-strada-i18n";
 import {
   cardReveal,
   headingReveal,
@@ -22,10 +21,6 @@ function statStyle(accent: AgencyStat["accent"]): CSSProperties {
 }
 
 function valueStyle(accent: AgencyValue["accent"]): CSSProperties {
-  return { "--accent": `var(--brand-${accent})` } as CSSProperties;
-}
-
-function memberStyle(accent: TeamMember["accent"]): CSSProperties {
   return { "--accent": `var(--brand-${accent})` } as CSSProperties;
 }
 
@@ -90,7 +85,7 @@ function AnimatedStatValue({ value, language }: { value: string; language: strin
 
 export function AgencyStory() {
   const { content, direction, language } = useLaStradaContent();
-  const { agencyStory, team } = content;
+  const { agencyStory } = content;
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -175,74 +170,6 @@ export function AgencyStory() {
                 <p className="text-base leading-7 text-white/60 sm:text-lg sm:leading-8">
                   {value.description}
                 </p>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-20 grid gap-12 lg:grid-cols-[0.38fr_1fr]">
-          <div className="lg:sticky lg:top-24 lg:h-fit">
-            <div className="soft-icon mb-8 flex h-14 w-14 items-center justify-center rounded-full">
-              <UserRound aria-hidden="true" className="text-white/76" size={24} />
-            </div>
-            <h3 className="max-w-lg text-balance text-5xl font-black leading-[0.95] tracking-normal sm:text-6xl">
-              {team.title} <span className="text-[var(--brand-cyan)]">{team.titleHighlight}</span>
-            </h3>
-            {team.subtitle ? (
-              <p className="mt-6 max-w-md text-lg leading-8 text-white/62">
-                {team.subtitle}
-              </p>
-            ) : null}
-          </div>
-
-          <div className="grid grid-cols-1 gap-3">
-            {team.members.map((member, index) => (
-              <motion.article
-                key={member.name}
-                className={`kinetic-card soft-row grid w-full min-w-0 gap-5 px-5 py-8 sm:items-start sm:px-7 ${
-                  member.bio
-                    ? "sm:grid-cols-[5rem_minmax(0,0.62fr)_minmax(0,1fr)] lg:grid-cols-[5rem_minmax(14rem,0.58fr)_minmax(18rem,1fr)_12rem]"
-                    : "sm:grid-cols-[5rem_1fr_12rem]"
-                }`}
-                style={memberStyle(member.accent)}
-                {...revealMotion(shouldReduceMotion, cardReveal(index * 0.055, 28), itemViewport)}
-                whileHover={shouldReduceMotion ? undefined : { y: -3 }}
-              >
-                <span className="font-mono text-sm text-[var(--accent)]">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div className="min-w-0">
-                  <h4 className="text-3xl font-black leading-none text-white sm:text-4xl">
-                    {member.name}
-                  </h4>
-                  {member.role ? (
-                    <p className="mt-4 text-sm font-bold uppercase leading-6 tracking-[0.12em] text-[var(--accent)]">
-                      {member.role}
-                    </p>
-                  ) : null}
-                </div>
-                {member.bio ? (
-                  <p className="min-w-0 text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
-                    {member.bio}
-                  </p>
-                ) : null}
-                {member.image ? (
-                  <motion.div
-                    className={`soft-frame relative min-h-64 w-full overflow-hidden rounded-[8px] lg:min-h-52 ${
-                      member.bio ? "sm:col-span-3 lg:col-span-1" : ""
-                    }`}
-                    variants={cardReveal(0.12, 22)}
-                  >
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      sizes="(min-width: 1024px) 10rem, (min-width: 640px) 80vw, 92vw"
-                      className="object-cover object-top opacity-[0.82] saturate-[1.02] transition duration-700 hover:scale-105 hover:opacity-100"
-                    />
-                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_36%,rgba(0,0,0,0.52)),radial-gradient(circle_at_22%_14%,var(--accent),transparent_42%)] opacity-[0.34]" />
-                  </motion.div>
-                ) : null}
               </motion.article>
             ))}
           </div>

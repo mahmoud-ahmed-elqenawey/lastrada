@@ -4,9 +4,9 @@ import { notFound, redirect } from "next/navigation";
 import { ProjectCaseStudy } from "@/components/ProjectCaseStudy";
 import { getLaStradaContent } from "@/lib/la-strada-content";
 import { defaultLocale, isLocale, type Locale } from "@/lib/locales";
+import { getPortfolioProjectBySlug } from "@/lib/portfolio-project-data";
 import {
   getCanonicalProjectSlug,
-  getProjectBySlug,
   getProjectCover,
   getProjectStaticParams,
   getProjectSummary,
@@ -21,7 +21,8 @@ type ProjectPageProps = {
   }>;
 };
 
-export const dynamicParams = false;
+export const dynamicParams = true;
+export const revalidate = 60;
 
 export function generateStaticParams() {
   return getProjectStaticParams();
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const { locale: localeParam, slug } = await params;
   const locale: Locale = isLocale(localeParam) ? localeParam : defaultLocale;
   const canonicalSlug = getCanonicalProjectSlug(slug);
-  const project = getProjectBySlug(locale, canonicalSlug);
+  const project = await getPortfolioProjectBySlug(locale, canonicalSlug);
 
   if (!project) {
     return {};
@@ -99,7 +100,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   const content = getLaStradaContent(localeParam);
-  const project = getProjectBySlug(localeParam, canonicalSlug);
+  const project = await getPortfolioProjectBySlug(localeParam, canonicalSlug);
 
   if (!project) {
     notFound();

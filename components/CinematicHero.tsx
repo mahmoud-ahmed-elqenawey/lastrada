@@ -114,6 +114,7 @@ export function CinematicHero() {
         aria-hidden="true"
         style={{ opacity: overlayOpacity }}
       />
+      <div className="hero-cinematic-field absolute inset-0" aria-hidden="true" />
 
       <div className="relative z-10 flex min-h-[calc(100svh-2.5rem)] w-full flex-col">
         <motion.header
@@ -177,14 +178,14 @@ export function CinematicHero() {
           {...entranceMotion(shouldReduceMotion, staggerContainer(0.1, 0.09))}
         >
           <motion.div className="hero-copy" variants={staggerContainer(0.08, 0.08)}>
+            <motion.p className="hero-eyebrow" variants={itemReveal(0, 18)}>
+              {hero.agencyLabel} / {hero.subtitle}
+            </motion.p>
             <motion.h1 className="hero-title text-balance" variants={heroTitleReveal()}>
               {hero.brandName}
             </motion.h1>
             <motion.p className="hero-tagline" variants={itemReveal(0.02, 24)}>
               {hero.tagline}
-            </motion.p>
-            <motion.p className="hero-subtitle" variants={itemReveal(0.04, 18)}>
-              {hero.agencyLabel} / {hero.subtitle}
             </motion.p>
             <motion.div className="hero-cta-row" variants={staggerContainer(0.04, 0.06)}>
               <motion.a

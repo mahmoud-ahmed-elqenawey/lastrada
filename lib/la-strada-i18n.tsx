@@ -11,6 +11,7 @@ import {
   type Direction,
   type Locale,
 } from "@/lib/locales";
+import type { ServiceCategoryValue } from "@/lib/service-taxonomy";
 
 export type { Direction };
 export type Language = Locale;
@@ -29,7 +30,7 @@ export type SolutionPillar = {
   description: string;
   features: string[];
   accent: Accent;
-  icon: "fingerprint" | "share" | "video" | "camera" | "target";
+  icon: "fingerprint" | "share" | "video" | "camera" | "target" | "code";
   image?: string;
 };
 
@@ -62,7 +63,7 @@ export type TeamMember = {
 };
 
 export type PortfolioFilter = {
-  key: string;
+  key: ServiceCategoryValue | "all";
   label: string;
 };
 
@@ -77,7 +78,7 @@ export type PortfolioMedia = {
 export type PortfolioProject = {
   slug: string;
   title: string;
-  category: string;
+  category: ServiceCategoryValue;
   client: string;
   description: string;
   summary?: string;
@@ -91,6 +92,8 @@ export type PortfolioProject = {
     challenge: string;
     solutionTitle: string;
     solution: string;
+    successTitle?: string;
+    successStory?: string;
     deliverablesTitle: string;
     deliverables: string[];
     galleryTitle: string;
@@ -107,6 +110,17 @@ export type Testimonial = {
   role: string;
   company: string;
   accent: Accent;
+  videoSrc?: string;
+  posterSrc?: string;
+  duration: string;
+};
+
+export type FeaturedBrand = {
+  name: string;
+  category: string;
+  summary: string;
+  accent: Accent;
+  logo?: string;
 };
 
 export type EstimatorOption = {
@@ -207,11 +221,19 @@ export type LaStradaContent = {
     filters: PortfolioFilter[];
     projects: PortfolioProject[];
   };
+  featuredBrands: {
+    title: string;
+    titleHighlight: string;
+    subtitle: string;
+    brands: FeaturedBrand[];
+  };
   testimonials: {
     title: string;
     titleHighlight: string;
     subtitle: string;
-    trustedByTitle: string;
+    videoLabel: string;
+    transcriptLabel: string;
+    unavailableLabel: string;
     items: Testimonial[];
   };
   aiDemo: {
@@ -222,16 +244,17 @@ export type LaStradaContent = {
     features: string[];
     calculatorTitle: string;
     labels: {
+      serviceTrack: string;
       projectType: string;
-      complexity: string;
+      projectSize: string;
       timeline: string;
-      teamSize: string;
+      mediaServices: string;
     };
     options: {
+      serviceTrack: EstimatorOption[];
       projectType: EstimatorOption[];
-      complexity: EstimatorOption[];
+      projectSize: EstimatorOption[];
       timeline: EstimatorOption[];
-      teamSize: EstimatorOption[];
     };
     calculateButton: string;
     calculating: string;

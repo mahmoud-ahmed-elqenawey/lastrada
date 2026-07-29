@@ -4,9 +4,12 @@ import { notFound } from "next/navigation";
 import { CinematicHero } from "@/components/CinematicHero";
 import { ScrollProgressChrome } from "@/components/ScrollProgressChrome";
 import { LanguageProvider } from "@/lib/la-strada-i18n";
+import { getFeaturedBrands } from "@/lib/featured-brands-data";
 import { isLocale } from "@/lib/locales";
+import { getPortfolioProjects } from "@/lib/portfolio-project-data";
 import { isDevLightMode } from "@/lib/runtime-flags";
 import { getJsonLd } from "@/lib/seo";
+import { getClientTestimonials } from "@/lib/testimonials-data";
 
 const InteractionChrome = dynamic(() =>
   import("@/components/InteractionChrome").then((module) => module.InteractionChrome),
@@ -16,6 +19,9 @@ const SolutionPillars = dynamic(() =>
 );
 const PortfolioShowcase = dynamic(() =>
   import("@/components/PortfolioShowcase").then((module) => module.PortfolioShowcase),
+);
+const FeaturedBrands = dynamic(() =>
+  import("@/components/FeaturedBrands").then((module) => module.FeaturedBrands),
 );
 const AgencyStory = dynamic(() =>
   import("@/components/AgencyStory").then((module) => module.AgencyStory),
@@ -28,6 +34,9 @@ const SmartEstimator = dynamic(() =>
 );
 const PricingSequence = dynamic(() =>
   import("@/components/PricingSequence").then((module) => module.PricingSequence),
+);
+const TeamSection = dynamic(() =>
+  import("@/components/TeamSection").then((module) => module.TeamSection),
 );
 const ContactGateway = dynamic(() =>
   import("@/components/ContactGateway").then((module) => module.ContactGateway),
@@ -42,6 +51,8 @@ type LocalePageProps = {
   }>;
 };
 
+export const revalidate = 60;
+
 export default async function Home({ params }: LocalePageProps) {
   const { locale: localeParam } = await params;
 
@@ -50,6 +61,9 @@ export default async function Home({ params }: LocalePageProps) {
   }
 
   setRequestLocale(localeParam);
+  const portfolioProjects = await getPortfolioProjects(localeParam);
+  const featuredBrands = await getFeaturedBrands();
+  const clientTestimonials = await getClientTestimonials(localeParam);
 
   return (
     <>
@@ -64,12 +78,14 @@ export default async function Home({ params }: LocalePageProps) {
           <ScrollProgressChrome />
           {isDevLightMode ? null : <InteractionChrome />}
           <CinematicHero />
-          <SolutionPillars />
-          <PortfolioShowcase />
           <AgencyStory />
-          <TestimonialsReel />
+          <SolutionPillars />
+          <PortfolioShowcase projectsOverride={portfolioProjects} />
+          <FeaturedBrands brandsOverride={featuredBrands} />
+          <TestimonialsReel itemsOverride={clientTestimonials} />
           <SmartEstimator />
           <PricingSequence />
+          <TeamSection />
           <ContactGateway />
           <SiteFooter />
         </main>

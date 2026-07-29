@@ -1,7 +1,7 @@
 "use client";
 
 import type { FormEvent } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowUpRight,
   CheckCircle2,
@@ -12,6 +12,7 @@ import {
   MessageCircle,
   PhoneCall,
   Send,
+  X,
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useLaStradaContent } from "@/lib/la-strada-i18n";
@@ -26,32 +27,85 @@ import {
 } from "@/lib/motion-presets";
 
 export function ContactGateway() {
-  const { content, direction } = useLaStradaContent();
+  const { content, direction, language } = useLaStradaContent();
   const { contactSection, sourceSite } = content;
   const shouldReduceMotion = useReducedMotion();
   const [showNotice, setShowNotice] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const successCopy =
+    language === "ar"
+      ? {
+          title: "تم وصول رسالتك بنجاح",
+          body: "استلمنا طلبك، وفريق لاسترادا هيتواصل معاك قريباً لمراجعة التفاصيل والخطوة التالية.",
+          close: "تمام",
+        }
+      : {
+          title: "Your message has been received",
+          body: "We received your request. The LA STRADA team will contact you soon to review the details and next step.",
+          close: "Done",
+        };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    if (!showNotice) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [showNotice]);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setShowNotice(true);
+    const form = event.currentTarget;
+    setShowNotice(false);
+    setSubmitError("");
+    setIsSubmitting(true);
 
-    const formData = new FormData(event.currentTarget);
-    const message = [
-      "New project request from LA STRADA website",
-      `Name: ${formData.get("name") ?? ""}`,
-      `Email: ${formData.get("email") ?? ""}`,
-      `Company: ${formData.get("company") ?? ""}`,
-      `Service: ${formData.get("service") ?? ""}`,
-      `Budget: ${formData.get("budget") ?? ""}`,
-      `Details: ${formData.get("message") ?? ""}`,
-    ].join("\n");
-    window.open(`${sourceSite.phone.whatsappHref}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    const formData = new FormData(form);
+    const payload = {
+      name: String(formData.get("name") ?? ""),
+      email: String(formData.get("email") ?? ""),
+      company: String(formData.get("company") ?? ""),
+      service: String(formData.get("service") ?? ""),
+      budget: String(formData.get("budget") ?? ""),
+      message: String(formData.get("message") ?? ""),
+      sourceLocale: language,
+      pagePath: window.location.pathname,
+    };
+    try {
+      const response = await fetch("/api/project-inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const data = (await response.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(data?.error ?? "تعذر حفظ الطلب.");
+      }
+
+      setShowNotice(true);
+      form.reset();
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : language === "ar"
+            ? "تعذر إرسال الطلب. حاول مرة أخرى."
+            : "Could not submit the request. Please try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section
       id="contact"
-      className="relative isolate overflow-hidden bg-[#050505] px-5 py-28 text-white sm:px-8 lg:px-12 lg:py-36"
+      className="relative isolate overflow-hidden bg-[#050505] px-5 pb-28 pt-20 text-white sm:px-8 lg:px-12 lg:pb-36 lg:pt-24"
       aria-label="Contact LA STRADA"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(48,169,220,0.17),transparent_28rem),radial-gradient(circle_at_82%_68%,rgba(239,70,57,0.16),transparent_30rem),linear-gradient(180deg,#050505,#0a0a09_52%,#050505)]" />
@@ -61,11 +115,11 @@ export function ContactGateway() {
         className="relative z-10 mx-auto max-w-7xl"
         {...revealMotion(shouldReduceMotion, staggerContainer(0.04, 0.08))}
       >
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div>
             <motion.div className="h-px w-28 bg-white/38" variants={lineReveal(direction)} />
             <motion.h2
-              className="mt-8 max-w-4xl text-balance text-5xl font-black leading-[0.9] tracking-normal sm:text-7xl lg:text-8xl"
+              className="mt-6 max-w-4xl text-balance text-5xl font-black leading-[0.94] tracking-normal sm:text-7xl lg:text-8xl"
               variants={headingReveal(direction)}
             >
               {contactSection.title}{" "}
@@ -391,8 +445,8 @@ export function ContactGateway() {
             </label>
 
             <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <button className="cinema-button cinema-button-primary" type="submit">
-                {contactSection.form.sendMessage}
+              <button className="cinema-button cinema-button-primary" type="submit" disabled={isSubmitting}>
+                {isSubmitting ? (language === "ar" ? "جار الإرسال" : "Sending") : contactSection.form.sendMessage}
                 <Send aria-hidden="true" size={18} />
               </button>
 
@@ -403,19 +457,59 @@ export function ContactGateway() {
               ) : null}
             </div>
 
-            {showNotice && contactSection.form.localNotice ? (
+            {submitError ? (
               <motion.p
-                className="mt-5 flex items-center gap-2 rounded-[8px] border border-[rgba(57,181,74,0.34)] bg-[rgba(57,181,74,0.1)] px-4 py-3 text-sm font-bold text-white/76"
+                className="mt-5 rounded-[8px] border border-red-400/25 bg-red-500/10 px-4 py-3 text-sm font-bold leading-6 text-red-100"
                 initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
                 animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
               >
-                <CheckCircle2 aria-hidden="true" size={18} className="text-[var(--brand-green)]" />
-                {contactSection.form.localNotice}
+                {submitError}
               </motion.p>
             ) : null}
+
           </motion.form>
         </div>
       </motion.div>
+
+      {showNotice ? (
+        <div
+          className="fixed inset-0 z-[120] flex items-center justify-center bg-black/72 px-5 backdrop-blur-md"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="contact-success-title"
+        >
+          <motion.div
+            className="soft-panel relative w-full max-w-lg rounded-[8px] p-6 text-center shadow-[0_32px_120px_rgba(0,0,0,0.55)] sm:p-8"
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 18, scale: 0.97 }}
+            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.28 }}
+          >
+            <button
+              type="button"
+              className="soft-icon absolute end-4 top-4 flex h-10 w-10 items-center justify-center rounded-full text-white/56 transition hover:text-white"
+              onClick={() => setShowNotice(false)}
+              aria-label={language === "ar" ? "إغلاق" : "Close"}
+            >
+              <X aria-hidden="true" size={18} />
+            </button>
+
+            <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[rgba(57,181,74,0.12)] text-[var(--brand-green)] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+              <CheckCircle2 aria-hidden="true" size={30} />
+            </span>
+            <h2 id="contact-success-title" className="mt-6 text-3xl font-black leading-tight text-white sm:text-4xl">
+              {successCopy.title}
+            </h2>
+            <p className="mt-4 text-base leading-8 text-white/64 sm:text-lg">{successCopy.body}</p>
+            <button
+              type="button"
+              className="cinema-button cinema-button-primary mx-auto mt-7"
+              onClick={() => setShowNotice(false)}
+            >
+              {successCopy.close}
+            </button>
+          </motion.div>
+        </div>
+      ) : null}
     </section>
   );
 }
