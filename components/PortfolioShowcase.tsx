@@ -84,8 +84,7 @@ export function PortfolioShowcase({ projectsOverride }: { projectsOverride?: Por
   const filteredProjects = useMemo(() => {
     if (activeFilter === "all") return projects;
 
-    const matches = projects.filter((project) => project.category === activeFilter);
-    return matches.length > 0 ? matches : projects;
+    return projects.filter((project) => project.category === activeFilter);
   }, [activeFilter, projects]);
 
   return (
@@ -218,6 +217,16 @@ export function PortfolioShowcase({ projectsOverride }: { projectsOverride?: Por
               );
             })}
           </AnimatePresence>
+          {filteredProjects.length === 0 ? (
+            <motion.div
+              className="soft-row rounded-[8px] px-5 py-10 text-center text-base font-bold text-white/58 sm:px-8"
+              {...revealMotion(shouldReduceMotion, itemReveal(0, 18), itemViewport)}
+            >
+              {language === "ar"
+                ? "لا توجد مشاريع منشورة في هذا القسم حالياً."
+                : "No published projects in this category yet."}
+            </motion.div>
+          ) : null}
         </div>
       </div>
     </section>

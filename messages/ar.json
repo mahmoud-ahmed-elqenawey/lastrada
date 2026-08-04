@@ -1,9 +1,9 @@
 {
   "content": {
     "meta": {
-      "title": "لاسترادا - وكالة الحلول الإبداعية",
-      "description": "وكالة لاسترادا للحلول الإبداعية - شريكك في التسويق والعلامة التجارية والاستراتيجية الرقمية",
-      "keywords": "لاسترادا, وكالة إبداعية, تسويق, علامة تجارية, استراتيجية رقمية, إعلانات"
+      "title": "لاسترادا - وكالة الحلول التسويقية والإبداعية",
+      "description": "وكالة لاسترادا للحلول التسويقية والإبداعية - شريكك في التسويق والعلامة التجارية والاستراتيجية الرقمية",
+      "keywords": "لاسترادا, وكالة تسويق إبداعية, تسويق, علامة تجارية, استراتيجية رقمية, إعلانات"
     },
     "brand": {
       "name": "LA STRADA",
@@ -16,7 +16,7 @@
     },
     "sourceSite": {
       "url": "https://www.lastrada.agency/",
-      "email": "info@lastrada.agency",
+      "email": "ask.lastrada@outlook.com",
       "facebook": "https://www.facebook.com/share/1DDRwC9uZ7/?mibextid=wwXIfr",
       "instagram": "https://www.instagram.com/lastrada.agency?igsh=MWkyeDU0djMyODE4Ng==",
       "socialLinks": [
@@ -49,10 +49,10 @@
     "hero": {
       "brandName": "LASTRADA",
       "agencyLabel": "وكالة",
-      "subtitle": "للحلول الإبداعية",
-      "tagline": "ليست مجرد وكالة إبداعية",
+      "subtitle": "للحلول التسويقية والإبداعية",
+      "tagline": "نحوّل الأفكار إلى استراتيجية، محتوى، إنتاج، وحملات رقمية تلفت الانتباه، تبني الثقة، وتحول حضور العلامة إلى نتائج قابلة للقياس.",
       "ctaLabel": "ابدأ مشروعك",
-      "ctaHref": "mailto:info@lastrada.agency?subject=New%20project%20with%20LA%20STRADA",
+      "ctaHref": "mailto:ask.lastrada@outlook.com?subject=New%20project%20with%20LA%20STRADA",
       "secondaryLabel": "استكشف الريل",
       "scrollHint": "الريل يبدأ بالأسفل",
       "sideNote": "منظومة هوية متحركة للتصوير، صناعة المحتوى، الموشن، الويب، السوشيال، والتسويق.",
@@ -191,7 +191,7 @@
           "تعزيز أمن وحماية المواقع والتطبيقات"
         ],
         "icon": "code",
-        "image": "/lastrada-services/Brand-Identity.jpg.jpeg"
+        "image": "/lastrada-services/Programming-Digital-Solutions.jpg"
       },
       {
         "title": "صناعة المحتوى",
@@ -735,14 +735,14 @@
         "sendMessage": "أرسل الرسالة",
         "localNotice": ""
       },
-      "emailHref": "mailto:info@lastrada.agency?subject=New%20project%20with%20LA%20STRADA",
+      "emailHref": "mailto:ask.lastrada@outlook.com?subject=New%20project%20with%20LA%20STRADA",
       "facebookHref": "https://www.facebook.com/share/1DDRwC9uZ7/?mibextid=wwXIfr"
     },
     "finalCta": {
       "title": "اجعل حملتك القادمة مستحيلة التجاهل.",
       "body": "من الاستراتيجية والهوية إلى الإنتاج والسوشيال والويب والأداء، يجب أن يشعر الناتج النهائي بأنه مصمم من أول فريم إلى آخر نقرة.",
       "ctaLabel": "ابدأ مشروعك",
-      "ctaHref": "mailto:info@lastrada.agency?subject=New%20project%20with%20LA%20STRADA"
+      "ctaHref": "mailto:ask.lastrada@outlook.com?subject=New%20project%20with%20LA%20STRADA"
     },
     "footer": {
       "brandName": "LASTRADA",

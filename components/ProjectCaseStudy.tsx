@@ -11,36 +11,71 @@ function MediaFrame({
   media,
   priority = false,
   className = "",
+  fit = "contain",
+  sizes = "(min-width: 1280px) 42vw, (min-width: 768px) 48vw, 92vw",
+  ambientBackdrop = false,
 }: {
   media: PortfolioMedia;
   priority?: boolean;
   className?: string;
+  fit?: "contain" | "cover";
+  sizes?: string;
+  ambientBackdrop?: boolean;
 }) {
+  const objectFitClass = fit === "cover" ? "object-cover" : "object-contain";
+  const backdropSrc = media.type === "video" ? media.poster : media.src;
+
   if (media.type === "video") {
     return (
-      <video
-        className={`h-full w-full object-contain ${className}`}
-        controls
-        playsInline
-        preload="metadata"
-        poster={media.poster}
-        aria-label={media.alt}
-      >
-        <source src={media.src} type="video/mp4" />
-      </video>
+      <>
+        {ambientBackdrop && backdropSrc ? (
+          <Image
+            src={backdropSrc}
+            alt=""
+            fill
+            aria-hidden="true"
+            unoptimized={isLaStradaRemoteMediaUrl(backdropSrc)}
+            sizes={sizes}
+            className="project-media-ambient object-cover"
+          />
+        ) : null}
+        <video
+          className={`h-full w-full ${objectFitClass} ${className}`}
+          controls
+          playsInline
+          preload="metadata"
+          poster={media.poster}
+          aria-label={media.alt}
+        >
+          <source src={media.src} type="video/mp4" />
+        </video>
+      </>
     );
   }
 
   return (
-    <Image
-      src={media.src}
-      alt={media.alt}
-      fill
-      priority={priority}
-      unoptimized={isLaStradaRemoteMediaUrl(media.src)}
-      sizes="(min-width: 1280px) 42vw, (min-width: 768px) 48vw, 92vw"
-      className={`object-contain ${className}`}
-    />
+    <>
+      {ambientBackdrop ? (
+        <Image
+          src={media.src}
+          alt=""
+          fill
+          aria-hidden="true"
+          unoptimized={isLaStradaRemoteMediaUrl(media.src)}
+          sizes={sizes}
+          className="project-media-ambient object-cover"
+        />
+      ) : null}
+      <Image
+        src={media.src}
+        alt={media.alt}
+        fill
+        priority={priority}
+        unoptimized={isLaStradaRemoteMediaUrl(media.src)}
+        sizes={sizes}
+        className={`${objectFitClass} ${className}`}
+      />
+    </>
   );
 }
 
@@ -266,13 +301,18 @@ export function ProjectCaseStudy({
               </span>
             </div>
 
-            <div className="project-gallery-grid grid gap-5 md:grid-cols-2">
+            <div className="project-gallery-grid grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {gallery.map((item, index) => (
                 <figure
                   key={`${item.src}-${index}`}
-                  className="project-gallery-frame soft-frame relative aspect-[4/5] overflow-hidden rounded-[8px] bg-[#050505]"
+                  className="project-gallery-frame soft-frame relative aspect-[16/10] overflow-hidden rounded-[8px] bg-[#050505]"
                 >
-                  <MediaFrame media={item} className="p-2 sm:p-3" />
+                  <MediaFrame
+                    media={item}
+                    fit="contain"
+                    ambientBackdrop
+                    sizes="(min-width: 1024px) 30vw, (min-width: 768px) 46vw, 92vw"
+                  />
                 </figure>
               ))}
             </div>

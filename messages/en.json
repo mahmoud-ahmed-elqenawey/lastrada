@@ -1,9 +1,9 @@
 {
   "content": {
     "meta": {
-      "title": "LASTRADA AGENCY FOR CREATIVE SOLUTION",
-      "description": "LASTRADA AGENCY FOR CREATIVE SOLUTION",
-      "keywords": "LASTRADA AGENCY FOR CREATIVE SOLUTION, marketing, branding, digital strategy, premium advertising, high-end agency"
+      "title": "LASTRADA AGENCY FOR CREATIVE MARKETING SOLUTIONS",
+      "description": "LASTRADA AGENCY FOR CREATIVE MARKETING SOLUTIONS",
+      "keywords": "LASTRADA AGENCY FOR CREATIVE MARKETING SOLUTIONS, marketing, branding, digital strategy, premium advertising, high-end agency"
     },
     "brand": {
       "name": "LA STRADA",
@@ -16,7 +16,7 @@
     },
     "sourceSite": {
       "url": "https://www.lastrada.agency/",
-      "email": "info@lastrada.agency",
+      "email": "ask.lastrada@outlook.com",
       "facebook": "https://www.facebook.com/share/1DDRwC9uZ7/?mibextid=wwXIfr",
       "instagram": "https://www.instagram.com/lastrada.agency?igsh=MWkyeDU0djMyODE4Ng==",
       "socialLinks": [
@@ -49,10 +49,10 @@
     "hero": {
       "brandName": "LASTRADA",
       "agencyLabel": "AGENCY",
-      "subtitle": "FOR CREATIVE SOLUTION",
-      "tagline": "not just a creative agency",
+      "subtitle": "FOR CREATIVE MARKETING SOLUTIONS",
+      "tagline": "We turn ideas into strategy, content, production, and digital campaigns that capture attention, build trust, and convert brand presence into measurable growth.",
       "ctaLabel": "Start Your Project",
-      "ctaHref": "mailto:info@lastrada.agency?subject=New%20project%20with%20LA%20STRADA",
+      "ctaHref": "mailto:ask.lastrada@outlook.com?subject=New%20project%20with%20LA%20STRADA",
       "secondaryLabel": "Explore the reel",
       "scrollHint": "The reel begins below",
       "sideNote": "A moving identity system for photography, content, motion, web, social, and marketing.",
@@ -191,7 +191,7 @@
           "Website and application security enhancement"
         ],
         "icon": "code",
-        "image": "/lastrada-services/Brand-Identity.jpg.jpeg"
+        "image": "/lastrada-services/Programming-Digital-Solutions.jpg"
       },
       {
         "title": "Content Production",
@@ -735,14 +735,14 @@
         "sendMessage": "Send Message",
         "localNotice": ""
       },
-      "emailHref": "mailto:info@lastrada.agency?subject=New%20project%20with%20LA%20STRADA",
+      "emailHref": "mailto:ask.lastrada@outlook.com?subject=New%20project%20with%20LA%20STRADA",
       "facebookHref": "https://www.facebook.com/share/1DDRwC9uZ7/?mibextid=wwXIfr"
     },
     "finalCta": {
       "title": "Let your next campaign feel impossible to ignore.",
       "body": "From strategy and identity to production, social, web, and performance, the final output should feel authored from the first frame to the last click.",
       "ctaLabel": "Start a project",
-      "ctaHref": "mailto:info@lastrada.agency?subject=New%20project%20with%20LA%20STRADA"
+      "ctaHref": "mailto:ask.lastrada@outlook.com?subject=New%20project%20with%20LA%20STRADA"
     },
     "footer": {
       "brandName": "LASTRADA",

@@ -188,7 +188,7 @@ export function AgencyStory() {
             </p>
           </div>
 
-          <p className="max-w-5xl text-balance text-4xl font-black leading-tight text-white sm:text-6xl">
+          <p className="max-w-5xl text-balance text-3xl font-black leading-tight text-white sm:text-5xl lg:text-[3.45rem]">
             {agencyStory.vision}
           </p>
         </motion.div>
